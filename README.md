@@ -23,7 +23,7 @@
       <li>une banque où les citoyens rangent les objets qu’ils veulent, on peut mettre autant d’objet qu’on veut..</li>
       <li>une zone nommée “citoyen”, c’est l’endroit où le joueur peut voir les autres joueurs présents dans la ville.</li>
       <li>un chantier où les joueurs peuvent utiliser des points d’action pour construire des infrastructures.</li>
-      <li>une grande porte où les joueurs peuvent sortir de la ville, voir les défenses de la ville et la puissance de l'attaque des zombies représentés par des nombres. Si la puissance de l'attaque est plus grande que les défenses, des joueurs ont une chances de mourrir pendant l'attaque.</li>
+      <li>une grande porte où les joueurs peuvent sortir de la ville. Ils voient aussi les défenses de la ville et la puissance de l'attaque des zombies qui sont représentés par des nombres. Si la puissance de l'attaque est plus grande que les défenses, des joueurs ont une chances de mourrir pendant l'attaque.</li>
       <li>un atelier où les joueurs peuvent transformer des ressources contre 3 points d’actions, par exemple transformer du bois en planche.</li>
       <li>un forum où les joueurs peuvent interagir sur différents sujets.</li>
       <li>une maison personnel à chaque joueur,dans cette zone il peut interagir avec ses objets, par exemple il peut boire et manger.</li>
