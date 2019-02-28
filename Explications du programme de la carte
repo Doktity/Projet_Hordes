@@ -1,0 +1,4 @@
+Explications du programme de la carte
+
+Dans ce programme nous avons deux fonctions, la fonctions pour créer la carte et la fonction pour l'afficher.
+La fonction pour créer la carte est une fonction permettant d'initialiser la carte avec toutes les cases à vide et place la ville au milieu de cette dernière.
