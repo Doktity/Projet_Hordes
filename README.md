@@ -13,10 +13,15 @@
       <li>une barre d’inventaire, où le joueur peut entreposer 4 objets + sa tenue sur lui.</li>
       <li>une maison, qu’il peut améliorer et où il peut entreposer jusqu’à 4 objets.</li>
     </ul>
-    <p>Les citoyens sont dans une ville qui a :</p>
+    <p>Les citoyens sont dans une ville qui comporte 8 zones distinctes :</p>
     <ul>
       <li>un puit, où les citoyens peuvent prendre une ration d’eau, les rations d’eau sont limités, la partie commence avec 150 rations d’eau.</li>
       <li>une banque où les citoyens rangent les objets qu’ils veulent, on peut mettre autant d’objet qu’on veut..</li>
+      <li>une zone nommée “citoyen”, c’est l’endroit où le joueur peut voir les autres joueurs présents dans la ville.</li>
+      <li>un chantier où les joueurs peuvent utiliser des points d’action pour construire des infrastructures.</li>
+      <li>une grande porte où les joueurs peuvent sortir de la ville, fermer les portes contre un point d’action.</li>
+      <li>un atelier où les joueurs peuvent transformer des ressources contre 3 points d’actions, par exemple transformer du bois en planche.</li>
+      <li>un forum où les joueurs peuvent interagir sur différents sujets.</li>
     </ul>
     <p>Votre citoyen a plusieurs états de santé qui affectent en bien ou en mal vos actions :</p>
     <ul>
