@@ -15,7 +15,7 @@
     <ul>
       <li>une barre de statut, qui indique des bonus et des malus</li>
       <li>un compteur de point d’action, le joueur à 6 points au début du jour et certaines actions nécessitent ces points. Le compteur se régénère chaque jour.</li>
-      <li>une barre d’inventaire, où le joueur peut entreposer 4 objets + sa tenue sur lui.</li>
+      <li>une barre d’inventaire, où le joueur peut entreposer 4 objets + sa tenue sur lui(qu'il ne peut pas enlever).</li>
       <li>une maison, qu’il peut améliorer et où il peut entreposer jusqu’à 4 objets.</li>
     </ul>
     <p>Les citoyens sont dans une ville qui comporte 8 zones distinctes :</p>
