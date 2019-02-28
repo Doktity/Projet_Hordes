@@ -53,7 +53,7 @@
     </ul>
     <h4>Le déroulement d'une attaque de zombie:</h4>
     <ul>
-      <li>Une attaque se déroule uniquement si le nombre de zombies est supérieur au nombre de défenses, une défense bloque un zombie.<li>
+      <li>Une attaque se déroule uniquement si le nombre de zombies est supérieur au nombre de défenses, une défense bloque un zombie.</li>
       <li>Il y a une attaque toutes les nuits, plus il y a de zombies dans la ville, plus les citoyens ont des chances de mourir.</li>
       <li>Chaque zombie va attaquer la maison d'un citoyen, le citoyen meurt si sa maison n'est pas assez fortifiée,autrement il repousse l'attaque des zombies mais rentre en état de terreur.</li>
   </body>
