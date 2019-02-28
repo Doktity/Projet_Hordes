@@ -26,7 +26,7 @@
       <li>une grande porte où les joueurs peuvent sortir de la ville.</li>
       <li>un atelier où les joueurs peuvent transformer des ressources contre 3 points d’actions, par exemple transformer du bois en planche.</li>
       <li>un forum où les joueurs peuvent interagir sur différents sujets.</li>
-      <li>une maison personnel à chaque joueur</li>
+      <li>une maison personnel à chaque joueur,dans cette zone il peut interagir avec ses objets, par exemple il peut boire et manger.</li>
     </ul>
     <p>Votre citoyen a plusieurs états de santé qui affectent en bien ou en mal vos actions :</p>
     <ul>
