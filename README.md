@@ -22,8 +22,8 @@
       <li>une grande porte où les joueurs peuvent sortir de la ville, fermer les portes contre un point d’action.</li>
       <li>un atelier où les joueurs peuvent transformer des ressources contre 3 points d’actions, par exemple transformer du bois en planche.</li>
       <li>un forum où les joueurs peuvent interagir sur différents sujets.</li>
+      <li>une maison personnel à chaque joueur</li>
     </ul>
-    <li>une maison personnel à chaque joueur</li>
     <p>Votre citoyen a plusieurs états de santé qui affectent en bien ou en mal vos actions :</p>
     <ul>
        <li>La fatigue, votre citoyen n'a plus de points d'actions, impossibilité alors de se déplacer.</li>
