@@ -22,7 +22,7 @@
     <ul>
        <li>La fatigue, vôtre citoyen n'a plus de points d'actions, impossibilité alors de se déplacer.</li>
       <li>La soif , vôtre citoyen a besoin de boire avant de finir en état de déshydratation.</li>
-      <li>L'état rassasié, indique que vous avez bu et/ou manger, donc répéter ces actions ne permettent plus de récupérer des             points d'actions.</li>
+      <li>L'état rassasié, indique que vous avez bu et/ou manger, donc répéter ces actions ne permet plus de récupérer des             points d'actions.</li>
        <li>La blessure, il faut soigner vôtre citoyen avant qu'il ne succombe de celle-ci, généralement un homme blessé meurt en deux jours.</li>
       <li>Drogué(e), vous avez utilisé des substances iliicites qui permettent de surmonter les états de fatigue,soif et de blessure.Cependant il ne faut pas abusé des drogues sinon vous tomberez dans la dépendance.</li>
       <li>Clair, vous n'avez pas consommé de drogue , vous évitez les dangers de la dépendance.</li>
