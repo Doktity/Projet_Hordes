@@ -6,6 +6,8 @@
     <h3>Principe du jeu :</h3>
     <p>Des joueurs rassemblés dans une ville qui essayent de survivre à des attaques de zombies survenant ponctuellement à une heure donnée.</p>
     <h3>Gameplay du jeu :</h3>
+    <h4> Interface </h4>
+    <p>Il y a deux interfaces graphiques, une 
     <p>Vous contrôlez un citoyen, il a :</p>
     <ul>
       <li>une barre de statut, qui indique des bonus et des malus</li>
@@ -19,7 +21,7 @@
       <li>une banque où les citoyens rangent les objets qu’ils veulent, on peut mettre autant d’objet qu’on veut..</li>
       <li>une zone nommée “citoyen”, c’est l’endroit où le joueur peut voir les autres joueurs présents dans la ville.</li>
       <li>un chantier où les joueurs peuvent utiliser des points d’action pour construire des infrastructures.</li>
-      <li>une grande porte où les joueurs peuvent sortir de la ville, fermer les portes contre un point d’action.</li>
+      <li>une grande porte où les joueurs peuvent sortir de la ville.</li>
       <li>un atelier où les joueurs peuvent transformer des ressources contre 3 points d’actions, par exemple transformer du bois en planche.</li>
       <li>un forum où les joueurs peuvent interagir sur différents sujets.</li>
       <li>une maison personnel à chaque joueur</li>
