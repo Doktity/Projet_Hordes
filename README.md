@@ -16,7 +16,7 @@
     <p>Les citoyens sont dans une ville qui a :</p>
     <ul>
       <li>un puit, où les citoyens peuvent prendre une ration d’eau, les rations d’eau sont limités, la partie commence avec 150 rations d’eau.</li>
-      <li>une banque où les citoyens rangent les objets qu’ils veulent.</li>
+      <li>une banque où les citoyens rangent les objets qu’ils veulent, on peut mettre autant d’objet qu’on veut..</li>
     </ul>
     <p>Votre citoyen a plusieurs états de santé qui affectent en bien ou en mal vos actions :</p>
     <ul>
