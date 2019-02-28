@@ -28,6 +28,7 @@
       <li>Clair, vous n'avez pas consommé de drogue , vous évitez les dangers de la dépendance.</li>
       <li>Immunisé, vous avez consommé un médicament qui vous permet de guérir de vos blessures</li>
     </ul>
+   
          
   <body>
 <html>
