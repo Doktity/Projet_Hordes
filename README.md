@@ -20,7 +20,7 @@
     </ul>
     <p>Les citoyens sont dans une ville qui comporte 8 zones distinctes :</p>
     <ul>
-      <li>un puit, où les citoyens peuvent prendre une ration d’eau, les rations d’eau sont limités, la partie commence avec 150 rations d’eau.</li>
+      <li>un puit, où les citoyens peuvent prendre une ration d’eau quotidiennement, les rations d’eau sont limités, la partie commence avec 150 rations d’eau.</li>
       <li>une banque où les citoyens rangent les objets qu’ils veulent, on peut mettre autant d’objet qu’on veut..</li>
       <li>une zone nommée “citoyen”, c’est l’endroit où le joueur peut voir les autres joueurs présents dans la ville.</li>
       <li>un chantier où les joueurs peuvent utiliser des points d’action pour construire des infrastructures.</li>
