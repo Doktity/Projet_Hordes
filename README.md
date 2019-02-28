@@ -5,9 +5,10 @@
     <h2>Cahier des charges</h2>
     <h3>Principe du jeu :</h3>
     <p>Des joueurs rassemblés dans une ville qui essayent de survivre à des attaques de zombies survenant ponctuellement à une heure donnée.</p>
+    <p>Le but du jeu est de survivre le plus de jour, pour cela il faut coopérer avec les autres joueurs présents dans la ville
     <h3>Gameplay du jeu :</h3>
     <h4> Interface </h4>
-    <p>Il y a deux interfaces graphiques, une 
+    <p>Il y a deux interfaces graphiques, une lorsqu'on est dans la ville et une lorsqu'on est en dehors. Dans la ville, le joueur ne controle pas de personnage, il voit des "cases" cliquables qui lui permettent d'interagir avec ce qu'il veut. Par exemple, si le joueur clique sur la "case" maison, le jeu lui montre sa maison. En dehors de la ville, le joueur voit une carte composée de cases, la ville se situe sur la case au milieu. Les dimensions de la carte est 13*13 cases. Le joueur peut voir sur la carte des marqueurs, tel que l'emplacement de la ville ou sa position actuelle. Le joueur voit à côté de la carte la case sur laquelle il se situe. Il peut y voir son personnage immobile au centre de la case, des zombies si il y en a et des flèches situées aux 4 côtés de la case. Si le joueur clique sur une flèche il se déplace vers la case indiquée par la flèche. Par exemple, le joueur clique sur la flèche de gauche, il se déplace sur la case de gauche.</p>
     <p>Vous contrôlez un citoyen, il a :</p>
     <ul>
       <li>une barre de statut, qui indique des bonus et des malus</li>
