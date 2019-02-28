@@ -4,7 +4,7 @@
     <h1>Projet de groupe pour créer un jeu similaire à Hordes.</h1>
     <h2>Cahier des charges</h2>
     <h3>Principe du jeu :</h3>
-    <p>Des joueurs rassemblés dans une ville qui essayent de survivre à des attaques de zombies qui surviennent ponctuellement à minuit.</p>
+    <p>Des joueurs rassemblés dans une ville qui essayent de survivre à des attaques de zombies qui surviennent ponctuellement à une heure donnée.</p>
     <h3>Gameplay du jeu :</h3>
     <p>Vous contrôlez un citoyen, il a :</p>
     <ul>
