@@ -38,7 +38,18 @@
       <li>Clair, vous n'avez pas consommé de drogue , vous évitez les dangers de la dépendance.</li>
       <li>Immunisé, vous avez consommé un médicament qui vous permet de guérir de vos blessures</li>
     </ul>
-   
+    <p>En dehors de la ville, vos actions sont différentes :</p>
+    <ul>
+      <li>Sur n'importe quelle case, vous voyez votre barre d'inventaire et vous pouvez interagir avec.</li>
+      <li>Si vous êtes sur la case de la ville, vous pouvez rentrer dans la ville.</li>
+      <li>Si vous êtes sur une case autre que celle de la ville vous pouvez :
+        <ul>
+          <li>Fouiller la zone, ce qui permet de trouver un objet aléatoire. Cet action ne peut être faite plus d'une fois sur la même zone.</li>
+          <li>Attaquer des zombies si il y en a sur la case, cette action consomme un point d'action et détruit un zombie sur la zone.</li>
+          <li>Fuir la zone si il y a des zombies, cette action est possible uniquement si il y a plus de joueurs que de zombies sur la case. Cette action est nécessaire si le joueur souhaite quitter une case comportant des zombies.</li>
+        </ul>
+      </li>
+    </ul>
          
-  <body>
-<html>
+  </body>
+</html>
