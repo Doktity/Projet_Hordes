@@ -1,5 +1,7 @@
-# Projet_Hordes
-Projet de groupe pour créer un jeu similaire à Hordes.
+<!DOCTYPE HTML>
+<html>
+  <body>
+    <h1>Projet de groupe pour créer un jeu similaire à Hordes.</h1>
 Cahier des charges
 Principe du jeu :
 Des joueurs rassemblés dans une ville qui essayent de survivre à des attaques de zombies qui surviennent ponctuellement à minuit.
@@ -15,4 +17,5 @@ une maison, qu’il peut améliorer et où il peut entreposer jusqu’à 4 objet
 Les citoyens sont dans une ville qui a :
 un puit, où les citoyens peuvent prendre une ration d’eau, les rations d’eau sont limités, la partie commence avec 150 rations d’eau.
 une banque où les citoyens rangent les objets qu’ils veulent
-
+  <body>
+<html>
