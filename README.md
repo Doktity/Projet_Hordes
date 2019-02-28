@@ -37,7 +37,6 @@
       <li>Drogué(e), vous avez utilisé des substances iliicites qui permettent de surmonter les états de fatigue,soif et de blessure.Cependant il ne faut pas abusé des drogues sinon vous tomberez dans la dépendance.</li>
       <li>Clair, vous n'avez pas consommé de drogue , vous évitez les dangers de la dépendance.</li>
       <li>Immunisé, vous avez consommé un médicament qui vous permet de guérir de vos blessures</li>
-      <li>La terreur, vôtre citoyen a réussi à échapper à l'attaque de la horde, il en ressort terrorisé ses ations hors de la ville sont limités, et si il se retrouve face à un zombie il mourra paralysé par la peur.</li>
     </ul>
     <p>En dehors de la ville, vos actions sont différentes :</p>
     <ul>
@@ -53,8 +52,8 @@
     </ul>
     <h4>Le déroulement d'une attaque de zombie:</h4>
     <ul>
-      <li>Une attaque se déroule uniquement si le nombre de zombies est supérieur au nombre de défenses, une défense bloque un zombie.</li>
       <li>Il y a une attaque toutes les nuits, plus il y a de zombies dans la ville, plus les citoyens ont des chances de mourir.</li>
-      <li>Chaque zombie va attaquer la maison d'un citoyen, le citoyen meurt si sa maison n'est pas assez fortifiée,autrement il repousse l'attaque des zombies mais rentre en état de terreur.</li>
+      <li>Une attaque tue des joueurs uniquement si le nombre de zombies est supérieur au nombre de défenses, une défense bloque un zombie.</li>
+      <li>Chaque zombie va attaquer la maison d'un citoyen, le citoyen meurt si sa maison n'est pas assez fortifiée,autrement il repousse l'attaque des zombies.</li>
   </body>
 </html>
