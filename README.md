@@ -18,7 +18,7 @@
       <li>un puit, où les citoyens peuvent prendre une ration d’eau, les rations d’eau sont limités, la partie commence avec 150 rations d’eau.</li>
       <li>une banque où les citoyens rangent les objets qu’ils veulent.</li>
     </ul>
-    <p>Votre citoyen a plusieurs états de santé qui affectent en bien ou en mal vos actions</p>
+    <p>Votre citoyen a plusieurs états de santé qui affectent en bien ou en mal vos actions :</p>
     <ul>
        <li>La fatigue, votre citoyen n'a plus de points d'actions, impossibilité alors de se déplacer.</li>
       <li>La soif , votre citoyen a besoin de boire avant de finir en état de déshydratation.</li>
