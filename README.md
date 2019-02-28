@@ -4,7 +4,7 @@
     <h1>Projet de groupe pour créer un jeu similaire à Hordes.</h1>
     <h2>Cahier des charges</h2>
     <h3>Principe du jeu :</h3>
-    <p>Des joueurs rassemblés dans une ville qui essayent de survivre à des attaques de zombies qui surviennent ponctuellement à une heure donnée.</p>
+    <p>Des joueurs rassemblés dans une ville qui essayent de survivre à des attaques de zombies survenant ponctuellement à une heure donnée.</p>
     <h3>Gameplay du jeu :</h3>
     <p>Vous contrôlez un citoyen, il a :</p>
     <ul>
@@ -18,10 +18,10 @@
       <li>un puit, où les citoyens peuvent prendre une ration d’eau, les rations d’eau sont limités, la partie commence avec 150 rations d’eau.</li>
       <li>une banque où les citoyens rangent les objets qu’ils veulent.</li>
     </ul>
-    <p>Vôtre citoyen a plusieurs états de santé qui affectent en bien ou en mal vos actions</p>
+    <p>Votre citoyen a plusieurs états de santé qui affectent en bien ou en mal vos actions</p>
     <ul>
-       <li>La fatigue, vôtre citoyen n'a plus de points d'actions, impossibilité alors de se déplacer.</li>
-      <li>La soif , vôtre citoyen a besoin de boire avant de finir en état de déshydratation.</li>
+       <li>La fatigue, votre citoyen n'a plus de points d'actions, impossibilité alors de se déplacer.</li>
+      <li>La soif , votre citoyen a besoin de boire avant de finir en état de déshydratation.</li>
       <li>L'état rassasié, indique que vous avez bu et/ou manger, donc répéter ces actions ne permet plus de récupérer des             points d'actions.</li>
        <li>La blessure, il faut soigner vôtre citoyen avant qu'il ne succombe de celle-ci, généralement un homme blessé meurt en deux jours.</li>
       <li>Drogué(e), vous avez utilisé des substances iliicites qui permettent de surmonter les états de fatigue,soif et de blessure.Cependant il ne faut pas abusé des drogues sinon vous tomberez dans la dépendance.</li>
