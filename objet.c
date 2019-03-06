@@ -9,10 +9,10 @@ objet_t * recup_fichier(){
 		return 0;
 	}
 	else fic=fopen("liste_objet.txt","r");
-	fscanf(fic,"%s:%s:%s:%i",&tab[i].nom_obj,&tab[i].categorie,&tab[i].description,&tab[i].influ_pa);
+	fscanf(fic,"%s:%s:%s:%i",tab[i].nom_obj,tab[i].categorie,tab[i].description,&tab[i].influ_pa);
 	while(!feof(fic)){
 		i++;
-		fscanf(fic,"%s:%s:%s:%i",&tab[i].nom_obj,&tab[i].categorie,&tab[i].description,&tab[i].influ_pa);
+		fscanf(fic,"%s:%s:%s:%i",tab[i].nom_obj,tab[i].categorie,tab[i].description,&tab[i].influ_pa);
 	}
 	fclose(fic);
 	return tab;
