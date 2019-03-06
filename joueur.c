@@ -2,17 +2,17 @@
 #include "joueur.h"
 
 
-joueur_t * Creer_Joueur(char * nom, int pa, objet_t inventaire[3], int statut[6]){
+joueur_t * Creer_Joueur(char * nom, int pa, objet_t inventaire[4], int statut[7]){
 
   joueur_t * joueur = malloc(sizeof(joueur_t));
   int i;
 
   joueur->nom = nom;
   joueur->pa = pa;
-  for(i=0; i<3; i++){
+  for(i=0; i<4; i++){
     joueur->inventaire[i] = inventaire[i];
   }
-  for(i=0; i<6; i++){
+  for(i=0; i<7; i++){
     joueur->statut[i] = statut[i];
   }
   return joueur;
