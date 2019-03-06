@@ -4,11 +4,11 @@
 typedef struct joueur_s{
   char * nom;
   int pa;
-  objet_t inventaire[3];
-  int statut[6];
+  objet_t inventaire[4];
+  int statut[7];
 } joueur_t;
 
-joueur_t * Creer_Joueur(char * nom, int pa, objet_t inventaire[3], int statut[7]); // Renvoie le joueur_t du joueur qu'on a créer.
+joueur_t * Creer_Joueur(char * nom, int pa, objet_t inventaire[4], int statut[7]); // Renvoie le joueur_t du joueur qu'on a créer.
 
 void Supprimer_Joueur(joueur_t * joueur); // Supprime le joueur.
 
