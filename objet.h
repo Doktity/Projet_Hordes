@@ -10,6 +10,4 @@ typedef struct objet_s{
   int influ_pa;
 }objet_t;
 
-objet_t recup_fichier(); // Cette fonction récupere les objets qui existe dans un fichier et les stockes dans un tableau
-
-objet_t trouve_objet(objet_t * p,char * nom,char * categorie);//Cette fonction retourne un pointeur sur un objet selon son nom et sa catégorie
+objet_t * recup_fichier(); // Cette fonction récupere les objets qui existe dans un fichier et les stockes dans un tableau
