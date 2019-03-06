@@ -17,7 +17,3 @@ objet_t recup_fichier(){
 	fclose(fic);
 	return tab;
 }
-
-objet_t trouve_objet(objet_t * p,char * nom,char * categorie){
-
-}
