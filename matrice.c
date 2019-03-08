@@ -1,8 +1,10 @@
 #include <stdlib.h>
+#include "case.h"
+
 typedef struct{
       int nbl;
       int nbc;
-      void ** mat;
+      case_t ** mat;
 }t_mat;
 
 t_mat * alouer_matrice(int nbl,int nbc,void * type_case){//nbl:nombreligne, nbc:nombrecolonne

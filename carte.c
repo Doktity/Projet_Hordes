@@ -1,33 +1,32 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "matrice.h"
-#include "objet_t.h"
-##include "joueur_t.h"
+
+
+//#include "objet_t.h"
+//#include "joueur_t.h"
 #define T  13//taille des côtés de la carte
 
-typedef enum{
-      non_explore,
-      explore_neutre,
-      explore_zombie,
-      ville
-}etat_case;
-
-typedef struct {
-      etat_case etat;
-      objet_t ** liste_objet;
-      joueur_t ** liste_joueur;
-      int nb_zombie;
-}case_t;
 
 
-int * creer_carte(){
+
+t_mat * creer_carte(){
       case_t type;
       //initialisation de la carte
-      t_mat * map = alouer_matrice(T,T,type);
-
+      t_mat * map = alouer_matrice(T,T,&type);
+      map->mat[(map->nbl)/2+1][(map->nbc)/2+1].etat = ville;
       return map;
 }
 
+void afficher_carte(t_mat * map){
+      for (int i = 0; i < map->nbl; i++) {
+            for (int j = 0; j < map->nbc; j++) {
+                  switch (map->mat[i][j].etat) {
+                        case ville:printf("v\n");
+                  }
+            }
+      }
+}
 /*void afficher_carte(int * map) {
       for (int i = 0; i < T; i++) {
             for (int k = 0; k < 3; k++) {
@@ -74,12 +73,3 @@ int * creer_carte(){
 
       }
 }*/
-
-int main(int argc, char const *argv[]) {
-      int * map;
-
-      map = creer_carte(map);
-      printf("ici\n");
-      afficher_carte(map);
-      return 0;
-}

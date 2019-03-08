@@ -1,4 +1,3 @@
-
 typedef enum{
       non_explore,
       explore_neutre,
@@ -12,5 +11,3 @@ typedef struct {
       //joueur_t ** liste_joueur;
       int nb_zombie;
 }case_t;
-
-t_mat * creer_carte();
