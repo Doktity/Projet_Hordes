@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "objet.h"
+#include "main.h"
 
 typedef struct joueur_s{
   char * nom;
