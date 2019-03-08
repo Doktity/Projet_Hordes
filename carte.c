@@ -31,8 +31,10 @@ void afficher_carte(t_mat * map){
                         case non_explore:printf("ø");break;
                         case explore_neutre:printf("o");break;
                         case explore_zombie:printf("z");break;
+                        default:printf("?");
                   }
             }
+            printf("\n");
       }
 }
 
