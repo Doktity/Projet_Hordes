@@ -12,9 +12,9 @@ typedef struct objet_s{
 
 typedef struct liste_objet_s{
   objet_t val;
-  objet_t * pred;
-  objet_t *succ;
-}
+  struct liste_objet_s * pred;
+  struct liste_objet_s * pred;
+}liste_objet_t;
 
 //Primitives d'accès à la liste
 
@@ -42,4 +42,5 @@ void ajout_droit(objet_t);
 
 void ajout_gauche(objet_t);
 
-objet_t * recup_fichier(); // Cette fonction récupere les objets qui existe dans un fichier et les stockes dans un tableau
+// Cette fonction récupere les objets qui existe dans un fichier et les stockes dans un tableau
+void creer_liste(void); 
