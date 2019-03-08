@@ -8,8 +8,8 @@ typedef enum{
 
 typedef struct {
       etat_case etat;
-      //objet_t ** liste_objet;
-      //joueur_t ** liste_joueur;
+      objet_t ** liste_objet;
+      joueur_t ** liste_joueur;
       int nb_zombie;
 }case_t;
 
