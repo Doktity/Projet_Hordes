@@ -10,4 +10,5 @@ typedef struct {
       objet_t ** liste_objet;
       joueur_t ** liste_joueur;
       int nb_zombie;
+      int nb_joueur;
 }case_t;
