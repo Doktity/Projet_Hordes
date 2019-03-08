@@ -26,15 +26,17 @@ t_mat * creer_carte(){
 void afficher_carte(t_mat * map){
       for (int i = 0; i < map->nbl; i++) {
             for (int j = 0; j < map->nbc; j++) {
+                  printf("%i",map->mat[i][j].nb_joueur);
                   switch (map->mat[i][j].etat) {
-                        case ville:printf("v");break;
-                        case non_explore:printf("ø");break;
-                        case explore_neutre:printf("o");break;
-                        case explore_zombie:printf("z");break;
+                        case ville:printf("v ");break;
+                        case non_explore:printf("ø ");break;
+                        case explore_neutre:printf("o ");break;
+                        case explore_zombie:printf("z%i",map->mat[i][j].nb_zombie);break;
                         default:printf("?");
                   }
             }
             printf("\n");
       }
 }
+
 
