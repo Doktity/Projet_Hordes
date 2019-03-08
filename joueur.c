@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "joueur.h"
 
 
@@ -50,3 +49,4 @@ int Est_Rassasie(joueur_t * joueur){
 int Est_Immunise(joueur_t * joueur){
   return joueur->statut[6];
 }
+
