@@ -1,13 +1,31 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <pthread.h>
 #include "main.h"
 
-void *thread_1(void *arg)
+int attaque(int nb_tour, int nb_joueur, int puissance)
+/* Fonction pour déterminer la puissance des zombies lors de l'attaque */
+{
+  float f_tour = (float)(nb_tour) / 10;
+  float f_joueur = (float)(nb_joueur) / 10;
 
+  puissance = puissance + rand() % NB_ZOMBIE_MAX * f_tour * f_joueur + NB_ZOMBIE_MIN;
+
+  return puissance;
+}
+
+
+void *thread_1(void *arg)
+/* Fonction thread pour gérer la gestion des tours de jeu hors du processus principal*/
 {
   time_t depart;
   tour_t tour;
   tour.nb_tour = 1;
   int nb_t = 0;
   depart = time(NULL);
+
+  int puissance = 0;
 
   while(tour.nb_tour < 10){
         tour.temps = time(NULL);
@@ -16,7 +34,8 @@ void *thread_1(void *arg)
           tour.nb_tour++;
         }
         if(nb_t != tour.nb_tour){
-          printf("%d tours.\n", tour.nb_tour);
+          puissance = attaque(tour.nb_tour, 5, puissance);
+          printf("%d tours - puissance des zombies : %d\n", tour.nb_tour, puissance);
           nb_t = tour.nb_tour;
         }
   }
@@ -28,7 +47,10 @@ void *thread_1(void *arg)
 }
 
 
-int main(){
+int main()
+{
+
+  srand(time(NULL));
 
   t_mat * carte = creer_carte();
 
@@ -84,7 +106,8 @@ int main(){
 	}
 	while(choix!=9);
 
+  liberer_matrice(carte);
+
   return 0;
 
 }
-
