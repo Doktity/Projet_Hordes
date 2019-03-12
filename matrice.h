@@ -1,5 +1,9 @@
+#ifndef _MATRICE_H_
+#define _MATRICE_H_
+
 #include <stdlib.h>
 #include <stdio.h>
+
 #include "case.h"
 
 typedef struct{
@@ -11,3 +15,6 @@ typedef struct{
 t_mat * alouer_matrice(int nbl,int nbc);
 
 void liberer_matrice(t_mat * old);
+
+#endif
+
