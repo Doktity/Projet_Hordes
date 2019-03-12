@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <time.h>
 #include <pthread.h>
+#include <unistd.h>
+
 #include "main.h"
 
 int attaque(int nb_tour, int nb_joueur, int puissance)
@@ -62,6 +64,8 @@ int main()
   pthread_t thread1;
 
   int choix;
+	
+	system("clear");
 
   printf("Nom : ");
   scanf("%s", nom);
@@ -77,16 +81,17 @@ int main()
 
   do
 /* Affichage du menu et saisie du choix */
-	{	printf("\nMenu :\n");
+  {
+		printf("\nMenu :\n");
 		printf(" 1 - Maison\n");
 		printf(" 2 - Puit\n");
 		printf(" 3 - Banque\n");
 		printf(" 4 - Citoyen\n");
 		printf(" 5 - Chantier\n");
 		printf(" 6 - Atelier\n");
-    printf(" 7 - Forum\n");
-    printf(" 8 - Grande Porte\n");
-    printf(" 9 - Quitter\n");
+		printf(" 7 - Forum\n");
+		printf(" 8 - Grande Porte\n");
+		printf(" 9 - Quitter\n");
 		printf("Votre choix : ");
 		scanf("%d",&choix);
 
