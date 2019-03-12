@@ -45,6 +45,6 @@ t_mat * calculer_pos_zombie(t_mat * map, int nb_jour){
                   x = nb_aleatoire(map->nbl);
                   y = nb_aleatoire(map->nbc);
             } while(x == (map->nbl)/2 && y == (map->nbc)/2);//tant que c'est égal à la position de la ville
-            map->mat[i][j].nb_zombie ++;
+            map->mat[x][y].nb_zombie ++;
       }
 }
