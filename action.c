@@ -1,3 +1,4 @@
+#include "action.h"
 void action(int posx, int posy, joueur_t joueur,t_mat map){
       int i = 1;
       printf("quels actions voulez vous faire ?\n");
