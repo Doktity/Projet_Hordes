@@ -92,15 +92,15 @@ void ajout_gauche(objet_t v,liste_objet_t * liste){
 void creer_liste(liste_objet_t *liste){
   FILE * fic=fopen("liste_objet.txt","r");
   objet_t mem;
+  char line[TAILLE];
   init_liste(liste);
   en_tete(liste);
-  fscanf(fic,"%s %s %i %[^\n]",mem.nom_obj,mem.categorie,&mem.influ_pa,mem.description);
-  ajout_droit(mem,liste);
   while(!feof(fic)){
-  	fscanf(fic,"%s %s %i %[^\n]",mem.nom_obj,mem.categorie,&mem.influ_pa,mem.description);
+    fgets(line, TAILLE, fic);
+    sscanf(line,"%s %s %i %[^\n]",mem.nom_obj,mem.categorie,&mem.influ_pa,mem.description);
     ajout_droit(mem,liste);
   }
-	fclose(fic);
+  fclose(fic);
 }
 
 void affiche_liste(liste_objet_t *liste){
