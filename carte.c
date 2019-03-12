@@ -1,12 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include "matrice.h"
-#include "objet_t.h"
-#include "joueur_t.h"
-#define T  13//taille des côtés de la carte
-
-
-
+#include "carte.h"
 
 t_mat * creer_carte(){
       case_t type;
@@ -44,7 +36,7 @@ void afficher_carte(t_mat * map){
       }
 }
 
-void action(int posx, int posy, joueur_t joueur,t_mat map){
+/*void action(int posx, int posy, joueur_t joueur,t_mat map){
       int i = 1;
       printf("quels actions voulez vous faire ?\n");
       if (!posx) {
@@ -70,5 +62,4 @@ void action(int posx, int posy, joueur_t joueur,t_mat map){
       }
       if (!liste_vide(map->mat->liste_objet)) {
             printf("%i:ramasser les objets\n",i);
-      }
-
+}*/
