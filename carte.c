@@ -36,6 +36,28 @@ void afficher_carte(t_mat * map){
       }
 }
 
+void afficher_carte(t_mat * map){
+      for (int i = 0; i < map->nbl; i++) {
+            for (int j = 0; j < map->nbc; j++) {
+                  if (map->mat[i][j].nb_joueur) {
+                        printf("%i",map->mat[i][j].nb_joueur);
+                  }
+                  else{
+                        printf(" ");
+                  }
+                  switch (map->mat[i][j].etat) {
+                        case ville:printf("v ");break;
+                        case non_explore:printf("ø ");break;
+                        case explore_neutre:printf("o ");break;
+                        case explore_zombie:printf("z%i",map->mat[i][j].nb_zombie);break;
+                        default:printf("?");
+                  }
+            }
+            printf("\n\n");
+      }
+}
+
+
 /*void action(int posx, int posy, joueur_t joueur,t_mat map){
       int i = 1;
       printf("quels actions voulez vous faire ?\n");
