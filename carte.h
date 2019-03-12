@@ -1,4 +1,3 @@
-
 typedef enum{
       non_explore,
       explore_neutre,
@@ -14,3 +13,4 @@ typedef struct {
 }case_t;
 
 t_mat * creer_carte();
+void afficher_carte(t_mat * map);
