@@ -10,12 +10,15 @@ typedef struct objet_s{
   int influ_pa;
 }objet_t;
 
-typedef struct liste_objet_s{
+typedef struct element_s{
   objet_t val;
-  struct liste_objet_s * pred;
-  struct liste_objet_s * pred;
-    struct liste_objet_s * ec;
-  struct liste_objet_s * drapeau;
+  struct element_s * pred;
+  struct element_s * succ;
+}element_t;
+
+typedef struct liste_objet_s{
+  element_t * ec;
+  element_t * drapeau;
 }liste_objet_t;
 
 /**
