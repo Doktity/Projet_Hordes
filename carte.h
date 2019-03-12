@@ -1,16 +1,12 @@
-typedef enum{
-      non_explore,
-      explore_neutre,
-      explore_zombie,
-      ville
-}etat_case;
+#include <stdio.h>
+#include <stdlib.h>
+#include "matrice.h"
 
-typedef struct {
-      etat_case etat;
-      objet_t ** liste_objet;
-      joueur_t ** liste_joueur;
-      int nb_zombie;
-}case_t;
+#define T  13//taille des côtés de la carte
 
 t_mat * creer_carte();
+
 void afficher_carte(t_mat * map);
+
+//void action(int posx, int posy, joueur_t joueur,t_mat map);
+
