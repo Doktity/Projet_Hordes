@@ -1,5 +1,7 @@
 #include <stdlib.h>
-#include "carte.h"
+#include <stdio.h>
+#include "case.h"
+
 typedef struct{
       int nbl;
       int nbc;
