@@ -1,5 +1,10 @@
+#ifndef _JOUEUR_H_
+#define _JOUEUR_H_
+
 #include <stdio.h>
-#include "main.h"
+#include <stdlib.h>
+
+#include "objet.h"
 
 typedef struct joueur_s{
   char * nom;
@@ -25,3 +30,5 @@ int Est_Drogue(joueur_t * joueur); // Renvoie 1 si le joueur est drogué, 0 sino
 int Est_Rassasie(joueur_t * joueur); // Renvoie 1 si le joueur est rassasié, 0 sinon.
 
 int Est_Immunise(joueur_t * joueur); // Renvoie 1 si le joueur est immunisé, 0 sinon.
+
+#endif
