@@ -1,123 +1,118 @@
 #include "objet.h"
 
-liste_objet_t * ec; //L'élement courant de la liste
-liste_objet_t * drapeau;
-
-void init_liste(void){
-  drapeau=malloc(sizeof(liste_objet_t));
-  drapeau->pred=drapeau;
-  drapeau->succ=drapeau;
-  ec=drapeau;
+void init_liste(liste_objet_t * liste){
+  liste->drapeau=malloc(sizeof(liste_objet_t));
+  liste->drapeau->pred=liste->drapeau;
+  liste->drapeau->succ=liste->drapeau;
+  liste->ec=liste->drapeau;
 }
 
-int liste_vide(void){
-  return (drapeau->pred==drapeau->succ);
+int liste_vide(liste_objet_t * liste){
+  return (liste->drapeau->pred==liste->drapeau->succ);
 }
 
-int hors_liste(void){
-  return (ec==drapeau);
+int hors_liste(liste_objet_t * liste){
+  return (liste->ec==liste->drapeau);
 }
 
-void en_tete(void){
-  if(!liste_vide()){
-    ec=drapeau->succ;
+void en_tete(liste_objet_t * liste){
+  if(!liste_vide(liste)){
+    liste->ec=liste->drapeau->succ;
   }
 }
 
-void en_queue(void){
-  if(!liste_vide()){
-    ec=drapeau->pred;
+void en_queue(liste_objet_t * liste){
+  if(!liste_vide(liste)){
+    liste->ec=liste->drapeau->pred;
   }
 }
 
-void suivant(void){
-  if(!hors_liste()){
-    ec=ec->succ;
+void suivant(liste_objet_t * liste){
+  if(!hors_liste(liste)){
+    liste->ec=liste->ec->succ;
   }
 }
 
-void precedent(void){
-  if(!hors_liste()){
-    ec=ec->pred;
+void precedent(liste_objet_t * liste){
+  if(!hors_liste(liste)){
+    liste->ec=liste->ec->pred;
   }
 }
 
-void valeur_elt(objet_t *v){
-  if(!hors_liste()){
-    *v= ec->val;
+void valeur_elt(objet_t *v,liste_objet_t * liste){
+  if(!hors_liste(liste)){
+    *v= liste->ec->val;
   }
 }
 
-void modif_elt(objet_t v){
-  if(!hors_liste()){
-      ec->val=v;
+void modif_elt(objet_t v,liste_objet_t * liste){
+  if(!hors_liste(liste)){
+      liste->ec->val=v;
   }
 }
 
-void oter_elt(void){
-	if(!hors_liste()){
+void oter_elt(liste_objet_t * liste){
+  if(!hors_liste(liste)){
 		liste_objet_t * mem;
-		ec->succ->pred=ec->pred;
-		ec->pred->succ=ec->succ;
-		mem=ec->succ;
-		free(ec);
-		ec->pred=mem;
-		mem->succ=ec;
+		liste->ec->succ->pred=liste->ec->pred;
+		liste->ec->pred->succ=liste->ec->succ;
+		mem=liste->ec->succ;
+		free(liste->ec);
+		liste->ec->pred=mem;
+		mem->succ=liste->ec;
 	}
 }
 
-void ajout_droit(objet_t v){
-	if(liste_vide()||!hors_liste()){
+void ajout_droit(objet_t v,liste_objet_t * liste){
+  if(liste_vide(liste)||!hors_liste(liste)){
 		liste_objet_t * nouv;
 		nouv=malloc(sizeof(liste_objet_t));
 		nouv->val=v;
-		nouv->pred=ec;
-		nouv->succ=ec->succ;
-		ec->succ->pred=nouv;
-		ec->succ=nouv;
-		ec=nouv;
+		nouv->pred=liste->ec;
+		nouv->succ=liste->ec->succ;
+		liste->ec->succ->pred=nouv;
+		liste->ec->succ=nouv;
+		liste->ec=nouv;
 	}
 }
 
-void ajout_gauche(objet_t v){
-	  if(liste_vide()||!hors_liste()){
+void ajout_gauche(objet_t v,liste_objet_t * liste){
+  if(liste_vide(liste)||!hors_liste(liste)){
     liste_objet_t * nouv;
     nouv=malloc(sizeof(liste_objet_t));
     nouv->val=v;
-    nouv->pred=ec;
-    nouv->succ=ec->pred;
-    ec->pred=nouv;
-    ec->succ=nouv;
-    ec=nouv;
+    nouv->pred=liste->ec;
+    nouv->succ=liste->ec->pred;
+    liste->ec->pred=nouv;
+    liste->ec->succ=nouv;
+    liste->ec=nouv;
   }
 }
 
-void creer_liste(){
+void creer_liste(liste_objet_t *liste){
   FILE * fic=fopen("liste_objet.txt","r");
   objet_t mem;
-  init_liste();
-  en_tete();
+  init_liste(liste);
+  en_tete(liste);
   fscanf(fic,"%s %s %i %[^\n]",mem.nom_obj,mem.categorie,&mem.influ_pa,mem.description);
-  ajout_droit(mem);
+  ajout_droit(mem,liste);
   while(!feof(fic)){
   	fscanf(fic,"%s %s %i %[^\n]",mem.nom_obj,mem.categorie,&mem.influ_pa,mem.description);
-    ajout_droit(mem);
+    ajout_droit(mem,liste);
   }
 	fclose(fic);
 }
 
-void affiche_liste(){
+void affiche_liste(liste_objet_t *liste){
   objet_t mem;
-  if(!liste_vide()){
-    en_tete();
-    while(!hors_liste()){
-      valeur_elt(&mem);
+  if(!liste_vide(liste)){
+    en_tete(liste);
+    while(!hors_liste(liste)){
+      valeur_elt(&mem,liste);
       printf("Nom:%s Catégorie:%s PA:%i \n",mem.nom_obj,mem.categorie,mem.influ_pa);
       printf("Description: %s\n",mem.description);
       printf("\n");
-      suivant();
+      suivant(liste);
     }
   }
 }
-
-
