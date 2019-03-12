@@ -1,6 +1,11 @@
+#ifndef _CASE_H_
+#define _CASE_H_
+
 #include <stdio.h>
 #include <stdlib.h>
+
 #include "joueur.h"
+#include "objet.h"
 
 typedef enum{
       non_explore,
@@ -16,3 +21,5 @@ typedef struct {
       int nb_zombie;
       int nb_joueur;
 }case_t;
+
+#endif
