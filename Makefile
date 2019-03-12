@@ -5,7 +5,7 @@ PROG=main
 all: ${PROG}
 
 ${PROG}: main.o joueur.o objet.o carte.o matrice.o
-	${CC} main.o joueur.o objet.o carte.o matrice.o ${OPTS} -o ${PROG}
+	${CC} main.o joueur.o objet.o carte.o matrice.o ${OPTS} -o ${PROG} -pthread
 
 main.o: main.c main.h objet.h joueur.h carte.h
 	${CC} -c main.c ${OPTS} -o main.o
