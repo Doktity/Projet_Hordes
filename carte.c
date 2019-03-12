@@ -1,9 +1,8 @@
 #include "carte.h"
 
 t_mat * creer_carte(){
-      case_t type;
       //initialisation de la carte
-      t_mat * map = alouer_matrice(T,T,&type);
+      t_mat * map = alouer_matrice(T,T);
       for (int i = 0; i < map->nbl; i++) {
             for (int j = 0; j < map->nbc; j++) {
                   map->mat[i][j].etat = non_explore;
