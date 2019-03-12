@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "matrice.h"
-
-
 #include "objet_t.h"
 #include "joueur_t.h"
 #define T  13//taille des côtés de la carte
@@ -17,16 +15,23 @@ t_mat * creer_carte(){
       for (int i = 0; i < map->nbl; i++) {
             for (int j = 0; j < map->nbc; j++) {
                   map->mat[i][j].etat = non_explore;
+                  map->mat[i][j].nb_joueur=0;
+                  map->mat[i][j].nb_zombie=0;
             }
       }
-      map->mat[(map->nbl)/2+1][(map->nbc)/2+1].etat = ville;
+      map->mat[(map->nbl)/2][(map->nbc)/2].etat = ville;
       return map;
 }
 
 void afficher_carte(t_mat * map){
       for (int i = 0; i < map->nbl; i++) {
             for (int j = 0; j < map->nbc; j++) {
-                  printf("%i",map->mat[i][j].nb_joueur);
+                  if (map->mat[i][j].nb_joueur) {
+                        printf("%i",map->mat[i][j].nb_joueur);
+                  }
+                  else{
+                        printf(" ");
+                  }
                   switch (map->mat[i][j].etat) {
                         case ville:printf("v ");break;
                         case non_explore:printf("ø ");break;
@@ -35,7 +40,7 @@ void afficher_carte(t_mat * map){
                         default:printf("?");
                   }
             }
-            printf("\n");
+            printf("\n\n");
       }
 }
 
@@ -67,5 +72,3 @@ void action(int posx, int posy, joueur_t joueur,t_mat map){
             printf("%i:ramasser les objets\n",i);
       }
 
-
-}
