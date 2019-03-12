@@ -4,7 +4,7 @@ liste_objet_t * ec; //L'élement courant de la liste
 liste_objet_t * drapeau;
 
 void init_liste(void){
-  drapeau=malloc(sizeof(objet_t));
+  drapeau=malloc(sizeof(liste_objet_t));
   drapeau->pred=drapeau;
   drapeau->succ=drapeau;
   ec=drapeau;
@@ -92,23 +92,32 @@ void ajout_gauche(objet_t v){
   }
 }
 
-objet_t * recup_fichier(){
-	FILE * fic=NULL;
-	objet_t mem;
-	init_liste();
-	en_tete();
-	int i=0;
-	if(fopen("liste_objet.txt","r")==NULL){ //Test pour savoir si le fichier est présent
-		printf("Erreur lors de l'ouverture du fichier liste_objet\n");
-		return;
-	}
-	else fic=fopen("liste_objet.txt","r");
-	fscanf(fic,"%s:%s:%[^\n]:%i",mem.nom_obj,mem.nom_obj,mem.description,&mem.influ_pa);
-	ajou_droit(mem);
-	while(!feof(fic)){
-		i++;
-		fscanf(fic,"%s:%s:%[^\n]:%i",mem.nom_obj,mem.nom_obj,mem.description,&mem.influ_pa);
-		ajout_droit(mem);
-	}
+void creer_liste(){
+  FILE * fic=fopen("liste_objet.txt","r");
+  objet_t mem;
+  init_liste();
+  en_tete();
+  fscanf(fic,"%s %s %i %[^\n]",mem.nom_obj,mem.categorie,&mem.influ_pa,mem.description);
+  ajout_droit(mem);
+  while(!feof(fic)){
+  	fscanf(fic,"%s %s %i %[^\n]",mem.nom_obj,mem.categorie,&mem.influ_pa,mem.description);
+    ajout_droit(mem);
+  }
 	fclose(fic);
 }
+
+void affiche_liste(){
+  objet_t mem;
+  if(!liste_vide()){
+    en_tete();
+    while(!hors_liste()){
+      valeur_elt(&mem);
+      printf("Nom:%s Catégorie:%s PA:%i \n",mem.nom_obj,mem.categorie,mem.influ_pa);
+      printf("Description: %s\n",mem.description);
+      printf("\n");
+      suivant();
+    }
+  }
+}
+
+
