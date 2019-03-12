@@ -8,6 +8,7 @@ typedef struct objet_s{
   char  categorie[TAILLE];
   char  description[TAILLE];
   int influ_pa;
+  int nb_obj;
 }objet_t;
 
 typedef struct element_s{
