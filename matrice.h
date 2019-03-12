@@ -8,6 +8,6 @@ typedef struct{
       case_t ** mat;
 }t_mat;
 
-t_mat * alouer_matrice(int nbl,int nbc,void * type_case);
+t_mat * alouer_matrice(int nbl,int nbc);
 
 void liberer_matrice(t_mat * old);
