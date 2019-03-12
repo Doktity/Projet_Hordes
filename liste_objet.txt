@@ -1,14 +1,14 @@
-Eau:nourriture:Ressource précieuse, restaure l'intégralité des points d'action:6
-Pain:nourriture:Le pain est l'aliment de base, en manger permet de retrouver toutes ses forces:6
-Boite_conserve:nourriture:Contient des aliments généralement bon pour la santé, de quoi requinquer n’importe quel Homme:6
-Chips:nourriture:Vous avez envie de grignoter ? Mangez donc un paquet de chips:3
-Boite_cookies:nourriture:Pour les petites faims, un paquet de cookies est idéal:3
-Morphine:drogue:La morphine vous permet de repousser la date d'échéance de votre mort lorsque vous êtes blesser:NULL
-Modafinil:drogue:Puissant actif contre la fatigue,sa consommation retire l'état de fatigue, vous permettant de vous déplacer sans consommer de points d'actions.L'inconvénient de cette drogue est sa consommation excessive qui provoquera une mort instantané:NULL
-Tournevis:arme:Cet outil est devenu l'allié numéro 1 du survivant lambda,dans les moments délicats c'est une arme discrète et efficace:-1
-Batte de baseball:arme:Facile à manier, puissante, la batte est une arme qui vous sauvera la vie lors d'une attaque de zombie:-3
-Fer:obj_construct:Ressource utile et résistante mais rare:NULL
-Or:obj_construct:L’or brille comme un rayon de soleil, il est très malléable mais n’est pas très résistant sert en de façon réfléchie:NULL
-Bois:obj_construct:objet facile à trouver et à travailler, sa faiblesse est sa dureté:NULL
-Argile:obj_construct:permet de faire des objet de forme spécifique malheureusement on as besoin d’un four pour l’utiliser:NULL
-Verre:obj_construct:permet par exemple de faire des barricades en narguant les gentil zombie:NULL
+Eau nourriture 6 Ressource précieuse, restaure l'intégralité des points d'action
+Pain nourriture 6 Le pain est l'aliment de base, en manger permet de retrouver toutes ses forces
+Boite_conserve nourriture 6 Contient des aliments généralement bon pour la santé, de quoi requinquer n’importe quel Homme
+Chips nourriture 3 Vous avez envie de grignoter ? Mangez donc un paquet de chips
+Boite_cookies nourriture 3 Pour les petites faims, un paquet de cookies est idéal
+Morphine drogue NULL La morphine vous permet de repousser la date d'échéance de votre mort lorsque vous êtes blesser
+Modafinil drogue NULL Puissant actif contre la fatigue,sa consommation retire l'état de fatigue, vous permettant de vous déplacer sans consommer de points d'actions.L'inconvénient de cette drogue est sa consommation excessive qui provoquera une mort instantané
+Tournevis arme -1 Cet outil est devenu l'allié numéro 1 du survivant lambda,dans les moments délicats c'est une arme discrète et efficace
+Batte de baseball arme -3 Facile à manier, puissante, la batte est une arme qui vous sauvera la vie lors d'une attaque de zombie
+Fer obj_construct NULL Ressource utile et résistante mais rare
+Or obj_construct NULL L’or brille comme un rayon de soleil, il est très malléable mais n’est pas très résistant sert en de façon réfléchie
+Bois obj_construct NULL Objet facile à trouver et à travailler, sa faiblesse est sa dureté
+Argile obj_construct NULL Permet de faire des objet de forme spécifique malheureusement on as besoin d’un four pour l’utiliser
+Verre obj_construct NULL Permet par exemple de faire des barricades en narguant les gentil zombie
