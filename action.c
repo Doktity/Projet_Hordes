@@ -1,5 +1,9 @@
+#include <stdio.h>
+#include <stdlib.h>
+
 #include "action.h"
-void action(int posx, int posy, joueur_t joueur,t_mat map){
+
+void dehors(int posx, int posy, joueur_t * joueur,t_mat map){
       int i = 1;
       printf("quels actions voulez vous faire ?\n");
       if (!posx) {
@@ -27,3 +31,14 @@ void action(int posx, int posy, joueur_t joueur,t_mat map){
             printf("%i:ramasser les objets\n",i);
       }
 }
+
+void afficher_inventaire(joueur_t * joueur){
+      int i;
+      for(i = 0; i<4; i++){
+            if(inventaire[i] != NULL){
+                  printf("Emplacement %d : %s\n", i+1, inventaire[i]->nom);
+            }
+      }
+}
+
+
