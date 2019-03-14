@@ -96,9 +96,10 @@ void creer_liste(liste_objet_t *liste){
   init_liste(liste);
   en_tete(liste);
   while(!feof(fic)){
-    fgets(line, TAILLE, fic);
-    sscanf(line,"%s %s %i %[^\n]",mem.nom_obj,mem.categorie,&mem.influ_pa,mem.description);
-    ajout_droit(mem,liste);
+    if((fgets(line, TAILLE, fic))!=NULL){
+    	sscanf(line,"%s %s %i %[^\n]",mem.nom_obj,mem.categorie,&mem.influ_pa,mem.description);
+    	ajout_droit(mem,liste);
+    }	
   }
   fclose(fic);
 }
