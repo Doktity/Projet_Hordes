@@ -32,13 +32,30 @@ void dehors(int posx, int posy, joueur_t * joueur,t_mat map){
       }
 }
 
-void afficher_inventaire(joueur_t * joueur){
-      int i;
-      for(i = 0; i<4; i++){
-            if(inventaire[i] != NULL){
-                  printf("Emplacement %d : %s\n", i+1, inventaire[i]->nom);
-            }
-      }
+
+void deposer_objet(liste_objet_t * l, joueur_t * joueur){
+
+  int num;
+
+  Afficher_inventaire(joueur);
+
+  do{
+    printf("Donner le numéro de case de l'objet que vous voulez déposer (1,2,3,4): ");
+    scanf("%i", &num);
+  }while(num>4 || num<0);
+
+  ajout_droit(joueur->inventaire[num-1], l);
+  joueur->inventaire[num-1] = NULL;
+  Trier_inventaire(joueur);
+
 }
+
+
+void prendre_objet (liste_objet_t * l, joueur_t * joueur){
+
+  
+
+}
+
 
 
