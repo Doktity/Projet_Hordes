@@ -35,9 +35,9 @@ void afficher_carte(t_mat * map){
       }
 }
 
-t_mat * calculer_pos_zombie(t_mat * map, int nb_jour){
-      nb_jour ++;
-      int nb_zombie_today =(int) log(nb_jour)*2+nb_jour-1;
+t_mat * calculer_pos_zombie(t_mat * map, int nb_jour, int nb_zombie_hier){
+
+      nb_zombie_today=(int)log(nb_jour)*10+nb_zombie_hier;
 
       for (int i = 0; i < nb_zombie_today; i++) {
             int x,y;
@@ -50,7 +50,36 @@ t_mat * calculer_pos_zombie(t_mat * map, int nb_jour){
 }
 
 
-int main(int argc, char const *argv[]) {
-      
-      return 0;
+void action(int posx, int posy, joueur_t joueur,t_mat map){
+      int i = 1,choix;
+      printf("quels actions voulez vous faire ?\n");
+      if (posx) {
+            printf("%i:vous déplacer à gauche\n",i);
+            i++;
+      }
+      if (!(posx==map->nbc-1)) {
+            printf("%i:vous déplacer à droite\n",i);
+            i++;
+      }
+      if (posy) {
+            printf("%i:vous déplacer en haut\n",i);
+            i++;
+      }
+      if (!(posy==map->nbl-1)) {
+            printf("%i:vous déplacer en bas\n",i);
+            i++;
+      }
+      printf("%i:fouiller la zone\n",i);
+      if (map->mat[posx][posy].nb_zombie) {
+            printf("%i:attaquer un zombie\n", i);
+            i++;
+      }
+      if (!liste_vide(map->mat->liste_objet)) {
+            printf("%i:ramasser objets\n",i);
+      }
+      scanf("%i\n", &choix);
+      switch (choix) {
+            case :
+      }
 }
+
