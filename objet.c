@@ -56,10 +56,10 @@ void oter_elt(liste_objet_t * liste){
 		liste_objet_t * mem;
 		liste->ec->succ->pred=liste->ec->pred;
 		liste->ec->pred->succ=liste->ec->succ;
-		mem=liste->ec->succ;
-		free(liste->ec);
-		liste->ec->pred=mem;
-		mem->succ=liste->ec;
+		mem=liste->ec;
+	  	liste->ec=liste->ec->succ;
+		free(mem);
+	  	mem=NULL;
 	}
 }
 
