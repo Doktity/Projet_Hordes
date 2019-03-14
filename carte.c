@@ -1,5 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "carte.h"
 
 t_mat * creer_carte(){
@@ -35,4 +33,24 @@ void afficher_carte(t_mat * map){
             }
             printf("\n\n");
       }
+}
+
+t_mat * calculer_pos_zombie(t_mat * map, int nb_jour){
+      nb_jour ++;
+      int nb_zombie_today =(int) log(nb_jour)*2+nb_jour-1;
+
+      for (int i = 0; i < nb_zombie_today; i++) {
+            int x,y;
+            do {
+                  x = nb_aleatoire(map->nbl);
+                  y = nb_aleatoire(map->nbc);
+            } while(x == (map->nbl)/2 && y == (map->nbc)/2);//tant que c'est égal à la position de la ville
+            map->mat[x][y].nb_zombie ++;
+      }
+}
+
+
+int main(int argc, char const *argv[]) {
+      
+      return 0;
 }
