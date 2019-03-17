@@ -60,3 +60,10 @@ void creer_liste(liste_objet_t *);
 */
 void affiche_liste(liste_objet_t*);
 
+
+int est_present(liste_objet_t *, char *);
+
+objet_t trouve_objet(liste_objet_t*);
+
+void supprimer_objet(liste_objet_t*,char *);
+
