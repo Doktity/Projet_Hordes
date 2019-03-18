@@ -1,3 +1,6 @@
+#ifndef _OBJET_H_
+#define _OBJET_H_
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -66,4 +69,6 @@ int est_present(liste_objet_t *, char *);
 objet_t trouve_objet(liste_objet_t *, char *);
 
 void supprimer_objet(liste_objet_t*,char *);
+
+#endif
 
