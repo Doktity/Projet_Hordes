@@ -12,4 +12,6 @@ void puit(int * ration, joueur_t * joueur);
 
 void prendre_eau(int * ration, joueur_t * joueur);
 
+void ajouter_eau(int * ration, joueur_t * joueur);
+
 #endif
