@@ -10,7 +10,11 @@
 
 
 void dehors(int posx, int posy, joueur_t * joueur,t_mat map);
+
 void deposer_objet(liste_objet_t * l, joueur_t * joueur);
+
 void prendre_objet (liste_objet_t * l, joueur_t * joueur);
+
+void utiliser_objet(joueur_t * joueur);
 
 #endif
