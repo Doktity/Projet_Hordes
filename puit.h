@@ -8,10 +8,10 @@
 #include "joueur.h"
 #include "objet.h"
 
-void puit(int * ration, joueur_t * joueur);
+void puit(int * ration, joueur_t * joueur, liste_objet_t * liste);
 
-void prendre_eau(int * ration, joueur_t * joueur);
+void prendre_eau(int * ration, joueur_t * joueur, liste_objet_t * liste);
 
-void ajouter_eau(int * ration, joueur_t * joueur);
+void ajouter_eau(int * ration, joueur_t * joueur, liste_objet_t * liste);
 
 #endif
