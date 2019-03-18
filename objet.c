@@ -1,7 +1,7 @@
 #include "objet.h"
 
 void init_liste(liste_objet_t * liste){
-  liste->drapeau=malloc(sizeof(liste_objet_t));
+  liste->drapeau=malloc(sizeof(element_t));
   liste->drapeau->pred=liste->drapeau;
   liste->drapeau->succ=liste->drapeau;
   liste->ec=liste->drapeau;
@@ -53,7 +53,7 @@ void modif_elt(objet_t v,liste_objet_t * liste){
 
 void oter_elt(liste_objet_t * liste){
   if(!hors_liste(liste)){
-		liste_objet_t * mem;
+		element_t * mem=malloc(sizeof(element_t));
 		liste->ec->succ->pred=liste->ec->pred;
 		liste->ec->pred->succ=liste->ec->succ;
 		mem=liste->ec;
@@ -65,8 +65,8 @@ void oter_elt(liste_objet_t * liste){
 
 void ajout_droit(objet_t v,liste_objet_t * liste){
   if(liste_vide(liste)||!hors_liste(liste)){
-		liste_objet_t * nouv;
-		nouv=malloc(sizeof(liste_objet_t));
+		element_t * nouv;
+		nouv=malloc(sizeof(element_t));
 		nouv->val=v;
 		nouv->pred=liste->ec;
 		nouv->succ=liste->ec->succ;
@@ -78,8 +78,8 @@ void ajout_droit(objet_t v,liste_objet_t * liste){
 
 void ajout_gauche(objet_t v,liste_objet_t * liste){
   if(liste_vide(liste)||!hors_liste(liste)){
-    liste_objet_t * nouv;
-    nouv=malloc(sizeof(liste_objet_t));
+    element_t * nouv;
+    nouv=malloc(sizeof(element_t));
     nouv->val=v;
     nouv->pred=liste->ec;
     nouv->succ=liste->ec->pred;
