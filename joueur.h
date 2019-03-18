@@ -14,6 +14,7 @@ typedef struct joueur_s{
   int pa;
   objet_t inventaire[TAILLE_INVENTAIRE];
   int statut[NB_STATUT];
+  int maison;
 } joueur_t;
 
 joueur_t * Creer_Joueur(char * nom, int pa, objet_t inventaire[TAILLE_INVENTAIRE], int statut[NB_STATUT]); // Renvoie le joueur_t du joueur qu'on a créer.
