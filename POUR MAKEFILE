@@ -1,0 +1,4 @@
+IMPORTANT
+
+Il faut inclure l'option -lm lors de la compilation
+Nécéssaire pour l'utilisation de math.h avec le log
