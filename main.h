@@ -10,6 +10,9 @@
 #include "joueur.h"
 #include "objet.h"
 #include "carte.h"
+#include "banque.h"
+#include "maison.h"
+#include "puit.h"
 
 #define DIX 6
 #define NB_ZOMBIE_MIN 10
@@ -22,4 +25,3 @@ typedef struct {
 }tour_t;
 
 #endif
-
