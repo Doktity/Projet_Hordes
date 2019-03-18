@@ -58,19 +58,25 @@ int main()
 
   joueur_t * joueur;
   char nom[20];
-	
-	liste_objet_t * banque;
-	
+
+  liste_objet_t * liste = init_liste();
+  creer_liste(liste);
+
+	//banque_t * liste_banque;
+  //init_banque(liste_banque);
+
   pthread_t thread1;
 
   int choix;
-	
+
+  int ration = 150;
+
 	system("clear");
 
   printf("Nom : ");
   scanf("%s", nom);
 
-  joueur = Creer_Joueur(nom);
+  joueur = creer_joueur(nom);
 
   printf("Bonjour %s !\n", joueur->nom);
 
@@ -98,8 +104,8 @@ int main()
 /* Traitement du choix de l'utilisateur */
 		switch(choix)
 		{	case 1: maison(joueur); break;
-			case 2: printf("coucou"); //puit(); break;
-			case 3: banque(banque, joueur); break;
+			case 2: puit(&ration, joueur, liste); break;
+			case 3: //banque(liste_banque, joueur); break;
 			case 4: printf("coucou"); //citoyen(); break;
 			case 5: printf("coucou"); //chantier(); break;
 			case 6: printf("coucou"); //atelier(); break;
