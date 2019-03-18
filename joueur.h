@@ -17,7 +17,7 @@ typedef struct joueur_s{
   int maison;
 } joueur_t;
 
-joueur_t * Creer_Joueur(char * nom, int pa, objet_t inventaire[TAILLE_INVENTAIRE], int statut[NB_STATUT]); // Renvoie le joueur_t du joueur qu'on a créer.
+joueur_t * Creer_Joueur(char * nom); // Renvoie le joueur_t du joueur qu'on a créer.
 
 void Supprimer_Joueur(joueur_t * joueur); // Supprime le joueur.
 
