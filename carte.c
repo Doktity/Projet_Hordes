@@ -49,7 +49,7 @@ t_mat * calculer_pos_zombie(t_mat * map, int nb_jour, int nb_zombie_hier){
       }
 }
 
-
+/*
 void action(int posx, int posy, joueur_t joueur,t_mat map){
       int i = 1,choix;
       printf("quels actions voulez vous faire ?\n");
@@ -80,6 +80,5 @@ void action(int posx, int posy, joueur_t joueur,t_mat map){
       scanf("%i\n", &choix);
       switch (choix) {
             case :
-      }
+      }*/
 }
-
