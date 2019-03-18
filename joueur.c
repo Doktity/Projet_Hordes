@@ -3,74 +3,85 @@
 #include "joueur.h"
 
 
-joueur_t * Creer_Joueur(char * nom){
+joueur_t * creer_joueur(char * nom){
 
   joueur_t * joueur = malloc(sizeof(joueur_t));
 
+  int i;
+
   joueur->nom = nom;
   joueur->pa = 6;
-  joueur->inventaire = {NULL, NULL, NULL, NULL};
-  joueur->statut = {1, 0, 0, 0, 0, 0, 0};
+
+  for(i = 0; i<TAILLE_INVENTAIRE; i++){
+    joueur->inventaire[i] = NULL;
+  }
+
+  for(i = 1; i<NB_STATUT; i++){
+    joueur->statut[i] = 0;
+  }
+
+  joueur->statut[0] = 1;
   joueur->maison = 1;
-  
+  joueur->coffre = init_liste();
+
   return joueur;
 }
 
 
-void Supprimer_Joueur(joueur_t * joueur){
-  free(nom);
-  nom = NULL;
+void supprimer_Joueur(joueur_t * joueur){
+  free(joueur->nom);
+  joueur->nom = NULL;
   free(joueur);
   joueur = NULL;
 }
 
 
-int Est_Clair(joueur_t * joueur){
+int est_Clair(joueur_t * joueur){
   return joueur->statut[0];
 }
 
 
-int Est_Soif(joueur_t * joueur){
+int est_Soif(joueur_t * joueur){
   return joueur->statut[1];
 }
 
 
-int Est_Fatigue(joueur_t * joueur){
+int est_Fatigue(joueur_t * joueur){
   return joueur->statut[2];
 }
 
 
-int Est_Blessure(joueur_t * joueur){
+int est_Blessure(joueur_t * joueur){
   return joueur->statut[3];
 }
 
 
-int Est_Drogue(joueur_t * joueur){
+int est_Drogue(joueur_t * joueur){
   return joueur->statut[4];
 }
 
 
-int Est_Rassasie(joueur_t * joueur){
+int est_Rassasie(joueur_t * joueur){
   return joueur->statut[5];
 }
 
 
-int Est_Immunise(joueur_t * joueur){
+int est_Immunise(joueur_t * joueur){
   return joueur->statut[6];
 }
 
 
-void Afficher_inventaire(joueur_t * joueur){
+void afficher_inventaire(joueur_t * joueur){
   int i;
   for(i = 0; i<TAILLE_INVENTAIRE; i++){
-    if(inventaire[i] != NULL){
-      printf("Emplacement %d : %s\n", i+1, inventaire[i]->nom);
+    if(joueur->inventaire[i] != NULL){
+      printf("Emplacement %d : %s\n", i+1, joueur->inventaire[i]->nom_obj);
     }
   }
 }
 
 
-void  Trier_inventaire(joueur_t * joueur){
+void  trier_inventaire(joueur_t * joueur){
   int i;
   for(i=0; i<TAILLE_INVENTAIRE-1; i++){
     if(joueur->inventaire[i] == NULL){
