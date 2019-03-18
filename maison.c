@@ -1,6 +1,6 @@
 #include "maison.h"
 
-void maison(t_joueur * joueur){
+void maison(joueur_t * joueur){
   do
   /* Affichage du menu et saisie du choix */
   {
@@ -30,7 +30,7 @@ void maison(t_joueur * joueur){
 }
 
 
-ameliorer_maison(t_joueur * joueur){
+ameliorer_maison(joueur_t * joueur){
   switch(joueur->maison)
   {
     case 1: if(joueur->pa >= 2){
