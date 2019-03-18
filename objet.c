@@ -1,12 +1,12 @@
 #include "objet.h"
 
 liste_objet_t * init_liste(){
-  liste_objet_t * liste=malloc(sizeof(liste_objet_t));
-  liste->drapeau=malloc(sizeof(element_t));
-  liste->drapeau->pred=liste->drapeau;
-  liste->drapeau->succ=liste->drapeau;
-  liste->ec=liste->drapeau;
-	return liste;
+  liste_objet_t * new = malloc(sizeof(liste_objet_t));
+  new->drapeau = malloc(sizeof(element_t));
+  new->drapeau->pred = new->drapeau;
+  new->drapeau->succ = new->drapeau;
+  new->ec = new->drapeau;
+  return new;
 }
 
 int liste_vide(liste_objet_t * liste){
@@ -55,11 +55,11 @@ void modif_elt(objet_t v,liste_objet_t * liste){
 
 void oter_elt(liste_objet_t * liste){
   if(!hors_liste(liste)){
-		element_t * mem=malloc(sizeof(element_t));
+		element_t * mem;
 		liste->ec->succ->pred=liste->ec->pred;
 		liste->ec->pred->succ=liste->ec->succ;
 		mem=liste->ec;
-	  	liste->ec=liste->ec->succ;
+	  liste->ec=liste->ec->succ;
 		free(mem);
 	  	mem=NULL;
 	}
@@ -100,21 +100,34 @@ void creer_liste(liste_objet_t *liste){
     if((fgets(line, TAILLE, fic))!=NULL){
     	sscanf(line,"%s %s %i %[^\n]",mem.nom_obj,mem.categorie,&mem.influ_pa,mem.description);
     	ajout_droit(mem,liste);
-    }	
+    }
   }
   fclose(fic);
 }
 
-void affiche_liste(liste_objet_t *liste){
-  objet_t mem;
+void afficher_liste(liste_objet_t *liste){
+  objet_t * mem;
   if(!liste_vide(liste)){
     en_tete(liste);
     while(!hors_liste(liste)){
-      valeur_elt(&mem,liste);
-      printf("Nom:%s Catégorie:%s PA:%i \n",mem.nom_obj,mem.categorie,mem.influ_pa);
-      printf("Description: %s\n",mem.description);
+      valeur_elt(mem,liste);
+      printf("Nom:%s Catégorie:%s PA:%i \n",mem->nom_obj,mem->categorie,mem->influ_pa);
+      printf("Description: %s\n",mem->description);
       printf("\n");
       suivant(liste);
     }
   }
+}
+
+
+int est_present(liste_objet_t * liste, char * nom){
+  return 5;
+}
+
+objet_t trouver_objet(liste_objet_t * liste, char * nom){
+  return liste->ec->val;
+}
+
+void supprimer_objet(liste_objet_t * liste, char * nom){
+
 }
