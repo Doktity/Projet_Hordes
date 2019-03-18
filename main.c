@@ -58,7 +58,9 @@ int main()
 
   joueur_t * joueur;
   char nom[20];
-
+	
+	liste_objet_t * banque;
+	
   pthread_t thread1;
 
   int choix;
@@ -95,9 +97,9 @@ int main()
 
 /* Traitement du choix de l'utilisateur */
 		switch(choix)
-		{	case 1: printf("coucou"); //maison(); break;
+		{	case 1: maison(joueur); break;
 			case 2: printf("coucou"); //puit(); break;
-			case 3: printf("coucou"); //banque(); break;
+			case 3: banque(banque, joueur); break;
 			case 4: printf("coucou"); //citoyen(); break;
 			case 5: printf("coucou"); //chantier(); break;
 			case 6: printf("coucou"); //atelier(); break;
