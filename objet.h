@@ -27,7 +27,7 @@ typedef struct liste_objet_s{
 /**
 *Primitives d'accès à la liste
 */
-void init_liste(liste_objet_t*);
+liste_objet_t * init_liste();
 
 int liste_vide(liste_objet_t*);
 
