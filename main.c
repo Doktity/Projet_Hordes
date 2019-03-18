@@ -58,8 +58,6 @@ int main()
 
   joueur_t * joueur;
   char nom[20];
-  objet_t inventaire[4];
-  int statut[] = {0,0,0,0,1,0,0};
 
   pthread_t thread1;
 
@@ -70,7 +68,7 @@ int main()
   printf("Nom : ");
   scanf("%s", nom);
 
-  joueur = Creer_Joueur(nom, 6, inventaire, statut);
+  joueur = Creer_Joueur(nom);
 
   printf("Bonjour %s !\n", joueur->nom);
 
