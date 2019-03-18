@@ -27,10 +27,32 @@ void puit (int * ration, joueur_t * joueur){
 
 
 void prendre_eau (int * ration, joueur_t * joueur){
-  
+  int i;
+  char * nom = "eau";
+
+  for(i = 0; i < TAILLE_INVENTAIRE && joueur->inventaire[i] != NULL; i++);
+
+  if(i != TAILLE_INVENTAIRE){
+
+    joueur->inventaire[i] = trouver_objet(liste, nom);
+    ration--;
+
+  }else{
+    printf("Vous n'avez pas de place dans votre inventaire !\n");
+  }
 }
 
 
 void ajouter_eau (int * ration, joueur_t * joueur){
-
+  int i;
+  char * nom = "eau";
+  
+  for(i = 0; i < TAILLE_INVENTAIRE && !strcmp(joueur->inventaire[i].nom_obj, nom); i++);
+  if(i != TAILLE_INVENTAIRE){
+    joueur->inventaire[i] = NULL;
+    ration++;
+    Trier_inventaire(joueur);
+  }else{
+    printf("Vous n'avez pas de ration d'eau !\n");
+  }
 }
