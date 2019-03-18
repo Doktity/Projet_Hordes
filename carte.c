@@ -2,7 +2,7 @@
 
 t_mat * creer_carte(){
       //initialisation de la carte
-      t_mat * map = alouer_matrice(T,T);
+      t_mat * map = allouer_matrice(T,T);
       for (int i = 0; i < map->nbl; i++) {
             for (int j = 0; j < map->nbc; j++) {
                   map->mat[i][j].etat = non_explore;
