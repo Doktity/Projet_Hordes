@@ -6,11 +6,11 @@ void maison(t_joueur * joueur){
   {
     printf("\nMaison\n------\nQue voulez-vous faire ?\n");
     printf(" 1 - Améliorer maison\n");
-    printf("Voir inventaire et coffre\n");
-    printf(" 2 - Utiliser objet\n");
-    printf(" 3 - Deposer objet\n");
-    printf(" 4 - Prendre objet\n");
-    printf(" 5 - Retour\n");
+    printf(" 2 - Voir inventaire et coffre\n");
+    printf(" 3 - Utiliser objet\n");
+    printf(" 4 - Deposer objet\n");
+    printf(" 5 - Prendre objet\n");
+    printf(" 6 - Retour\n");
     printf("Votre choix : ");
     scanf("%d",&choix);
 
@@ -19,14 +19,14 @@ void maison(t_joueur * joueur){
     {
       case 1: ameliorer_maison(joueur); break;
       case 2: Afficher_inventaire(joueur); afficher_liste(joueur->coffre); break;
-      case 2: utiliser_objet(joueur); break;
-      case 3: deposer_objet(joueur->coffre, joueur); break;
-      case 4: prendre_objet(joueur->coffre, joueur);break;
-      case 5: break;
-      default: printf("Erreur: votre choix doit etre compris entre 1 et 4\n");
+      case 3: utiliser_objet(joueur); break;
+      case 4: deposer_objet(joueur->coffre, joueur); break;
+      case 5: prendre_objet(joueur->coffre, joueur);break;
+      case 6: break;
+      default: printf("Erreur: votre choix doit etre compris entre 1 et 6\n");
     }
   }
-  while(choix!=4);
+  while(choix!=6);
 }
 
 
