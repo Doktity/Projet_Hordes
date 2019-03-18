@@ -1,6 +1,8 @@
 #include "maison.h"
 
 void maison(joueur_t * joueur){
+  int choix;
+
   do
   /* Affichage du menu et saisie du choix */
   {
@@ -18,7 +20,7 @@ void maison(joueur_t * joueur){
     switch(choix)
     {
       case 1: ameliorer_maison(joueur); break;
-      case 2: Afficher_inventaire(joueur); afficher_liste(joueur->coffre); break;
+      case 2: afficher_inventaire(joueur); afficher_liste(joueur->coffre); break;
       case 3: utiliser_objet(joueur); break;
       case 4: deposer_objet(joueur->coffre, joueur); break;
       case 5: prendre_objet(joueur->coffre, joueur);break;
@@ -30,7 +32,7 @@ void maison(joueur_t * joueur){
 }
 
 
-ameliorer_maison(joueur_t * joueur){
+void ameliorer_maison(joueur_t * joueur){
   switch(joueur->maison)
   {
     case 1: if(joueur->pa >= 2){
