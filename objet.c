@@ -1,10 +1,12 @@
 #include "objet.h"
 
-void init_liste(liste_objet_t * liste){
+liste_objet_t * init_liste(){
+  liste_objet_t * liste=malloc(sizeof(liste_objet_t));
   liste->drapeau=malloc(sizeof(element_t));
   liste->drapeau->pred=liste->drapeau;
   liste->drapeau->succ=liste->drapeau;
   liste->ec=liste->drapeau;
+	return liste;
 }
 
 int liste_vide(liste_objet_t * liste){
@@ -93,7 +95,6 @@ void creer_liste(liste_objet_t *liste){
   FILE * fic=fopen("liste_objet.txt","r");
   objet_t mem;
   char line[TAILLE];
-  init_liste(liste);
   en_tete(liste);
   while(!feof(fic)){
     if((fgets(line, TAILLE, fic))!=NULL){
