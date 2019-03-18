@@ -75,7 +75,7 @@ void prendre_objet (liste_objet_t * l, joueur_t * joueur){
       }
 }
 
-void utiliser_objet (t_joueur * joueur){
+void utiliser_objet (joueur_t * joueur){
       
       int num;
       Afficher_inventaire(joueur);
