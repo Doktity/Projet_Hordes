@@ -13,9 +13,9 @@ void banque(liste_objet_t *l, joueur * j){
         scanf("%d",&choix);
 
         switch(choix){
-            case 1: affiche_banque(l);
-            case 2: ajouter_objet(l,j);
-            case 3: retirer_objet(l,j);
+            case 1: affiche_banque(l);break;
+            case 2: ajouter_objet_banque(l,j);break;
+            case 3: retirer_objet_banque(l,j);break;
             case 4:break;
             default: printf("Erreur, vous devez entrer un chiffre entre 1 et 4\n");
         }
@@ -29,18 +29,18 @@ void init_banque(banque_t b){
     init_liste(b.obj_construct);
 }
 
-void affiche_banque(banque_t * b){
+void afficher_banque(banque_t b){
     printf("Nourriture:\n");
     affiche_liste(banque.nourriture);
     printf("Drogue:\n");
     affiche_liste(banque.drogue);
     printf("Arme:\n");
     affiche_liste(banque.arme);
-    prinf("Objet de construction:\n");
+    printf("Objet de construction:\n");
     affiche_liste(banque.obj_construct);
 }
 
-void ajouter_objet_banque(banque_t * b,joueur_t * j){
+void ajouter_objet_banque(banque_t  b,joueur_t * j){
     int choix;
     printf("Dans quel catégorie voulez-vous déposer votre objet?\n");
     printf("1 - Nourriture\n");
@@ -57,7 +57,7 @@ void ajouter_objet_banque(banque_t * b,joueur_t * j){
      }      
 }
 
-void retirer_objet_banque(banque_t * b,joueur_t * j){
+void retirer_objet_banque(banque_t  b,joueur_t * j){
     liste_objet_t * pt=NULL;
     printf("De quel catégorie voulez-vous prendre votre objet?\n");
     printf("1 - Nourriture\n");
