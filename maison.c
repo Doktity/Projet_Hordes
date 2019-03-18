@@ -6,9 +6,11 @@ void maison(t_joueur * joueur){
   {
     printf("\nMaison\n------\nQue voulez-vous faire ?\n");
     printf(" 1 - Améliorer maison\n");
+    printf("Voir inventaire et coffre\n");
     printf(" 2 - Utiliser objet\n");
-    printf(" 3 - Voir inventaire\n");
-    printf(" 4 - Retour\n");
+    printf(" 3 - Deposer objet\n");
+    printf(" 4 - Prendre objet\n");
+    printf(" 5 - Retour\n");
     printf("Votre choix : ");
     scanf("%d",&choix);
 
@@ -16,9 +18,11 @@ void maison(t_joueur * joueur){
     switch(choix)
     {
       case 1: ameliorer_maison(joueur); break;
+      case 2: Afficher_inventaire(joueur); afficher_liste(joueur->coffre); break;
       case 2: utiliser_objet(joueur); break;
-      case 3: afficher_inventaire(joueur); break;
-      case 4: break;
+      case 3: deposer_objet(joueur->coffre, joueur); break;
+      case 4: prendre_objet(joueur->coffre, joueur);break;
+      case 5: break;
       default: printf("Erreur: votre choix doit etre compris entre 1 et 4\n");
     }
   }
@@ -32,6 +36,7 @@ ameliorer_maison(t_joueur * joueur){
     case 1: if(joueur->pa >= 2){
               joueur->maison++;
               joueur->pa -= 2;
+              printf("Amélioration réussie.\n");
             }else{
               printf("Pas assez de points d'actions ! (besoin de 2 pa)\n");
             }
@@ -39,6 +44,7 @@ ameliorer_maison(t_joueur * joueur){
     case 3: if(joueur->pa == 6){
               joueur->maison++;
               joueur->pa -= 6;
+              printf("Amélioration réussie.\n");
             }else{
               printf("Pas assez de points d'actions ! (besoin de 6 pa)\n");
             }
