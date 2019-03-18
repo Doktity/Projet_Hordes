@@ -58,4 +58,10 @@ void prendre_objet (liste_objet_t * l, joueur_t * joueur){
 }
 
 
+afficher_liste (liste_objet * l){
+      int i;
+      
+      
+          
+}
 
