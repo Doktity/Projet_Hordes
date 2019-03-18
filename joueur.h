@@ -12,31 +12,32 @@
 typedef struct joueur_s{
   char * nom;
   int pa;
-  objet_t inventaire[TAILLE_INVENTAIRE];
+  objet_t * inventaire[TAILLE_INVENTAIRE];
   int statut[NB_STATUT];
   int maison;
+  liste_objet_t * coffre;
 } joueur_t;
 
-joueur_t * Creer_Joueur(char * nom); // Renvoie le joueur_t du joueur qu'on a créer.
+joueur_t * creer_joueur(char * nom); // renvoie le joueur_t du joueur qu'on a créer.
 
-void Supprimer_Joueur(joueur_t * joueur); // Supprime le joueur.
+void supprimer_joueur(joueur_t * joueur); // supprime le joueur.
 
-int Est_Clair(joueur_t * joueur); // Renvoie 1 si le joueur est clair, 0 sinon.
+int est_clair(joueur_t * joueur); // renvoie 1 si le joueur est clair, 0 sinon.
 
-int Est_Soif(joueur_t * joueur); // Renvoie 1 si le joueur est assoifé, 0 sinon.
+int est_soif(joueur_t * joueur); // renvoie 1 si le joueur est assoifé, 0 sinon.
 
-int Est_Fatigue(joueur_t * joueur); // Renvoie 1 si le joueur est fatigué, 0 sinon.
+int est_fatigue(joueur_t * joueur); // renvoie 1 si le joueur est fatigué, 0 sinon.
 
-int Est_Blessure(joueur_t * joueur); // Renvoie 1 si le joueur est blessé, 0 sinon.
+int est_blessure(joueur_t * joueur); // renvoie 1 si le joueur est blessé, 0 sinon.
 
-int Est_Drogue(joueur_t * joueur); // Renvoie 1 si le joueur est drogué, 0 sinon.
+int est_drogue(joueur_t * joueur); // renvoie 1 si le joueur est drogué, 0 sinon.
 
-int Est_Rassasie(joueur_t * joueur); // Renvoie 1 si le joueur est rassasié, 0 sinon.
+int est_rassasie(joueur_t * joueur); // renvoie 1 si le joueur est rassasié, 0 sinon.
 
-int Est_Immunise(joueur_t * joueur); // Renvoie 1 si le joueur est immunisé, 0 sinon.
+int est_immunise(joueur_t * joueur); // renvoie 1 si le joueur est immunisé, 0 sinon.
 
-void Afficher_inventaire(joueur_t * joueur); // Affiche l'inventaire du joueur.
+void afficher_inventaire(joueur_t * joueur); // affiche l'inventaire du joueur.
 
-void Trier_inventaire(joueur_t * joueur); // Trie l'inventaire du joueur.
+void trier_inventaire(joueur_t * joueur); // trie l'inventaire du joueur.
 
 #endif
