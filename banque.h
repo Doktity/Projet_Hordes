@@ -8,12 +8,12 @@ typedef struct banque_s{
 }banque_t;
 
 
-void banque(banque_t *,joueur_t*);
+void banque(banque_t ,joueur_t*);
 
-void affiche_banque(banque_t *, joueur_t*);
+void afficher_banque(banque_t , joueur_t*);
 
-void ajouter_objet_banque(banque_t *,joueur_t *);
+void ajouter_objet_banque(banque_t ,joueur_t *);
 
-void retirer_objet_banque(banque_t *,joueur_t *);
+void retirer_objet_banque(banque_t ,joueur_t *);
 
-void init_banque(banque_t *);
+void init_banque(banque_t );
