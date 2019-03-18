@@ -18,6 +18,8 @@ joueur_t * Creer_Joueur(char * nom){
 
 
 void Supprimer_Joueur(joueur_t * joueur){
+  free(nom);
+  nom = NULL;
   free(joueur);
   joueur = NULL;
 }
