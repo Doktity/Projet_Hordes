@@ -3,19 +3,16 @@
 #include "joueur.h"
 
 
-joueur_t * Creer_Joueur(char * nom, int pa, objet_t inventaire[TAILLE_INVENTAIRE], int statut[NB_STATUT]){
+joueur_t * Creer_Joueur(char * nom){
 
   joueur_t * joueur = malloc(sizeof(joueur_t));
-  int i;
 
   joueur->nom = nom;
-  joueur->pa = pa;
-  for(i=0; i<4; i++){
-    joueur->inventaire[i] = inventaire[i];
-  }
-  for(i=0; i<7; i++){
-    joueur->statut[i] = statut[i];
-  }
+  joueur->pa = 6;
+  joueur->inventaire = {NULL, NULL, NULL, NULL};
+  joueur->statut = {1, 0, 0, 0, 0, 0, 0};
+  joueur->maison = 1;
+  
   return joueur;
 }
 
