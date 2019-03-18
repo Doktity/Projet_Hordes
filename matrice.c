@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include "matrice.h"
 
-t_mat * alouer_matrice(int nbl,int nbc){//nbl:nombreligne, nbc:nombrecolonne
+t_mat * allouer_matrice(int nbl,int nbc){//nbl:nombreligne, nbc:nombrecolonne
       t_mat * new = malloc(sizeof(t_mat));
       new->mat = malloc(sizeof(case_t)*nbl);
       for (int i = 0; i < nbl; i++) {
