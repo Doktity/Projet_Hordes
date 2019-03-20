@@ -1,79 +1,72 @@
-#include "banque.h"
+#ifndef _OBJET_H_
+#define _OBJET_H_
 
-void banque(banque_t * l, joueur_t * j){
-    int choix;
-    do{
-        printf("Bienvenue à la banque\n");
-        printf("Que voulez-vous faire?\n");
-        printf(" 1 - Afficher la liste des objets de la banque\n");
-        printf(" 2 - Ajouter un objet dans la banque\n");
-        printf(" 3 - Prendre un objet de la banque\n");
-        printf(" 4 - Quitter la banque\n");
-        printf("Votre choix:");
-        scanf("%d",&choix);
+#include <stdio.h>
+#include <stdlib.h>
 
-        switch(choix){
-            case 1: affiche_banque(l); break;
-            case 2: ajouter_objet_banque(l,j); break;
-            case 3: retirer_objet_banque(l,j); break;
-            case 4:break;
-            default: printf("Erreur, vous devez entrer un chiffre entre 1 et 4\n");
-        }
-    }while(choix!=4);
-}
+#define TAILLE 100
 
-void init_banque(banque_t * b){
-   objet_init_liste(&b->nourriture);
-   objet_init_liste(&b->drogue);
-   objet_init_liste(&b->arme);
-   objet_init_liste(&b->obj_construct);
-}
+typedef struct objet_s{
+  char  nom_obj[TAILLE];
+  char  categorie[TAILLE];
+  char  description[TAILLE];
+  int attribut_obj;
+}objet_t;
 
-void affiche_banque(banque_t * b){
-    printf("Nourriture:\n");
-    objet_afficher_liste(b->nourriture);
-    printf("Drogue:\n");
-    objet_afficher_liste(b->drogue);
-    printf("Arme:\n");
-    objet_afficher_liste(b->arme);
-    printf("Objet de construction:\n");
-    objet_afficher_liste(b->obj_construct);
-}
+typedef struct element_s{
+  objet_t val;
+  struct element_s * pred;
+  struct element_s * succ;
+}element_t;
 
-void ajouter_objet_banque(banque_t * b, joueur_t * j){
-    int choix;
-    printf("Dans quel catégorie voulez-vous déposer votre objet?\n");
-    printf("1 - Nourriture\n");
-    printf("2 - Drogue\n");
-    printf("3 - Arme\n");
-    printf("4 - Objet de construction\n");
-    scanf("%d",&choix);
-    switch(choix){
-          case 1:deposer_objet(b->nourriture,j); break;
-          case 2:deposer_objet(b->drogue,j); break;
-          case 3:deposer_objet(b->arme,j); break;
-          case 4:deposer_objet(b->obj_construct,j); break;
-          default:printf("Erreur, vous devez entrer un chiffre entre 1 et 4\n");
-     }
-}
+typedef struct liste_objet_s{
+  element_t * ec;
+  element_t * drapeau;
+}liste_objet_t;
 
-void retirer_objet_banque(banque_t * b,joueur_t * j){
-    int choix;
-    liste_objet_t * pt=NULL;
-    printf("De quel catégorie voulez-vous prendre votre objet?\n");
-    printf("1 - Nourriture\n");
-    printf("2 - Drogue\n");
-    printf("3 - Arme\n");
-    printf("4 - Objet de construction\n");
-    scanf("%d",&choix);
-    switch(choix){
-          case 1:pt=b->nourriture; break;
-          case 2:pt=b->drogue; break;
-          case 3:pt=b->arme; break;
-          case 4:pt=b->obj_construct; break;
-          default:printf("Erreur, vous devez entrer un chiffre entre 1 et 4\n");
-    }
-    if(pt!=NULL){
-        prendre_objet(pt,j);
-    }
-}
+/**
+*Primitives d'accès à la liste
+*/
+void objet_init_liste(liste_objet_t**);
+
+int objet_liste_vide(liste_objet_t*);
+
+int objet_hors_liste(liste_objet_t*);
+
+void objet_en_tete(liste_objet_t*);
+
+void objet_en_queue(liste_objet_t*);
+
+void objet_precedent(liste_objet_t*);
+
+void objet_suivant(liste_objet_t*);
+
+void objet_valeur_elt(objet_t*,liste_objet_t*);
+
+void objet_modif_elt(objet_t,liste_objet_t*);
+
+void objet_oter_elt(liste_objet_t*);
+
+void objet_ajout_droit(objet_t,liste_objet_t*);
+
+void objet_ajout_gauche(objet_t,liste_objet_t*);
+
+/**
+* Cette fonction récupere les objets qui existe dans un fichier et les stockes dans un tableau
+*/
+void objet_creer_liste(liste_objet_t **);
+
+/**
+* Affiche_liste affiche la liste complète des objets
+* Pour chaque objet on indique son nom, sa catégorie, sa description et son influence sur les points d'actions
+*/
+void objet_afficher_liste(liste_objet_t*);
+
+
+int objet_est_present(liste_objet_t *, char *);
+
+objet_t trouver_objet(liste_objet_t *, char *);
+
+void objet_supprimer(liste_objet_t*,char *);
+
+#endif
