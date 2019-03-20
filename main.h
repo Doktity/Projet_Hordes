@@ -13,6 +13,7 @@
 #include "banque.h"
 #include "maison.h"
 #include "puit.h"
+#include "liste_joueur.h"
 
 #define DIX 6
 #define NB_ZOMBIE_MIN 10
