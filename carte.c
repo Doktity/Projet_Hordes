@@ -36,8 +36,15 @@ void afficher_carte(t_mat * map){
       }
 }
 
-t_mat * calculer_pos_zombie(t_mat * map, int nb_jour, int nb_zombie_hier){
 
+t_mat * calculer_pos_zombie(t_mat * map, int nb_jour, int nb_zombie_hier){
+      //remettre le nombre de zombie de la carte à 0
+      for (int i = 0; i < map->nbl; i++) {
+            for (int j = 0; j < map->nbc; j++) {
+                  map->mat[i][j].nb_zombie=0;
+            }
+      }
+      //
       int nb_zombie_today=(int)log(nb_jour)*10+nb_zombie_hier;
 
       for (int i = 0; i < nb_zombie_today; i++) {
@@ -49,42 +56,48 @@ t_mat * calculer_pos_zombie(t_mat * map, int nb_jour, int nb_zombie_hier){
             map->mat[x][y].nb_zombie ++;
       }
       return map;
-}send
+}
 
 
-static void gauche(joueur_t joueur,t_mat * map) {
-      if () {
-
+static void gauche(joueur_t * joueur,t_mat * map) {
+      if (x) {//si la position de la case du joueur n'est pas toute à gauche
+            //supprimer le perso de la liste de la case et le mettre dans la liste de la case d'à côté
       }
 }
 
-static void droite(joueur_t joueur,t_mat * map){
-      if () {
+static void droite(joueur_t * joueur,t_mat * map){
+      if (x!=map->nbc) {//si la position de la case du joueur n'est pas toute à droite
+            //supprimer le perso de la liste de la case et le mettre dans la liste de la case d'à côté
+      }
 
+}
+
+static void haut(joueur_t * joueur,t_mat * map){
+      if (y) {//si la position de la case du joueur n'est pas tout en haut
+            //supprimer le perso de la liste de la case et le mettre dans la liste de la case d'à côté
       }
 }
 
-static void haut(joueur_t joueur,t_mat * map){
+static void bas(joueur_t * joueur,t_mat * map){
+      if (y!=map->nbl) {//si la position de la case du joueur n'est pas tout en bas
+            //supprimer le perso de la liste de la case et le mettre dans la liste de la case d'à côté
+      }
+}
+
+static void fouiller(joueur_t * joueur,t_mat * map){
+      int nb_objet nb_aleatoire();
+}
+
+static void attaquer(joueur_t * joueur,t_mat * map){
 
 }
 
-static void bas(joueur_t joueur,t_mat * map){
+static void ramasser(joueur_t * joueur,t_mat * map){
 
 }
 
-static void fouiller(joueur_t joueur,t_mat * map){
-
-}
-
-static void attaquer(joueur_t joueur,t_mat * map){
-
-}
-
-static void ramasser(joueur_t joueur,t_mat * map){
-
-}
-
-void action(int posx, int posy, joueur_t joueur, t_mat * map){
+void action_carte(joueur_t * joueur, t_mat * map){
+      system("clear");
       int choix=0;
       while (choix!=9) {
             printf("quels actions voulez vous faire ?\n");
