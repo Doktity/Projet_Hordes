@@ -23,6 +23,8 @@ joueur_t * creer_joueur(char * nom){
   joueur->statut[0] = 1;
   joueur->maison = 1;
   joueur->coffre = init_liste();
+  joueur->posx = 7;
+  joueur->posy = 7;
 
   return joueur;
 }
@@ -90,5 +92,3 @@ void  trier_inventaire(joueur_t * joueur){
     }
   }
 }
-
-
