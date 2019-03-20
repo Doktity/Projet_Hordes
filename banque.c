@@ -23,21 +23,21 @@ void banque(banque_t * l, joueur_t * j){
 }
 
 void init_banque(banque_t * b){
-    b->nourriture = init_liste();
-    b->drogue = init_liste();
-    b->arme = init_liste();
-    b->obj_construct = init_liste();
+   objet_init_liste(&b->nourriture);
+   objet_init_liste(&b->drogue);
+   objet_init_liste(&b->arme);
+   objet_init_liste(&b->obj_construct);
 }
 
 void affiche_banque(banque_t * b){
     printf("Nourriture:\n");
-    afficher_liste(b->nourriture);
+    objet_afficher_liste(b->nourriture);
     printf("Drogue:\n");
-    afficher_liste(b->drogue);
+    objet_afficher_liste(b->drogue);
     printf("Arme:\n");
-    afficher_liste(b->arme);
+    objet_afficher_liste(b->arme);
     printf("Objet de construction:\n");
-    afficher_liste(b->obj_construct);
+    objet_afficher_liste(b->obj_construct);
 }
 
 void ajouter_objet_banque(banque_t * b, joueur_t * j){
