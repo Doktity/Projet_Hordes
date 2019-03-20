@@ -22,7 +22,7 @@ joueur_t * creer_joueur(char * nom){
 
   joueur->statut[0] = 1;
   joueur->maison = 1;
-  joueur->coffre = init_liste();
+  objet_init_liste(&joueur->coffre);
   joueur->posx = 7;
   joueur->posy = 7;
 
@@ -91,4 +91,13 @@ void  trier_inventaire(joueur_t * joueur){
       joueur->inventaire[i+1] = NULL;
     }
   }
+}
+
+
+int inventaire_vide(joueur_t * joueur){
+  int i;
+  for(i = 0; i < TAILLE_INVENTAIRE && joueur->inventaire[i] != NULL; i++);
+
+  return (i != TAILLE_INVENTAIRE);
+
 }
