@@ -60,32 +60,64 @@ t_mat * calculer_pos_zombie(t_mat * map, int nb_jour, int nb_zombie_hier){
 
 
 static void gauche(joueur_t * joueur,t_mat * map) {
-    /*  if (x) {//si la position de la case du joueur n'est pas toute à gauche
-            //supprimer le perso de la liste de la case et le mettre dans la liste de la case d'à côté
-      }*/
+      if (x) {//si la position de la case du joueur n'est pas toute à gauche
+            joueur->posx--;
+            if (map->mat[posx][posy].etat==non_explore) {
+                  if (map->mat[posx][posy].nb_zombie) {
+                        map->mat[posx][posy].etat=explore_zombie;
+                  }
+                  else{
+                        map->mat[posx][posy].etat=explore_neutre;
+                  }
+            }
+      }
 }
 
 static void droite(joueur_t * joueur,t_mat * map){
-    /*  if (x!=map->nbc) {//si la position de la case du joueur n'est pas toute à droite
-            //supprimer le perso de la liste de la case et le mettre dans la liste de la case d'à côté
-      }*/
-
+      if (x!=map->nbc) {//si la position de la case du joueur n'est pas toute à droite
+            joueur->posx ++;
+            if (map->mat[posx][posy].etat==non_explore) {
+                  if (map->mat[posx][posy].nb_zombie) {
+                        map->mat[posx][posy].etat=explore_zombie;
+                  }
+                  else{
+                        map->mat[posx][posy].etat=explore_neutre;
+                  }
+            }
+      }
 }
 
 static void haut(joueur_t * joueur,t_mat * map){
-    /*  if (y) {//si la position de la case du joueur n'est pas tout en haut
-            //supprimer le perso de la liste de la case et le mettre dans la liste de la case d'à côté
-      }*/
+      if (y) {//si la position de la case du joueur n'est pas tout en haut
+            joueur->posy--;
+            if (map->mat[posx][posy].etat==non_explore) {
+                  if (map->mat[posx][posy].nb_zombie) {
+                        map->mat[posx][posy].etat=explore_zombie;
+                  }
+                  else{
+                        map->mat[posx][posy].etat=explore_neutre;
+                  }
+            }
+      }
 }
 
 static void bas(joueur_t * joueur,t_mat * map){
-      /*if (y!=map->nbl) {//si la position de la case du joueur n'est pas tout en bas
-            //supprimer le perso de la liste de la case et le mettre dans la liste de la case d'à côté
-      }*/
+      if (y!=map->nbl) {//si la position de la case du joueur n'est pas tout en bas
+            joueur->posy++;
+            if (map->mat[posx][posy].etat==non_explore) {
+                  if (map->mat[posx][posy].nb_zombie) {
+                        map->mat[posx][posy].etat=explore_zombie;
+                  }
+                  else{
+                        map->mat[posx][posy].etat=explore_neutre;
+                  }
+            }
+      }
 }
 
 static void fouiller(joueur_t * joueur,t_mat * map){
-      //int nb_objet nb_aleatoire();
+      int nb_objet  = nb_aleatoire();
+
 }
 
 static void attaquer(joueur_t * joueur,t_mat * map){
@@ -99,39 +131,32 @@ static void ramasser(joueur_t * joueur,t_mat * map){
 void action_carte(joueur_t * joueur, t_mat * map){
       system("clear");
       int choix;
+
       do{
             printf(" Quels actions voulez vous faire ?\n");
-            printf(" 1 - Vous déplacer à gauche\n");
-            printf(" 2 - Vous déplacer à droite\n");
-            printf(" 3 - Vous déplacer en haut\n");
-            printf(" 4 - Vous déplacer en bas\n");
-            printf(" 5 - Fouiller la zone\n");
-            printf(" 6 - Attaquer un zombie\n");
-            printf(" 7 - Ramasser objets\n");
-            printf(" 8 - Afficher la carte\n");
-            printf(" 9 - Sortir de la carte\n");
+            printf(" 1 - vous déplacer à gauche\n");
+            printf(" 2 - vous déplacer à droite\n");
+            printf(" 3 - vous déplacer en haut\n");
+            printf(" 4 - vous déplacer en bas\n");
+            printf(" 5 - fouiller la zone\n");
+            printf(" 6 - attaquer un zombie\n");
+            printf(" 7 - ramasser objets\n");
+            printf(" 8 - afficher la carte\n");
+            printf(" 9 - sortir de la carte\n");
 
-            scanf("%d", &choix);
+            scanf("%i", &choix);
+
 
             switch (choix) {
-                  case 1: gauche(joueur,map);
-                          break;
-                  case 2: droite(joueur,map);
-                          break;
-                  case 3: haut(joueur,map);
-                          break;
-                  case 4: bas(joueur,map);
-                          break;
-                  case 5: fouiller(joueur,map);
-                          break;
-                  case 6: attaquer(joueur,map);
-                          break;
-                  case 7: ramasser(joueur,map);
-                          break;
-                  case 8: afficher_carte(map);
-                          break;
-                  case 9: printf("boom bye bye\n");
-                          break;
+                  case 1:gauche(joueur,map);    break;
+                  case 2:droite(joueur,map);    break;
+                  case 3:haut(joueur,map);      break;
+                  case 4:bas(joueur,map);       break;
+                  case 5:fouiller(joueur,map);  break;
+                  case 6:attaquer(joueur,map);  break;
+                  case 7:ramasser(joueur,map);  break;
+                  case 8:afficher_carte(map);   break;
+                  case 9:printf("bye bye\n");   break;
                   default: printf("erreur de choix\n");
             }
       }while (choix!=9);
