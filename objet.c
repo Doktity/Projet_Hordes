@@ -128,6 +128,6 @@ objet_t trouver_objet(liste_objet_t * liste, char * nom){
   return liste->ec->val;
 }
 
-void objet_supprimer_objet(liste_objet_t * liste, char * nom){
+void objet_supprimer(liste_objet_t * liste, char * nom){
 
 }
