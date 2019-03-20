@@ -2,7 +2,7 @@
 
 void maison(joueur_t * joueur){
   int choix;
-
+  system("clear");
   do
   /* Affichage du menu et saisie du choix */
   {
@@ -42,6 +42,7 @@ void ameliorer_maison(joueur_t * joueur){
             }else{
               printf("Pas assez de points d'actions ! (besoin de 2 pa)\n");
             }
+            break;
     case 2:
     case 3: if(joueur->pa == 6){
               joueur->maison++;
@@ -50,6 +51,7 @@ void ameliorer_maison(joueur_t * joueur){
             }else{
               printf("Pas assez de points d'actions ! (besoin de 6 pa)\n");
             }
+            break;
     default: printf("Amélioration maximum de la maison atteint");
   }
 }
