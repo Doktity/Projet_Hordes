@@ -62,12 +62,12 @@ t_mat * calculer_pos_zombie(t_mat * map, int nb_jour, int nb_zombie_hier){
 static void gauche(joueur_t * joueur,t_mat * map) {
       if (joueur->posx) {//si la position de la case du joueur n'est pas toute à gauche
             joueur->posx--;
-            if (map->mat[posx][posy].etat==non_explore) {
-                  if (map->mat[posx][posy].nb_zombie) {
-                        map->mat[posx][posy].etat=explore_zombie;
+            if (map->mat[joueur->posx][joueur->posy].etat==non_explore) {
+                  if (map->mat[joueur->posx][joueur->posy].nb_zombie) {
+                        map->mat[joueur->posx][joueur->posy].etat=explore_zombie;
                   }
                   else{
-                        map->mat[posx][posy].etat=explore_neutre;
+                        map->mat[joueur->posx][joueur->posy].etat=explore_neutre;
                   }
             }
       }
@@ -76,12 +76,12 @@ static void gauche(joueur_t * joueur,t_mat * map) {
 static void droite(joueur_t * joueur,t_mat * map){
       if (joueur->posx!=map->nbc) {//si la position de la case du joueur n'est pas toute à droite
             joueur->posx ++;
-            if (map->mat[posx][posy].etat==non_explore) {
-                  if (map->mat[posx][posy].nb_zombie) {
-                        map->mat[posx][posy].etat=explore_zombie;
+            if (map->mat[joueur->posx][joueur->posy].etat==non_explore) {
+                  if (map->mat[joueur->posx][joueur->posy].nb_zombie) {
+                        map->mat[joueur->posx][joueur->posy].etat=explore_zombie;
                   }
                   else{
-                        map->mat[posx][posy].etat=explore_neutre;
+                        map->mat[joueur->posx][joueur->posy].etat=explore_neutre;
                   }
             }
       }
@@ -90,12 +90,12 @@ static void droite(joueur_t * joueur,t_mat * map){
 static void haut(joueur_t * joueur,t_mat * map){
       if (joueur->posy) {//si la position de la case du joueur n'est pas tout en haut
             joueur->posy--;
-            if (map->mat[posx][posy].etat==non_explore) {
-                  if (map->mat[posx][posy].nb_zombie) {
-                        map->mat[posx][posy].etat=explore_zombie;
+            if (map->mat[joueur->posx][joueur->posy].etat==non_explore) {
+                  if (map->mat[joueur->posx][joueur->posy].nb_zombie) {
+                        map->mat[joueur->posx][joueur->posy].etat=explore_zombie;
                   }
                   else{
-                        map->mat[posx][posy].etat=explore_neutre;
+                        map->mat[joueur->posx][joueur->posy].etat=explore_neutre;
                   }
             }
       }
@@ -104,12 +104,12 @@ static void haut(joueur_t * joueur,t_mat * map){
 static void bas(joueur_t * joueur,t_mat * map){
       if (joueur->posy!=map->nbl) {//si la position de la case du joueur n'est pas tout en bas
             joueur->posy++;
-            if (map->mat[posx][posy].etat==non_explore) {
-                  if (map->mat[posx][posy].nb_zombie) {
-                        map->mat[posx][posy].etat=explore_zombie;
+            if (map->mat[joueur->posx][joueur->posy].etat==non_explore) {
+                  if (map->mat[joueur->posx][joueur->posy].nb_zombie) {
+                        map->mat[joueur->posx][joueur->posy].etat=explore_zombie;
                   }
                   else{
-                        map->mat[posx][posy].etat=explore_neutre;
+                        map->mat[joueur->posx][joueur->posy].etat=explore_neutre;
                   }
             }
       }
