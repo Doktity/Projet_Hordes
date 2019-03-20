@@ -125,4 +125,5 @@ void action_carte(joueur_t * joueur, t_mat * map){
                   case 9:printf("boom bye bye\n");break;
                   default: printf("erreur de choix\n");
             }
+      }
 }
