@@ -1,60 +1,59 @@
 #include "objet.h"
 
-liste_objet_t * init_liste(){
-  liste_objet_t * new = malloc(sizeof(liste_objet_t));
-  new->drapeau = malloc(sizeof(element_t));
-  new->drapeau->pred = new->drapeau;
-  new->drapeau->succ = new->drapeau;
-  new->ec = new->drapeau;
-  return new;
+void objet_init_liste(liste_objet_t ** new){
+  (*new) = malloc(sizeof(liste_objet_t));
+  (*new)->drapeau = malloc(sizeof(element_t));
+  (*new)->drapeau->pred = (*new)->drapeau;
+  (*new)->drapeau->succ = (*new)->drapeau;
+  (*new)->ec = (*new)->drapeau;
 }
 
-int liste_vide(liste_objet_t * liste){
+int objet_liste_vide(liste_objet_t * liste){
   return (liste->drapeau->pred==liste->drapeau->succ);
 }
 
-int hors_liste(liste_objet_t * liste){
+int objet_hors_liste(liste_objet_t * liste){
   return (liste->ec==liste->drapeau);
 }
 
-void en_tete(liste_objet_t * liste){
-  if(!liste_vide(liste)){
+void objet_en_tete(liste_objet_t * liste){
+  if(!objet_liste_vide(liste)){
     liste->ec=liste->drapeau->succ;
   }
 }
 
-void en_queue(liste_objet_t * liste){
-  if(!liste_vide(liste)){
+void objet_en_queue(liste_objet_t * liste){
+  if(!objet_liste_vide(liste)){
     liste->ec=liste->drapeau->pred;
   }
 }
 
-void suivant(liste_objet_t * liste){
-  if(!hors_liste(liste)){
+void objet_suivant(liste_objet_t * liste){
+  if(!objet_hors_liste(liste)){
     liste->ec=liste->ec->succ;
   }
 }
 
-void precedent(liste_objet_t * liste){
-  if(!hors_liste(liste)){
+void objet_precedent(liste_objet_t * liste){
+  if(!objet_hors_liste(liste)){
     liste->ec=liste->ec->pred;
   }
 }
 
-void valeur_elt(objet_t *v,liste_objet_t * liste){
-  if(!hors_liste(liste)){
+void objet_valeur_elt(objet_t *v,liste_objet_t * liste){
+  if(!objet_hors_liste(liste)){
     *v= liste->ec->val;
   }
 }
 
-void modif_elt(objet_t v,liste_objet_t * liste){
-  if(!hors_liste(liste)){
+void objet_modif_elt(objet_t v,liste_objet_t * liste){
+  if(!objet_hors_liste(liste)){
       liste->ec->val=v;
   }
 }
 
-void oter_elt(liste_objet_t * liste){
-  if(!hors_liste(liste)){
+void objet_oter_elt(liste_objet_t * liste){
+  if(!objet_hors_liste(liste)){
 		element_t * mem;
 		liste->ec->succ->pred=liste->ec->pred;
 		liste->ec->pred->succ=liste->ec->succ;
@@ -65,8 +64,8 @@ void oter_elt(liste_objet_t * liste){
 	}
 }
 
-void ajout_droit(objet_t v,liste_objet_t * liste){
-  if(liste_vide(liste)||!hors_liste(liste)){
+void objet_ajout_droit(objet_t v,liste_objet_t * liste){
+  if(objet_liste_vide(liste)||!objet_hors_liste(liste)){
 		element_t * nouv;
 		nouv=malloc(sizeof(element_t));
 		nouv->val=v;
@@ -78,8 +77,8 @@ void ajout_droit(objet_t v,liste_objet_t * liste){
 	}
 }
 
-void ajout_gauche(objet_t v,liste_objet_t * liste){
-  if(liste_vide(liste)||!hors_liste(liste)){
+void objet_ajout_gauche(objet_t v,liste_objet_t * liste){
+  if(objet_liste_vide(liste)||!objet_hors_liste(liste)){
     element_t * nouv;
     nouv=malloc(sizeof(element_t));
     nouv->val=v;
@@ -91,36 +90,37 @@ void ajout_gauche(objet_t v,liste_objet_t * liste){
   }
 }
 
-void creer_liste(liste_objet_t *liste){
+void objet_creer_liste(liste_objet_t ** liste){
   FILE * fic=fopen("liste_objet.txt","r");
   objet_t mem;
   char line[TAILLE];
-  en_tete(liste);
+  objet_init_liste(liste);
+  objet_en_tete(*liste);
   while(!feof(fic)){
     if((fgets(line, TAILLE, fic))!=NULL){
-    	sscanf(line,"%s %s %i %[^\n]",mem.nom_obj,mem.categorie,&mem.influ_pa,mem.description);
-    	ajout_droit(mem,liste);
+    	sscanf(line,"%s %s %i %[^\n]",mem.nom_obj,mem.categorie,&mem.attribut_obj,mem.description);
+    	objet_ajout_droit(mem,*liste);
     }
   }
   fclose(fic);
 }
 
-void afficher_liste(liste_objet_t *liste){
-  objet_t * mem;
-  if(!liste_vide(liste)){
-    en_tete(liste);
-    while(!hors_liste(liste)){
-      valeur_elt(mem,liste);
-      printf("Nom:%s Catégorie:%s PA:%i \n",mem->nom_obj,mem->categorie,mem->influ_pa);
-      printf("Description: %s\n",mem->description);
+void objet_afficher_liste(liste_objet_t *liste){
+  objet_t mem;
+  if(!objet_liste_vide(liste)){
+    objet_en_tete(liste);
+    while(!objet_hors_liste(liste)){
+      objet_valeur_elt(&mem,liste);
+      printf("Nom:%s Catégorie:%s PA:%i \n",mem.nom_obj,mem.categorie,mem.attribut_obj);
+      printf("Description: %s\n",mem.description);
       printf("\n");
-      suivant(liste);
+      objet_suivant(liste);
     }
   }
 }
 
 
-int est_present(liste_objet_t * liste, char * nom){
+int objet_est_present(liste_objet_t * liste, char * nom){
   return 5;
 }
 
@@ -128,6 +128,6 @@ objet_t trouver_objet(liste_objet_t * liste, char * nom){
   return liste->ec->val;
 }
 
-void supprimer_objet(liste_objet_t * liste, char * nom){
+void objet_supprimer_objet(liste_objet_t * liste, char * nom){
 
 }
