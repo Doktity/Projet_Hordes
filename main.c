@@ -37,7 +37,7 @@ void *thread_1(void *arg)
         }
         if(nb_t != tour.nb_tour){
           puissance = attaque(tour.nb_tour, 5, puissance);
-          printf("%d tours - puissance des zombies : %d\n", tour.nb_tour, puissance);
+          printf("\n%d tours - puissance des zombies : %d\n", tour.nb_tour, puissance);
           nb_t = tour.nb_tour;
         }
   }
@@ -95,27 +95,28 @@ int main()
 		printf(" 4 - Citoyen\n");
 		printf(" 5 - Chantier\n");
 		printf(" 6 - Atelier\n");
-		printf(" 7 - Forum\n");
-		printf(" 8 - Grande Porte\n");
-		printf(" 9 - Quitter\n");
+		printf(" 7 - Grande Porte\n");
+		printf(" 8 - Quitter\n");
 		printf("Votre choix : ");
 		scanf("%d",&choix);
 
 /* Traitement du choix de l'utilisateur */
 		switch(choix)
-		{	case 1: maison(joueur); break;
-			case 2: puit(&ration, joueur, liste); break;
+		{	case 1: maison(joueur);
+              break;
+			case 2: puit(&ration, joueur, liste);
+              break;
 			case 3: //banque(liste_banque, joueur); break;
 			case 4: printf("coucou"); //citoyen(); break;
 			case 5: printf("coucou"); //chantier(); break;
 			case 6: printf("coucou"); //atelier(); break;
-      case 7: printf("coucou"); //forum(); break;
-      case 8: afficher_carte(carte); //porte(); break;
-      case 9: break;
-			default: printf("Erreur: votre choix doit etre compris entre 1 et 9\n");
+      case 7: action_carte(joueur, carte);
+              break;
+      case 8: break;
+			default: printf("Erreur: votre choix doit etre compris entre 1 et 8\n");
 		}
 	}
-	while(choix!=9);
+	while(choix!=8);
 
   liberer_matrice(carte);
 
