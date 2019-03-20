@@ -18,17 +18,17 @@ void afficher_carte(t_mat * map){
       system("clear");
       for (int i = 0; i < map->nbl; i++) {
             for (int j = 0; j < map->nbc; j++) {
-                  if (map->mat[i][j].nb_joueur) {
-                        printf("%i",map->mat[i][j].nb_joueur);
+                  if (map->mat[j][i].nb_joueur) {
+                        printf("%i",map->mat[j][i].nb_joueur);
                   }
                   else{
                         printf(" ");
                   }
-                  switch (map->mat[i][j].etat) {
+                  switch (map->mat[j][i].etat) {
                         case ville:printf("v ");break;
                         case non_explore:printf("ø ");break;
                         case explore_neutre:printf("o ");break;
-                        case explore_zombie:printf("z%i",map->mat[i][j].nb_zombie);break;
+                        case explore_zombie:printf("z%i",map->mat[j][i].nb_zombie);break;
                         default:printf("?");
                   }
             }
