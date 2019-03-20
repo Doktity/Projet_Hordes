@@ -59,11 +59,13 @@ int main()
   joueur_t * joueur;
   char nom[20];
 
-  liste_objet_t * liste = init_liste();
-  creer_liste(liste);
+  joueur_init_liste();
 
-	//banque_t * liste_banque;
-  //init_banque(liste_banque);
+  liste_objet_t * liste;
+  objet_creer_liste(&liste);
+
+	banque_t * liste_banque = malloc(sizeof(banque_t));
+  init_banque(liste_banque);
 
   pthread_t thread1;
 
@@ -77,6 +79,7 @@ int main()
   scanf("%s", nom);
 
   joueur = creer_joueur(nom);
+  joueur_ajout_droit(joueur);
 
   printf("Bonjour %s !\n", joueur->nom);
 
@@ -88,6 +91,7 @@ int main()
   do
 /* Affichage du menu et saisie du choix */
   {
+    joueur_afficher_liste();
 		printf("\nMenu :\n");
 		printf(" 1 - Maison\n");
 		printf(" 2 - Puit\n");
@@ -106,7 +110,8 @@ int main()
               break;
 			case 2: puit(&ration, joueur, liste);
               break;
-			case 3: //banque(liste_banque, joueur); break;
+			case 3: banque(liste_banque, joueur);
+              break;
 			case 4: printf("coucou"); //citoyen(); break;
 			case 5: printf("coucou"); //chantier(); break;
 			case 6: printf("coucou"); //atelier(); break;
