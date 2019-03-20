@@ -42,4 +42,6 @@ void afficher_inventaire(joueur_t * joueur); // affiche l'inventaire du joueur.
 
 void trier_inventaire(joueur_t * joueur); // trie l'inventaire du joueur.
 
+int inventaire_vide(joueur_t * joueur);
+
 #endif
