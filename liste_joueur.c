@@ -89,12 +89,12 @@ void joueur_ajout_gauche(joueur_t * j){
 
 void joueur_afficher_liste(void){
   joueur_t * mem;
-	printf("coucou\n");
   if(!joueur_liste_vide()){
     joueur_en_tete();
     while(!joueur_hors_liste()){
       joueur_valeur_elt(&mem);
-      printf("Nom:%s\n",mem->nom);
+      printf("Nom : %s, Position : %d-%d\n",mem->nom, mem->posx, mem->posy);
+			afficher_inventaire(mem);
       printf("\n");
       joueur_suivant();
     }
