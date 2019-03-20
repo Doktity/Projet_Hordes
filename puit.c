@@ -2,7 +2,7 @@
 
 void puit (int * ration, joueur_t * joueur, liste_objet_t * liste){
   int choix;
-
+  system("clear");
   do
   /* Affichage du menu et saisie du choix */
   {
