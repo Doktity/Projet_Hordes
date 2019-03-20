@@ -65,7 +65,7 @@ void objet_afficher_liste(liste_objet_t*);
 
 int objet_est_present(liste_objet_t *, char *);
 
-objet_t trouver_objet(liste_objet_t *, char *);
+objet_t * trouver_objet(liste_objet_t *, char *);
 
 void objet_supprimer(liste_objet_t*,char *);
 
