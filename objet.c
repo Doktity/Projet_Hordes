@@ -121,11 +121,44 @@ void objet_afficher_liste(liste_objet_t *liste){
 
 
 int objet_est_present(liste_objet_t * liste, char * nom){
-  return 5;
+  if(objet_liste_vide(liste)){
+    return 0;
+  }
+  objet_t obj_courant;
+  objet_en_tete(liste);
+  while(!objet_hors_liste(liste)){
+    objet_valeur_elt(&obj_courant,liste);
+    if(obj_courant.nom_obj==nom){
+      return 1;
+    }
+    objet_suivant(liste);
+  }
+  return 0;
 }
 
-objet_t trouver_objet(liste_objet_t * liste, char * nom){
-  return liste->ec->val;
+objet_t * trouver_objet(liste_objet_t * liste, char * nom){
+  char answer;
+  if(objet_est_present(liste,nom)){
+    return &liste->ec->val;
+  }
+  else{
+    printf("L'objet n'est pas présent dans la liste ou le nom n'a pas été correctement saisi\n");
+    printf("Voulez-vous essayer une nouvelle recherche ?\n");
+    printf("Si oui taper Y, Si non taper N:\n");
+    scanf("%c",&answer);
+    while(answer!='Y' && answer!='N'){
+        printf("Vous devez choisir entre Y(oui) et N(non)\n");
+        scanf("%c",&answer);
+    }
+    if(answer=='Y'){
+      printf("Saisir la nouvelle recherche:\n");
+      scanf("%s",nom);
+      trouver_objet(liste,nom);
+    }
+    else{
+      return NULL;
+    }
+  }
 }
 
 void objet_supprimer(liste_objet_t * liste, char * nom){
