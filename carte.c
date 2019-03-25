@@ -61,8 +61,10 @@ t_mat * calculer_pos_zombie(t_mat * map, int nb_jour, int nb_zombie_hier){
 
 static void gauche(joueur_t * joueur,t_mat * map) {
       if (joueur->posx) {//si la position de la case du joueur n'est pas toute à gauche
+            map->mat[joueur->posx][joueur->posy].nb_joueur --;
             joueur->posx--;
             if (map->mat[joueur->posx][joueur->posy].etat==non_explore) {
+                  map->mat[joueur->posx][joueur->posy].nb_joueur ++;
                   if (map->mat[joueur->posx][joueur->posy].nb_zombie) {
                         map->mat[joueur->posx][joueur->posy].etat=explore_zombie;
                   }
@@ -75,8 +77,10 @@ static void gauche(joueur_t * joueur,t_mat * map) {
 
 static void droite(joueur_t * joueur,t_mat * map){
       if (joueur->posx!=map->nbc) {//si la position de la case du joueur n'est pas toute à droite
+            map->mat[joueur->posx][joueur->posy].nb_joueur --;
             joueur->posx ++;
             if (map->mat[joueur->posx][joueur->posy].etat==non_explore) {
+                  map->mat[joueur->posx][joueur->posy].nb_joueur ++;
                   if (map->mat[joueur->posx][joueur->posy].nb_zombie) {
                         map->mat[joueur->posx][joueur->posy].etat=explore_zombie;
                   }
@@ -89,8 +93,10 @@ static void droite(joueur_t * joueur,t_mat * map){
 
 static void haut(joueur_t * joueur,t_mat * map){
       if (joueur->posy) {//si la position de la case du joueur n'est pas tout en haut
+            map->mat[joueur->posx][joueur->posy].nb_joueur --;
             joueur->posy--;
             if (map->mat[joueur->posx][joueur->posy].etat==non_explore) {
+                  map->mat[joueur->posx][joueur->posy].nb_joueur ++;
                   if (map->mat[joueur->posx][joueur->posy].nb_zombie) {
                         map->mat[joueur->posx][joueur->posy].etat=explore_zombie;
                   }
@@ -103,8 +109,10 @@ static void haut(joueur_t * joueur,t_mat * map){
 
 static void bas(joueur_t * joueur,t_mat * map){
       if (joueur->posy!=map->nbl) {//si la position de la case du joueur n'est pas tout en bas
+            map->mat[joueur->posx][joueur->posy].nb_joueur --;
             joueur->posy++;
             if (map->mat[joueur->posx][joueur->posy].etat==non_explore) {
+                  map->mat[joueur->posx][joueur->posy].nb_joueur ++;
                   if (map->mat[joueur->posx][joueur->posy].nb_zombie) {
                         map->mat[joueur->posx][joueur->posy].etat=explore_zombie;
                   }
@@ -116,7 +124,7 @@ static void bas(joueur_t * joueur,t_mat * map){
 }
 
 static void fouiller(joueur_t * joueur,t_mat * map){
-      int nb_objet  = nb_aleatoire();
+      int objet  = nb_aleatoire(NB_OBJET);
 
 }
 
