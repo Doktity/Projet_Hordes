@@ -1,5 +1,3 @@
-#include <stdlib.h>
-#include <string.h>
 #include "objet.h"
 
 void objet_init_liste(liste_objet_t ** new){
@@ -126,21 +124,23 @@ int objet_est_present(liste_objet_t * liste, char * nom){
   if(objet_liste_vide(liste)){
     return 0;
   }
-  objet_t obj_courant;
+  objet_t * obj_courant=malloc(sizeof(objet_t));
   objet_en_tete(liste);
   while(!objet_hors_liste(liste)){
-    objet_valeur_elt(&obj_courant,liste);
-    if(strcmp(obj_courant.nom_obj,nom)){
+    objet_valeur_elt(obj_courant,liste);
+    if(strcmp(obj_courant->nom_obj,nom)){
+      printf("%s",obj_courant->nom_obj);
       return 1;
     }
-    objet_suivant(liste);
+    else{
+      objet_suivant(liste);
+    }
   }
   return 0;
 }
 
 objet_t * trouver_objet(liste_objet_t * liste, char * nom){
-  char answer;
-  objet_t * pt=NULL;
+  objet_t * pt=malloc(sizeof(objet_t));
   if(objet_est_present(liste,nom)){
     objet_valeur_elt(pt,liste);
     return pt;
