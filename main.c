@@ -6,6 +6,8 @@
 
 #include "main.h"
 
+t_mat * carte;
+
 int attaque(int nb_tour, int nb_joueur, int puissance)
 /* Fonction pour déterminer la puissance des zombies lors de l'attaque */
 {
@@ -25,11 +27,12 @@ void *thread_1(void *arg)
   tour_t tour;
   tour.nb_tour = 1;
   int nb_t = 0;
+  int nb_zombie_hier = 1;
   depart = time(NULL);
 
   int puissance = 0;
 
-  while(tour.nb_tour < 10){
+  while(!joueur_liste_vide()){
         tour.temps = time(NULL);
         if((tour.temps - depart) >= DIX){
           depart += DIX;
@@ -38,6 +41,8 @@ void *thread_1(void *arg)
         if(nb_t != tour.nb_tour){
           puissance = attaque(tour.nb_tour, 5, puissance);
           printf("\n%d tours - puissance des zombies : %d\n", tour.nb_tour, puissance);
+          nb_zombie_hier = calculer_pos_zombie(carte, tour.nb_tour, nb_zombie_hier);
+          printf("%d\n", nb_zombie_hier);
           nb_t = tour.nb_tour;
         }
   }
@@ -54,10 +59,10 @@ int main()
 
   srand(time(NULL));
 
-  t_mat * carte = creer_carte();
+  carte = creer_carte();
 
   joueur_t * joueur;
-  char nom[20];
+  char nom[100];
 
   joueur_init_liste();
 
@@ -81,6 +86,8 @@ int main()
   joueur = creer_joueur(nom);
   carte->mat[6][6].nb_joueur++;
   joueur_ajout_droit(joueur);
+  joueur_afficher_liste();
+ 
 
   printf("Bonjour %s !\n", joueur->nom);
 
@@ -92,7 +99,6 @@ int main()
   do
 /* Affichage du menu et saisie du choix */
   {
-    joueur_afficher_liste();
 		printf("\nMenu :\n");
 		printf(" 1 - Maison\n");
 		printf(" 2 - Puit\n");
@@ -113,7 +119,9 @@ int main()
               break;
 			case 3: banque(liste_banque, joueur);
               break;
-			case 4: printf("coucou"); //citoyen(); break;
+			case 4: system("clear");
+              joueur_afficher_liste();
+              break;
 			case 5: printf("coucou"); //chantier(); break;
 			case 6: printf("coucou"); //atelier(); break;
       case 7: action_carte(joueur, carte);
