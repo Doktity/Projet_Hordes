@@ -30,9 +30,7 @@ void prendre_eau (int * ration, joueur_t * joueur, liste_objet_t * liste){
   int i;
   char * nom = "eau";
 
-  for(i = 0; i < TAILLE_INVENTAIRE && joueur->inventaire[i] != NULL; i++);
-
-  if(i != TAILLE_INVENTAIRE){
+  if(!inventaire_vide(joueur)){
 
     *joueur->inventaire[i] = trouver_objet(liste, nom);
     ration--;
