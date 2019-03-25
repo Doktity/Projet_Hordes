@@ -35,7 +35,7 @@ void objet_suivant(liste_objet_t * liste){
     liste->ec=liste->ec->succ;
   }
 }
-https://github.com/Doktity/Projet_Hordes/projects/1
+
 void objet_precedent(liste_objet_t * liste){
   if(!objet_hors_liste(liste)){
     liste->ec=liste->ec->pred;
