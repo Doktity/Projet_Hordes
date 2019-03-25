@@ -14,7 +14,7 @@ t_mat * creer_carte();
 
 void afficher_carte(t_mat * map);
 
-t_mat * calculer_pos_zombie(t_mat * map, int nb_jour, int nb_zombie_hier);
+int calculer_pos_zombie(t_mat * map, int nb_jour, int nb_zombie_hier);
 
 void action_carte(joueur_t * joueur,t_mat * map);
 
