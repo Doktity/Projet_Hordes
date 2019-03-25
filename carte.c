@@ -1,4 +1,6 @@
 #include "carte.h"
+#define couleur(param) printf("\033[%sm",param)
+
 
 t_mat * creer_carte(){
       //initialisation de la carte
@@ -25,10 +27,10 @@ void afficher_carte(t_mat * map){
                         printf(" ");
                   }
                   switch (map->mat[j][i].etat) {
-                        case ville:printf("v ");break;
-                        case non_explore:printf("ø ");break;
-                        case explore_neutre:printf("o ");break;
-                        case explore_zombie:printf("z%i",map->mat[j][i].nb_zombie);break;
+                        case ville:couleur("33");printf("v ");break;
+                        case non_explore:couleur("56");printf("ø ");break;
+                        case explore_neutre:couleur("12");printf("o ");break;
+                        case explore_zombie:couleur("18");printf("z%i",map->mat[j][i].nb_zombie);break;
                         default:printf("?");
                   }
             }
@@ -37,15 +39,15 @@ void afficher_carte(t_mat * map){
 }
 
 
-t_mat * calculer_pos_zombie(t_mat * map, int nb_jour, int nb_zombie_hier){
+int calculer_pos_zombie(t_mat * map, int nb_jour, int nb_zombie_hier){
       //remettre le nombre de zombie de la carte à 0
       for (int i = 0; i < map->nbl; i++) {
             for (int j = 0; j < map->nbc; j++) {
                   map->mat[i][j].nb_zombie=0;
             }
       }
-      //
-      int nb_zombie_today=(int)log(nb_jour)*10+nb_zombie_hier;
+
+      int nb_zombie_today=(int)log(nb_jour)*12+nb_zombie_hier;
 
       for (int i = 0; i < nb_zombie_today; i++) {
             int x,y;
@@ -55,7 +57,7 @@ t_mat * calculer_pos_zombie(t_mat * map, int nb_jour, int nb_zombie_hier){
             } while(x == (map->nbl)/2 && y == (map->nbc)/2);//tant que c'est égal à la position de la ville
             map->mat[x][y].nb_zombie ++;
       }
-      return map;
+      return nb_zombie_today;
 }
 
 
@@ -114,7 +116,7 @@ static void haut(joueur_t * joueur,t_mat * map){
             }
       }
       else{
-            printf("Il vous est impossible de monter aux cieux vous etes déjà bien assez haut!!\n", );
+            printf("Il vous est impossible de monter aux cieux vous etes déjà bien assez haut!!\n");
       }
       afficher_carte(map);
 }
