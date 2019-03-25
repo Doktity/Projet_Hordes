@@ -27,10 +27,10 @@ void afficher_carte(t_mat * map){
                         printf(" ");
                   }
                   switch (map->mat[j][i].etat) {
-                        case ville:couleur("33");printf("v ");break;
-                        case non_explore:couleur("56");printf("ø ");break;
-                        case explore_neutre:couleur("12");printf("o ");break;
-                        case explore_zombie:couleur("18");printf("z%i",map->mat[j][i].nb_zombie);break;
+                        case ville:printf("v ");break;
+                        case non_explore:printf("ø ");break;
+                        case explore_neutre:printf("o ");break;
+                        case explore_zombie:printf("z%i",map->mat[j][i].nb_zombie);break;
                         default:printf("?");
                   }
             }
@@ -39,11 +39,13 @@ void afficher_carte(t_mat * map){
 }
 
 int calculer_pos_zombie(t_mat * map, int nb_jour, int nb_zombie_hier){
-      //remettre le nombre de zombie de la carte à 0
+      //remettre le nombre de zombie de la carte à 0 sans toucher à la ville
       for (int i = 0; i < map->nbl; i++) {
             for (int j = 0; j < map->nbc; j++) {
-                  map->mat[i][j].nb_zombie=0;
-                  map->mat[i][j].etat=non_explore;
+                  if (map->mat[i][j].etat != ville) {
+                        map->mat[i][j].nb_zombie=0;
+                        map->mat[i][j].etat=non_explore;
+                  }
             }
       }
 
