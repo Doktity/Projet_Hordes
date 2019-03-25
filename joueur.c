@@ -23,8 +23,8 @@ joueur_t * creer_joueur(char * nom){
   joueur->statut[0] = 1;
   joueur->maison = 1;
   objet_init_liste(&joueur->coffre);
-  joueur->posx = 7;
-  joueur->posy = 7;
+  joueur->posx = 6;
+  joueur->posy = 6;
 
   return joueur;
 }
