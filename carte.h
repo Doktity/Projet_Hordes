@@ -4,12 +4,13 @@
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include "action.h"
 #include "matrice.h"
 
 
 #define T  13//taille des côtés de la carte
-
+#define NB_OBJET 14//nombre d'objet créer changer pour que ça soit dans le main ou par la liste d'objet, nombre définis par younes
 t_mat * creer_carte();
 
 void afficher_carte(t_mat * map);
