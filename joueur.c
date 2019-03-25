@@ -78,6 +78,8 @@ void afficher_inventaire(joueur_t * joueur){
   for(i = 0; i<TAILLE_INVENTAIRE; i++){
     if(joueur->inventaire[i] != NULL){
       printf("Emplacement %d : %s\n", i+1, joueur->inventaire[i]->nom_obj);
+    }else{
+      printf("Emplacement %d : vide\n", i+1);
     }
   }
 }
@@ -97,7 +99,6 @@ void  trier_inventaire(joueur_t * joueur){
 int inventaire_vide(joueur_t * joueur){
   int i;
   for(i = 0; i < TAILLE_INVENTAIRE && joueur->inventaire[i] != NULL; i++);
-
   return (i != TAILLE_INVENTAIRE);
 
 }
