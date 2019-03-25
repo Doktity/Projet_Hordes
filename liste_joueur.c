@@ -5,11 +5,10 @@ void joueur_init_liste(void){
 	drapeau->pred = drapeau;
 	drapeau->succ = drapeau;
 	ec = drapeau;
-
 }
 
 int joueur_liste_vide(void){
-	return (drapeau->succ==drapeau->pred);
+	return (drapeau->succ==drapeau);
 }
 
 int joueur_hors_liste(void){
@@ -49,16 +48,15 @@ void joueur_modif_elt(joueur_t * j){
 }
 
 void joueur_oter_elt(void){
-	if(!joueur_hors_liste()){
+  if(!joueur_hors_liste()){
 		elt_joueur_t * mem;
 		ec->succ->pred = ec->pred;
 		ec->pred->succ = ec->succ;
-		mem = ec->succ;
-		free(ec);
-		ec->pred = mem;
-		mem->succ = ec;
+		mem = ec;
+	  	ec = ec->succ;
+		free(mem);
+	  	mem=NULL;
 	}
-
 }
 
 void joueur_ajout_droit(joueur_t * j){
