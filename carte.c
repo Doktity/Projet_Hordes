@@ -38,12 +38,12 @@ void afficher_carte(t_mat * map){
       }
 }
 
-
 int calculer_pos_zombie(t_mat * map, int nb_jour, int nb_zombie_hier){
       //remettre le nombre de zombie de la carte à 0
       for (int i = 0; i < map->nbl; i++) {
             for (int j = 0; j < map->nbc; j++) {
                   map->mat[i][j].nb_zombie=0;
+                  map->mat[i][j].etat=non_explore;
             }
       }
 
@@ -62,83 +62,112 @@ int calculer_pos_zombie(t_mat * map, int nb_jour, int nb_zombie_hier){
 
 
 static void gauche(joueur_t * joueur,t_mat * map) {
-      if (joueur->posx) {//si la position de la case du joueur n'est pas toute à gauche
-            map->mat[joueur->posx][joueur->posy].nb_joueur --;
-            joueur->posx--;
-            if (map->mat[joueur->posx][joueur->posy].etat==non_explore) {
-                  map->mat[joueur->posx][joueur->posy].nb_joueur ++;
-                  if (map->mat[joueur->posx][joueur->posy].nb_zombie) {
-                        map->mat[joueur->posx][joueur->posy].etat=explore_zombie;
-                  }
-                  else{
-                        map->mat[joueur->posx][joueur->posy].etat=explore_neutre;
-                  }
-            }
+      if (!joueur->pa) {
+            printf("Vous n'avez pas assez de Points d'action\n");
+            usleep(500);
       }
       else{
-            printf("Il ne vous es malheureusement impossible d'aller plus à gauche, vous n'y trouverez que des zombies, coisissez une autre direction!!\n");
+            if (joueur->posx) {//si la position de la case du joueur n'est pas toute à gauche
+                  map->mat[joueur->posx][joueur->posy].nb_joueur --;
+                  joueur->posx--;
+                  map->mat[joueur->posx][joueur->posy].nb_joueur ++;
+                  if (map->mat[joueur->posx][joueur->posy].etat==non_explore) {
+                        if (map->mat[joueur->posx][joueur->posy].nb_zombie) {
+                              map->mat[joueur->posx][joueur->posy].etat=explore_zombie;
+                        }
+                        else{
+                              map->mat[joueur->posx][joueur->posy].etat=explore_neutre;
+                        }
+                  }
+
+                  joueur->pa--;
+            }
+            else{
+                  printf("Il ne vous es malheureusement impossible d'aller plus à gauche, vous n'y trouverez que des zombies, coisissez une autre direction!!\n");
+                  usleep(500);
+            }
       }
-      afficher_carte(map);
 }
 
 static void droite(joueur_t * joueur,t_mat * map){
-      if (joueur->posx!=map->nbc) {//si la position de la case du joueur n'est pas toute à droite
-            map->mat[joueur->posx][joueur->posy].nb_joueur --;
-            joueur->posx ++;
-            if (map->mat[joueur->posx][joueur->posy].etat==non_explore) {
-                  map->mat[joueur->posx][joueur->posy].nb_joueur ++;
-                  if (map->mat[joueur->posx][joueur->posy].nb_zombie) {
-                        map->mat[joueur->posx][joueur->posy].etat=explore_zombie;
-                  }
-                  else{
-                        map->mat[joueur->posx][joueur->posy].etat=explore_neutre;
-                  }
-            }
+      if (!joueur->pa) {
+            printf("Vous n'avez pas assez de Points d'action\n");
+            usleep(500);
       }
       else{
-            printf("Vous ne trouverez rien si vous allez plus à droite choisissez une autre direction!!\n");
+            if (joueur->posx!=map->nbc) {//si la position de la case du joueur n'est pas toute à droite
+                  map->mat[joueur->posx][joueur->posy].nb_joueur --;
+                  joueur->posx ++;
+                  map->mat[joueur->posx][joueur->posy].nb_joueur ++;
+                  if (map->mat[joueur->posx][joueur->posy].etat==non_explore) {
+                        if (map->mat[joueur->posx][joueur->posy].nb_zombie) {
+                              map->mat[joueur->posx][joueur->posy].etat=explore_zombie;
+                        }
+                        else{
+                              map->mat[joueur->posx][joueur->posy].etat=explore_neutre;
+                        }
+                  }
+                  joueur->pa--;
+            }
+            else{
+                  printf("Vous ne trouverez rien si vous allez plus à droite choisissez une autre direction!!\n");
+                  usleep(500);
+            }
       }
-      afficher_carte(map);
 }
 
 static void haut(joueur_t * joueur,t_mat * map){
-      if (joueur->posy) {//si la position de la case du joueur n'est pas tout en haut
-            map->mat[joueur->posx][joueur->posy].nb_joueur --;
-            joueur->posy--;
-            if (map->mat[joueur->posx][joueur->posy].etat==non_explore) {
-                  map->mat[joueur->posx][joueur->posy].nb_joueur ++;
-                  if (map->mat[joueur->posx][joueur->posy].nb_zombie) {
-                        map->mat[joueur->posx][joueur->posy].etat=explore_zombie;
-                  }
-                  else{
-                        map->mat[joueur->posx][joueur->posy].etat=explore_neutre;
-                  }
-            }
+      if (!joueur->pa) {
+            printf("Vous n'avez pas assez de Points d'action\n");
+            usleep(500);
       }
       else{
-            printf("Il vous est impossible de monter aux cieux vous etes déjà bien assez haut!!\n");
+            if (joueur->posy) {//si la position de la case du joueur n'est pas tout en haut
+                  map->mat[joueur->posx][joueur->posy].nb_joueur --;
+                  joueur->posy--;
+                  map->mat[joueur->posx][joueur->posy].nb_joueur ++;
+                  if (map->mat[joueur->posx][joueur->posy].etat==non_explore) {
+                        if (map->mat[joueur->posx][joueur->posy].nb_zombie) {
+                              map->mat[joueur->posx][joueur->posy].etat=explore_zombie;
+                        }
+                        else{
+                              map->mat[joueur->posx][joueur->posy].etat=explore_neutre;
+                        }
+                  }
+                  joueur->pa--;
+            }
+            else{
+                  printf("Il vous est impossible de monter aux cieux vous etes déjà bien assez haut!!\n");
+                  usleep(500);
+            }
       }
-      afficher_carte(map);
 }
 
 static void bas(joueur_t * joueur,t_mat * map){
-      if (joueur->posy!=map->nbl) {//si la position de la case du joueur n'est pas tout en bas
-            map->mat[joueur->posx][joueur->posy].nb_joueur --;
-            joueur->posy++;
-            if (map->mat[joueur->posx][joueur->posy].etat==non_explore) {
-                  map->mat[joueur->posx][joueur->posy].nb_joueur ++;
-                  if (map->mat[joueur->posx][joueur->posy].nb_zombie) {
-                        map->mat[joueur->posx][joueur->posy].etat=explore_zombie;
-                  }
-                  else{
-                        map->mat[joueur->posx][joueur->posy].etat=explore_neutre;
-                  }
-            }
+      if (!joueur->pa) {
+            printf("Vous n'avez pas assez de Points d'action\n");
+            usleep(500);
       }
       else{
-            printf("Impossible, vous etes tout en bas de la carte, vous ne pouvez pas descendre aux enfers!!\n");
+            if (joueur->posy!=map->nbl) {//si la position de la case du joueur n'est pas tout en bas
+                  map->mat[joueur->posx][joueur->posy].nb_joueur --;
+                  joueur->posy++;
+                  map->mat[joueur->posx][joueur->posy].nb_joueur ++;
+                  if (map->mat[joueur->posx][joueur->posy].etat==non_explore) {
+                        if (map->mat[joueur->posx][joueur->posy].nb_zombie) {
+                              map->mat[joueur->posx][joueur->posy].etat=explore_zombie;
+                        }
+                        else{
+                              map->mat[joueur->posx][joueur->posy].etat=explore_neutre;
+                        }
+                  }
+                  joueur->pa--;
+            }
+            else{
+                  printf("Impossible, vous etes tout en bas de la carte, vous ne pouvez pas descendre aux enfers!!\n");
+                  usleep(500);
+            }
       }
-      afficher_carte(map);
 }
 
 static void fouiller(joueur_t * joueur,t_mat * map){
