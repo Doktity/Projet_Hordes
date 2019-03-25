@@ -86,7 +86,6 @@ int main()
   joueur = creer_joueur(nom);
   carte->mat[6][6].nb_joueur++;
   joueur_ajout_droit(joueur);
-  joueur_afficher_liste();
  
 
   printf("Bonjour %s !\n", joueur->nom);
