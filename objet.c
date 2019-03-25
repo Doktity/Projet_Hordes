@@ -1,15 +1,17 @@
+#include <stdlib.h>
+#include <string.h>
 #include "objet.h"
 
 void objet_init_liste(liste_objet_t ** new){
   (*new) = malloc(sizeof(liste_objet_t));
   (*new)->drapeau = malloc(sizeof(element_t));
-  (*new)->drapeau->pred = (*new)->drapeau;
   (*new)->drapeau->succ = (*new)->drapeau;
   (*new)->ec = (*new)->drapeau;
+  (*new)->ec->pred=(*new)->drapeau;
 }
 
 int objet_liste_vide(liste_objet_t * liste){
-  return (liste->drapeau->pred==liste->drapeau->succ);
+  return (liste->drapeau->succ==liste->drapeau);
 }
 
 int objet_hors_liste(liste_objet_t * liste){
@@ -33,7 +35,7 @@ void objet_suivant(liste_objet_t * liste){
     liste->ec=liste->ec->succ;
   }
 }
-
+https://github.com/Doktity/Projet_Hordes/projects/1
 void objet_precedent(liste_objet_t * liste){
   if(!objet_hors_liste(liste)){
     liste->ec=liste->ec->pred;
@@ -128,7 +130,7 @@ int objet_est_present(liste_objet_t * liste, char * nom){
   objet_en_tete(liste);
   while(!objet_hors_liste(liste)){
     objet_valeur_elt(&obj_courant,liste);
-    if(obj_courant.nom_obj==nom){
+    if(strcmp(obj_courant.nom_obj,nom)){
       return 1;
     }
     objet_suivant(liste);
@@ -138,26 +140,13 @@ int objet_est_present(liste_objet_t * liste, char * nom){
 
 objet_t * trouver_objet(liste_objet_t * liste, char * nom){
   char answer;
+  objet_t * pt=NULL;
   if(objet_est_present(liste,nom)){
-    return &liste->ec->val;
+    objet_valeur_elt(pt,liste);
+    return pt;
   }
   else{
-    printf("L'objet n'est pas présent dans la liste ou le nom n'a pas été correctement saisi\n");
-    printf("Voulez-vous essayer une nouvelle recherche ?\n");
-    printf("Si oui taper Y, Si non taper N:\n");
-    scanf("%c",&answer);
-    while(answer!='Y' && answer!='N'){
-        printf("Vous devez choisir entre Y(oui) et N(non)\n");
-        scanf("%c",&answer);
-    }
-    if(answer=='Y'){
-      printf("Saisir la nouvelle recherche:\n");
-      scanf("%s",nom);
-      trouver_objet(liste,nom);
-    }
-    else{
-      return NULL;
-    }
+    return NULL;
   }
 }
 
