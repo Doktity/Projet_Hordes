@@ -73,6 +73,10 @@ static void gauche(joueur_t * joueur,t_mat * map) {
                   }
             }
       }
+      else{
+            printf("Il ne vous es malheureusement impossible d'aller plus à gauche, vous n'y trouverez que des zombies, coisissez une autre direction!!\n");
+      }
+      afficher_carte(map);
 }
 
 static void droite(joueur_t * joueur,t_mat * map){
@@ -89,6 +93,10 @@ static void droite(joueur_t * joueur,t_mat * map){
                   }
             }
       }
+      else{
+            printf("Vous ne trouverez rien si vous allez plus à droite choisissez une autre direction!!\n");
+      }
+      afficher_carte(map);
 }
 
 static void haut(joueur_t * joueur,t_mat * map){
@@ -105,6 +113,10 @@ static void haut(joueur_t * joueur,t_mat * map){
                   }
             }
       }
+      else{
+            printf("Il vous est impossible de monter aux cieux vous etes déjà bien assez haut!!\n", );
+      }
+      afficher_carte(map);
 }
 
 static void bas(joueur_t * joueur,t_mat * map){
@@ -121,6 +133,10 @@ static void bas(joueur_t * joueur,t_mat * map){
                   }
             }
       }
+      else{
+            printf("Impossible, vous etes tout en bas de la carte, vous ne pouvez pas descendre aux enfers!!\n");
+      }
+      afficher_carte(map);
 }
 
 static void fouiller(joueur_t * joueur,t_mat * map){
