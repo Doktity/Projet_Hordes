@@ -36,10 +36,10 @@ void prendre_objet (liste_objet_t * l, joueur_t * joueur){
             do{
                   printf("Donner le nom de l'objet que vous voulez prendre : ");
                   scanf("%s", nom_objet);
-            }while(!est_present_objet(l, nom_objet));
+            }while(!objet_est_present(l, nom_objet));
 
             joueur->inventaire[i] = trouver_objet(l, nom_objet);
-            supprimer_objet(l, nom_objet);
+            objet_supprimer(l, nom_objet);
 
       }else{
             printf("Vous n'avez pas la place dans votre inventaire !\n");
