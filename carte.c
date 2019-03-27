@@ -10,6 +10,7 @@ t_mat * creer_carte(){
                   map->mat[i][j].etat = non_explore;
                   map->mat[i][j].nb_joueur=0;
                   map->mat[i][j].nb_zombie=0;
+                  map->mat[i][j].fouille = non_fouillee;
             }
       }
       map->mat[(map->nbl)/2][(map->nbc)/2].etat = ville;
@@ -45,6 +46,12 @@ int calculer_pos_zombie(t_mat * map, int nb_jour, int nb_zombie_hier){
                   if (map->mat[i][j].etat != ville) {
                         map->mat[i][j].nb_zombie=0;
                         map->mat[i][j].etat=non_explore;
+                        map->mat[i][j].fouille = non_fouillee;
+                        if (map->mat[i][j].nb_joueur) {
+                              //parcourir la liste de joueur et les tuer
+
+                        }
+                        
                   }
             }
       }
@@ -173,12 +180,23 @@ static void bas(joueur_t * joueur,t_mat * map){
 }
 
 static void fouiller(joueur_t * joueur,t_mat * map){
-      int objet  = nb_aleatoire(NB_OBJET);
+      if (map->mat[joueur->posx][joueur->posy].fouille == non_fouillee) {
+            int nb_objet  = nb_aleatoire(NB_OBJET);
+            for(int i = 0; i < nb_objet; i++){
+                  
+            }  
+      }
+      
+      
+      
 
 }
 
 static void attaquer(joueur_t * joueur,t_mat * map){
-
+      if (map->mat[joueur->posx][joueur->posy].nb_zombie > (map->mat[joueur->posx][joueur->posy].nb_joueur * 2)) { //une personne vaut 2 point d'attaque et un zombie en vaut un
+            map->mat[joueur->posx][joueur->posy].nb_zombie = 0;
+      }
+      
 }
 
 static void ramasser(joueur_t * joueur,t_mat * map){
