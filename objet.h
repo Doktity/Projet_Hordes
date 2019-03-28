@@ -5,12 +5,20 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define TAILLE 100
+#define TAILLE 25
+#define TAILLE_desc 100
+
+typedef union{
+  int influ_pa;
+  int nb_utilisation;
+  char new_nom[TAILLE];
+}attribut_obj;
+
 
 typedef struct objet_s{
   char  nom_obj[TAILLE];
-  char  categorie[TAILLE];
-  char  description[TAILLE];
+  char  categorie[TAILLE;
+  char  description[TAILLE_desc];
   int attribut_obj;
 }objet_t;
 
