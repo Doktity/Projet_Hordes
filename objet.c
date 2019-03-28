@@ -169,3 +169,18 @@ void objet_supprimer(liste_objet_t * liste, char * nom){
     objet_oter_elt(liste);
   }
 }
+
+objet_t * trouver_objet_n(liste_objet_t * liste, int n){
+  objet_t *pt=malloc(sizeof(objet_t));
+  int i;
+  for(i=0;i<n && !objet_hors_liste(liste);i++){
+    objet_suivant(liste);
+  }
+  if(!objet_hors_liste(liste)){
+    objet_valeur_elt(pt,liste);
+    return pt;
+  }
+  else{
+    return NULL;
+  }
+}
