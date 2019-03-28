@@ -1,5 +1,5 @@
 #include "carte.h"
-#define couleur(param) printf("\033[%sm",param)
+
 
 
 t_mat * creer_carte(){
