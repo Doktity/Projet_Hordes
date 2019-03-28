@@ -17,7 +17,7 @@ typedef union{
 
 typedef struct objet_s{
   char  nom_obj[TAILLE];
-  char  categorie[TAILLE;
+  char  categorie[TAILLE];
   char  description[TAILLE_desc];
   attribut_obj attribut;
   int id;
@@ -78,5 +78,7 @@ int objet_est_present(liste_objet_t *, char *);
 objet_t * trouver_objet(liste_objet_t *, char *);
 
 void objet_supprimer(liste_objet_t*,char *);
+
+void objet_supprimer_liste(liste_objet_t **);
 
 #endif
