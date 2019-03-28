@@ -98,7 +98,20 @@ void objet_creer_liste(liste_objet_t ** liste){
   objet_en_tete(*liste);
   while(!feof(fic)){
     if((fgets(line, TAILLE, fic))!=NULL){
-    	sscanf(line,"%s %s %i %[^\n]",mem.nom_obj,mem.categorie,&mem.attribut_obj,mem.description);
+    //	sscanf(line,"%s %s %i %[^\n]",mem.nom_obj,mem.categorie,&mem.attribut_obj,mem.description);
+      sscanf(line,"%s",mem.categorie);
+      if((strcmp(mem.categorie,"nourriture")==0)||(strcmp(mem.categorie,"drogue")==0)){
+        sscanf(line,"%s %s %i %i %[^\n]",mem.categorie,mem.nom_obj,&mem.attribut.influ_pa,&mem.id,mem.description);
+      }
+      else if((strcmp(mem.categorie,"arme")==0) || (strcmp(mem.categorie,"soin")==0)){
+        sscanf(line,"%s %s %i %i %[^\n]",mem.categorie,mem.nom_obj,&mem.attribut.nb_utilisation,&mem.id,mem.description);
+      }
+      else if(strcmp(mem.categorie,"materiau")==0){
+        sscanf(line,"%s %s %s %i %[^\n]",mem.categorie,mem.nom_obj,mem.attribut.new_nom,&mem.id,mem.description);
+      }
+      else{
+        sscanf(line,"%s %s %i %[^\n]",mem.categorie,mem.nom_obj,&mem.id,mem.description);
+      }
     	objet_ajout_droit(mem,*liste);
     }
   }
@@ -111,7 +124,7 @@ void objet_afficher_liste(liste_objet_t *liste){
     objet_en_tete(liste);
     while(!objet_hors_liste(liste)){
       objet_valeur_elt(&mem,liste);
-      printf("Nom:%s Catégorie:%s PA:%i \n",mem.nom_obj,mem.categorie,mem.attribut_obj);
+      printf("Nom:%s Catégorie:%s PA:%i \n",mem.nom_obj,mem.categorie,mem.attribut.influ_pa);
       printf("Description: %s\n",mem.description);
       printf("\n");
       objet_suivant(liste);
