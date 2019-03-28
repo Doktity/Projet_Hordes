@@ -20,7 +20,6 @@ typedef struct objet_s{
   char  categorie[TAILLE];
   char  description[TAILLE_desc];
   attribut_obj attribut;
-  int id;
 }objet_t;
 
 typedef struct element_s{
@@ -79,6 +78,6 @@ objet_t * trouver_objet(liste_objet_t *, char *);
 
 void objet_supprimer(liste_objet_t*,char *);
 
-void objet_supprimer_liste(liste_objet_t **);
+objet_t * trouver_objet_n(liste_objet_t*,int n);
 
 #endif
