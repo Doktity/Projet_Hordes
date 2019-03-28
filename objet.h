@@ -19,7 +19,8 @@ typedef struct objet_s{
   char  nom_obj[TAILLE];
   char  categorie[TAILLE;
   char  description[TAILLE_desc];
-  int attribut_obj;
+  attribut_obj attribut;
+  int id;
 }objet_t;
 
 typedef struct element_s{
