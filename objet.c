@@ -101,16 +101,16 @@ void objet_creer_liste(liste_objet_t ** liste){
     //	sscanf(line,"%s %s %i %[^\n]",mem.nom_obj,mem.categorie,&mem.attribut_obj,mem.description);
       sscanf(line,"%s",mem.categorie);
       if((strcmp(mem.categorie,"nourriture")==0)||(strcmp(mem.categorie,"drogue")==0)){
-        sscanf(line,"%s %s %i %i %[^\n]",mem.categorie,mem.nom_obj,&mem.attribut.influ_pa,&mem.id,mem.description);
+        sscanf(line,"%s %s %i %[^\n]",mem.categorie,mem.nom_obj,&mem.attribut.influ_pa,mem.description);
       }
       else if((strcmp(mem.categorie,"arme")==0) || (strcmp(mem.categorie,"soin")==0)){
-        sscanf(line,"%s %s %i %i %[^\n]",mem.categorie,mem.nom_obj,&mem.attribut.nb_utilisation,&mem.id,mem.description);
+        sscanf(line,"%s %s %i %[^\n]",mem.categorie,mem.nom_obj,&mem.attribut.nb_utilisation,mem.description);
       }
       else if(strcmp(mem.categorie,"materiau")==0){
-        sscanf(line,"%s %s %s %i %[^\n]",mem.categorie,mem.nom_obj,mem.attribut.new_nom,&mem.id,mem.description);
+        sscanf(line,"%s %s %s %[^\n]",mem.categorie,mem.nom_obj,mem.attribut.new_nom,mem.description);
       }
       else{
-        sscanf(line,"%s %s %i %[^\n]",mem.categorie,mem.nom_obj,&mem.id,mem.description);
+        sscanf(line,"%s %s %[^\n]",mem.categorie,mem.nom_obj,mem.description);
       }
     	objet_ajout_droit(mem,*liste);
     }
