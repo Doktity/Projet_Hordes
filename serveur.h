@@ -26,6 +26,7 @@
 #define DIX 6
 #define NB_ZOMBIE_MIN 10
 #define NB_ZOMBIE_MAX 250
+#define TAILLE_NOM 100
 
 
 typedef struct {
