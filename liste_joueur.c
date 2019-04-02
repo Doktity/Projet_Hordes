@@ -98,3 +98,24 @@ void joueur_afficher_liste(void){
     }
   }
 }
+
+joueur_t * joueur_trouver(char * nom){
+	joueur_t * mem;
+	if(!joueur_liste_vide())
+	{
+		joueur_en_tete();
+		while(!joueur_hors_liste() || !strcmp(mem->nom, nom))
+		{
+			joueur_suivant();
+			joueur_valeur_elt(&mem);
+		}
+		if(strcmp(mem->nom, nom))
+		{
+			return mem;
+		}
+		else
+		{
+			return NULL;
+		}
+	}
+}
