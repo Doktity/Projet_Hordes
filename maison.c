@@ -1,34 +1,22 @@
 #include "maison.h"
 
-void maison(joueur_t * joueur){
-  int choix;
-  system("clear");
-  do
-  /* Affichage du menu et saisie du choix */
-  {
-    printf("\nMaison\n------\nQue voulez-vous faire ?\n");
-    printf(" 1 - Améliorer maison\n");
-    printf(" 2 - Voir inventaire et coffre\n");
-    printf(" 3 - Utiliser objet\n");
-    printf(" 4 - Deposer objet\n");
-    printf(" 5 - Prendre objet\n");
-    printf(" 6 - Retour\n");
-    printf("Votre choix : ");
-    scanf("%d",&choix);
+void maison(int choix, joueur_t * joueur){
 
-    /* Traitement du choix de l'utilisateur */
-    switch(choix)
-    {
-      case 1: ameliorer_maison(joueur); break;
-      case 2: afficher_inventaire(joueur); objet_afficher_liste(joueur->coffre); break;
-      case 3: utiliser_objet(joueur); break;
-      case 4: deposer_objet(joueur->coffre, joueur); break;
-      case 5: prendre_objet(joueur->coffre, joueur);break;
-      case 6: break;
-      default: printf("Erreur: votre choix doit etre compris entre 1 et 6\n");
-    }
-  }
-  while(choix!=6);
+	/* Traitement du choix de l'utilisateur */
+	switch(choix)
+	{
+		case 1: ameliorer_maison(joueur);
+				break;
+		case 2: afficher_inventaire(joueur);
+				objet_afficher_liste(joueur->coffre);
+				break;
+		case 3: utiliser_objet(joueur);
+				break;
+		case 4: deposer_objet(joueur->coffre, joueur); 
+				break;
+		case 5: prendre_objet(joueur->coffre, joueur);
+				break;
+	}
 }
 
 

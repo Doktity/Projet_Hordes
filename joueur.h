@@ -9,6 +9,16 @@
 #define TAILLE_INVENTAIRE 4
 #define NB_STATUT 7
 
+typedef enum{
+  etat_clair = 0,
+  etat_soif,
+  etat_fatigue,
+  etat_blesse,
+  etat_drogue,
+  etat_rassasie,
+  etat_immunise
+}joueur_nb_etat;
+
 typedef struct joueur_s{
   char * nom;
   int pa;
@@ -30,7 +40,7 @@ int est_soif(joueur_t * joueur); // renvoie 1 si le joueur est assoifé, 0 sinon
 
 int est_fatigue(joueur_t * joueur); // renvoie 1 si le joueur est fatigué, 0 sinon.
 
-int est_blessure(joueur_t * joueur); // renvoie 1 si le joueur est blessé, 0 sinon.
+int est_blesse(joueur_t * joueur); // renvoie 1 si le joueur est blessé, 0 sinon.
 
 int est_drogue(joueur_t * joueur); // renvoie 1 si le joueur est drogué, 0 sinon.
 

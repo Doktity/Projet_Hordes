@@ -1,11 +1,13 @@
 CC=gcc
 OPTS=-Wall -g -lm -pthread
-PROG=main
 
-all: ${PROG}
+all: serveur client
 
-${PROG}: main.o joueur.o objet.o carte.o matrice.o action.o banque.o maison.o puit.o liste_joueur.o atelier.o
-	${CC} $^ ${OPTS} -o ${PROG}
+serveur: serveur.o joueur.o objet.o carte.o matrice.o action.o banque.o maison.o puit.o liste_joueur.o
+	${CC} $^ ${OPTS} -o serveur
+
+client: client.o joueur.o objet.o carte.o matrice.o action.o banque.o maison.o puit.o liste_joueur.o
+	${CC} $^ ${OPTS} -o client
 
 %.o : %.c %.h
 

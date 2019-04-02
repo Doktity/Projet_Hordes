@@ -30,7 +30,7 @@ joueur_t * creer_joueur(char * nom){
 }
 
 
-void supprimer_Joueur(joueur_t * joueur){
+void supprimer_joueur(joueur_t * joueur){
   free(joueur->nom);
   joueur->nom = NULL;
   free(joueur);
@@ -38,38 +38,38 @@ void supprimer_Joueur(joueur_t * joueur){
 }
 
 
-int est_Clair(joueur_t * joueur){
-  return joueur->statut[0];
+int est_clair(joueur_t * joueur){
+  return joueur->statut[etat_clair];
 }
 
 
-int est_Soif(joueur_t * joueur){
-  return joueur->statut[1];
+int est_soif(joueur_t * joueur){
+  return joueur->statut[etat_soif];
 }
 
 
-int est_Fatigue(joueur_t * joueur){
-  return joueur->statut[2];
+int est_fatigue(joueur_t * joueur){
+  return joueur->statut[etat_fatigue];
 }
 
 
-int est_Blessure(joueur_t * joueur){
-  return joueur->statut[3];
+int est_blesse(joueur_t * joueur){
+  return joueur->statut[etat_blesse];
 }
 
 
-int est_Drogue(joueur_t * joueur){
-  return joueur->statut[4];
+int est_drogue(joueur_t * joueur){
+  return joueur->statut[etat_drogue];
 }
 
 
-int est_Rassasie(joueur_t * joueur){
-  return joueur->statut[5];
+int est_rassasie(joueur_t * joueur){
+  return joueur->statut[etat_rassasie];
 }
 
 
-int est_Immunise(joueur_t * joueur){
-  return joueur->statut[6];
+int est_immunise(joueur_t * joueur){
+  return joueur->statut[etat_immunise];
 }
 
 
@@ -100,5 +100,4 @@ int inventaire_vide(joueur_t * joueur){
   int i;
   for(i = 0; i < TAILLE_INVENTAIRE && joueur->inventaire[i] != NULL; i++);
   return (i != TAILLE_INVENTAIRE);
-
 }

@@ -7,7 +7,7 @@
 #include "joueur.h"
 #include "action.h"
 
-void maison(joueur_t * joueur);
+void maison(int choix, joueur_t * joueur);
 
 void ameliorer_maison(joueur_t * joueur);
 

@@ -14,14 +14,8 @@ typedef enum{
       ville
 }etat_case;
 
-typedef enum{
-      non_fouillee,
-      fouillee
-}est_fouillee;
-
 typedef struct {
       etat_case etat;
-      est_fouillee fouille;
       objet_t ** liste_objet;
       joueur_t ** liste_joueur;
       int nb_zombie;
