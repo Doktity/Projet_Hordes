@@ -33,6 +33,7 @@ typedef struct {
   int nb_tour;
   time_t temps;
 }tour_t;
+
 char buffer[512];
 
 void fin(int sig);
