@@ -26,7 +26,8 @@ void init_banque(banque_t * b){
    objet_init_liste(&b->nourriture);
    objet_init_liste(&b->drogue);
    objet_init_liste(&b->arme);
-   objet_init_liste(&b->obj_construct);
+   objet_init_liste(&b->transformable);
+   objet_init_liste(&b->materiau);
 }
 
 void affiche_banque(banque_t * b){
