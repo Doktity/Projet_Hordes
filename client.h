@@ -20,10 +20,10 @@
 #define MAX_TAILLE 100
 
 void envoyer_message(int to_server_socket, char * buffer);
-void maison(int to_server_socket, char nom[MAX_TAILLE]);
-void puit(int to_server_socket, char nom[MAX_TAILLE]);
-void banque(int to_server_socket, char nom[MAX_TAILLE]);
-void porte(int to_server_socket, char nom[MAX_TAILLE]);
+void menu_maison(int to_server_socket, char nom[MAX_TAILLE]);
+void menu_puit(int to_server_socket, char nom[MAX_TAILLE]);
+void menu_banque(int to_server_socket, char nom[MAX_TAILLE]);
+void menu_porte(int to_server_socket, char nom[MAX_TAILLE]);
 
 
 #endif
