@@ -17,11 +17,13 @@
 //#define SERVEURNAME "192.168.1.106" // adresse IP de mon serveur
 #define SERVEURNAME "127.0.0.1" // adresse IP de mon serveur
 
-#define QUITTER "QUITTER"
+#define MAX_TAILLE 100
 
 void envoyer_message(int to_server_socket, char * buffer);
-void quitter(int to_server_socket);
-
+void maison(int to_server_socket, char nom[MAX_TAILLE]);
+void puit(int to_server_socket, char nom[MAX_TAILLE]);
+void banque(int to_server_socket, char nom[MAX_TAILLE]);
+void porte(int to_server_socket, char nom[MAX_TAILLE]);
 
 
 #endif
