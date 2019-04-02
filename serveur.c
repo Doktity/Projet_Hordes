@@ -100,10 +100,21 @@ int main ( void )
     depart = time(NULL);
     int puissance = 0;
 
+    liste_objet_t * liste;
+    objet_creer_liste(&liste);
+
+	banque_t * liste_banque = malloc(sizeof(banque_t));
+    init_banque(liste_banque);
+
+    int ration = 150;
+
     joueur_t * joueur;
     joueur_init_liste();
-    char * menu1;
-    char * nom;
+    char * choix = malloc(sizeof(char));
+    char * nom = malloc(sizeof(char));
+    char * batiment = malloc(sizeof(char));
+    char * mem = malloc(sizeof(char));
+    char * delim = " ";
 
     while(joueur_liste_vide()){
         memset(buffer, 0, sizeof(buffer));
@@ -122,8 +133,7 @@ int main ( void )
     while(!joueur_liste_vide()){
 
         memset(buffer, 0, sizeof(buffer));
-        memset(menu1, 0, sizeof(menu1));
-		lg = recv(client_socket, buffer, 512,0);
+		lg = recv(client_socket, buffer, 512, MSG_DONTWAIT);
 
         tour.temps = time(NULL);
         if((tour.temps - depart) >= DIX){
@@ -137,124 +147,47 @@ int main ( void )
             nb_t = tour.nb_tour;
         }
 
-        
-        if(strncmp("MAISON", buffer, strlen("MAISON")) == 0)
+        if(strncmp("MSG", buffer, strlen("MSG")) == 0)
         {
-			printf("[serveur] message reçu : '%s'\n", buffer + strlen("MAISON") + 1);
-			printf("[serveur] envoi de la réponse ");
-            menu1 = buffer + strlen("MAISON") + 1;
-            if(strncmp("ameliorer", menu1, strlen("ameliorer")) == 0)
-            {
-                nom = menu1 + strlen("ameliorer") + 1;
-                sprintf(buffer, "%s veut améliorer sa maison", nom);
+            strcpy(mem, buffer + strlen("MSG") + 1);
+            mem = strtok(buffer, delim);
+            mem = strtok(NULL, delim);
+            sprintf(batiment, "%s", mem);
+            printf("%s\n", batiment);
+            mem = strtok(NULL, delim);
+            sprintf(nom, "%s", mem);
+            printf("%s\n", nom);
+            mem = strtok(NULL, delim);
+            sprintf(choix, "%s", mem);
+            printf("%s\n", choix);
+            
+            printf("[serveur] envoi de la réponse ");
+            joueur = NULL;
+            joueur = joueur_trouver(nom);
+            if(joueur == NULL){
+                printf("AY CARAMBA");
+            }else{
+                printf("%s\n", joueur->nom);
             }
-            else if(strncmp("afficher", menu1, strlen("afficher")) == 0)
+
+            if(strncmp("MAISON", batiment, strlen("MAISON")) == 0)
             {
-                nom = menu1 + strlen("afficher") + 1;
-                sprintf(buffer, "%s veut afficher l'inventaire du coffre", nom);
+                maison(atoi(choix), joueur);
             }
-            else if(strncmp("utiliser", menu1, strlen("utiliser")) == 0)
+            else if(strncmp("PUIT", buffer, strlen("PUIT")) == 0)
             {
-                nom = menu1 + strlen("utiliser") + 1;
-                sprintf(buffer, "%s veut utiliser l'inventaire", nom);
+                puit(atoi(choix), &ration, joueur, liste);
             }
-            else if(strncmp("deposer", menu1, strlen("deposer")) == 0)
+            else if(strncmp("BANQUE", buffer, strlen("BANQUE")) == 0)
             {
-                nom = menu1 + strlen("deposer") + 1;
-                sprintf(buffer, "%s veut deposer son inventaire dans le coffre", nom);
+                banque(atoi(choix), liste_banque, joueur);
             }
-            else if(strncmp("prendre", menu1, strlen("prendre")) == 0)
+            else if(strncmp("PORTE", buffer, strlen("PORTE")) == 0)
             {
-                nom = menu1 + strlen("prendre") + 1;
-                sprintf(buffer, "%s veut prendre un objet du coffre", nom);
+                action_carte(atoi(choix), joueur, carte);
             }
-			send(client_socket, buffer, 512, 0);
-		}
-        else if(strncmp("PUIT", buffer, strlen("PUIT")) == 0)
-        {
-            printf("[serveur] message reçu : '%s'\n", buffer + strlen("PUIT") + 1);
-			printf("[serveur] envoi de la réponse ");
-            menu1 = buffer + strlen("PUIT") + 1;
-            if(strncmp("prendre", menu1, strlen("prendre")) == 0)
-            {
-                nom = menu1 + strlen("prendre") + 1;
-                sprintf(buffer, "%s veut prendre de l'eau", nom);
-            }
-            else if(strncmp("ajouter", menu1, strlen("ajouter")) == 0)
-            {
-                nom = menu1 + strlen("ajouter") + 1;
-                sprintf(buffer, "%s veut ajouter de l'eau", nom);
-            }
-			send(client_socket, buffer, 512, 0);
-        }
-        else if(strncmp("BANQUE", buffer, strlen("BANQUE")) == 0)
-        {
-            printf("[serveur] message reçu : '%s'\n", buffer + strlen("BANQUE") + 1);
-			printf("[serveur] envoi de la réponse ");
-            menu1 = buffer + strlen("BANQUE") + 1;
-            if(strncmp("afficher", menu1, strlen("afficher")) == 0)
-            {
-                nom = menu1 + strlen("prendre") + 1;
-                sprintf(buffer, "%s veut afficher la banque", nom);
-            }
-            else if(strncmp("ajouter", menu1, strlen("ajouter")) == 0)
-            {
-                nom = menu1 + strlen("ajouter") + 1;
-                sprintf(buffer, "%s veut ajouter un objet à la banque", nom);
-            }
-            else if(strncmp("prendre", menu1, strlen("prendre")) == 0)
-            {
-                nom = menu1 + strlen("prendre") + 1;
-                sprintf(buffer, "%s veut prendre un objet à la banque", nom);
-            }
-			send(client_socket, buffer, 512, 0);
-        }
-        else if(strncmp("PORTE", buffer, strlen("PORTE")) == 0)
-        {
-            printf("[serveur] message reçu : '%s'\n", buffer + strlen("PORTE") + 1);
-			printf("[serveur] envoi de la réponse ");
-            menu1 = buffer + strlen("PORTE") + 1;
-            if(strncmp("gauche", menu1, strlen("gauche")) == 0)
-            {
-                nom = menu1 + strlen("gauche") + 1;
-                sprintf(buffer, "%s veut se déplacer à gauche", nom);
-            }
-            else if(strncmp("droite", menu1, strlen("droite")) == 0)
-            {
-                nom = menu1 + strlen("droite") + 1;
-                sprintf(buffer, "%s veut se déplacer à droite", nom);
-            }
-            else if(strncmp("haut", menu1, strlen("haut")) == 0)
-            {
-                nom = menu1 + strlen("haut") + 1;
-                sprintf(buffer, "%s veut se déplacer en haut", nom);
-            }
-            else if(strncmp("bas", menu1, strlen("bas")) == 0)
-            {
-                nom = menu1 + strlen("bas") + 1;
-                sprintf(buffer, "%s veut se déplacer en bas", nom);
-            }
-            else if(strncmp("fouiller", menu1, strlen("fouiller")) == 0)
-            {
-                nom = menu1 + strlen("fouiller") + 1;
-                sprintf(buffer, "%s veut fouiller l'endroit", nom);
-            }
-            else if(strncmp("attaquer", menu1, strlen("attaquer")) == 0)
-            {
-                nom = menu1 + strlen("attaquer") + 1;
-                sprintf(buffer, "%s veut attaquer un zombie", nom);
-            }
-            else if(strncmp("prendre", menu1, strlen("prendre")) == 0)
-            {
-                nom = menu1 + strlen("prendre") + 1;
-                sprintf(buffer, "%s veut prendre un objet", nom);
-            }
-            else if(strncmp("afficher", menu1, strlen("afficher")) == 0)
-            {
-                nom = menu1 + strlen("gauche") + 1;
-                sprintf(buffer, "%s veut afficher la carte", nom);
-            }
-			send(client_socket, buffer, 512, 0);
+
+            send(client_socket, buffer, 512, 0);
         }
         else if(strncmp("QUITTER", buffer, 7) == 0)
         {
