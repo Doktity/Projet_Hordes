@@ -7,7 +7,8 @@ typedef struct banque_s{
   liste_objet_t * nourriture;
   liste_objet_t * drogue;
   liste_objet_t * arme;
-  liste_objet_t *obj_construct;
+  liste_objet_t * transformable;
+  liste_objet_t * materiau;
 }banque_t;
 
 
