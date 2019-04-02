@@ -1,7 +1,7 @@
 #include "banque.h"
 
 void banque(banque_t * l, joueur_t * j){
-    int choix;
+  int choix;
     do{
         printf("Bienvenue à la banque\n");
         printf("Que voulez-vous faire?\n");
@@ -28,7 +28,7 @@ void init_banque(banque_t * b){
    objet_init_liste(&b->arme);
    objet_init_liste(&b->transformable);
    objet_init_liste(&b->materiau);
-}
+ }
 
 void affiche_banque(banque_t * b){
     printf("Nourriture:\n");
@@ -44,18 +44,20 @@ void affiche_banque(banque_t * b){
 }
 
 void ajouter_objet_banque(banque_t * b, joueur_t * j){
-    int choix;
+  int choix;
     printf("Dans quel catégorie voulez-vous déposer votre objet?\n");
     printf("1 - Nourriture\n");
     printf("2 - Drogue\n");
     printf("3 - Arme\n");
-    printf("4 - Objet de construction\n");
-    scanf("%d",&choix);
+    printf("4 - Objet transformable\n");
+    printf("5 - Matériau\n");
+    scanf("%d", &choix);
     switch(choix){
           case 1:deposer_objet(b->nourriture,j); break;
           case 2:deposer_objet(b->drogue,j); break;
           case 3:deposer_objet(b->arme,j); break;
-          case 4:deposer_objet(b->obj_construct,j); break;
+          case 4:deposer_objet(b->transformable,j); break;
+          case 5:deposer_objet(b->materiau,j); break;
           default:printf("Erreur, vous devez entrer un chiffre entre 1 et 4\n");
      }
 }
@@ -67,14 +69,16 @@ void retirer_objet_banque(banque_t * b,joueur_t * j){
     printf("1 - Nourriture\n");
     printf("2 - Drogue\n");
     printf("3 - Arme\n");
-    printf("4 - Objet de construction\n");
+    printf("4 - Objet transformable\n");
+    printf("5 - Matériau\n");
     scanf("%d",&choix);
     switch(choix){
           case 1:pt=b->nourriture; break;
           case 2:pt=b->drogue; break;
           case 3:pt=b->arme; break;
-          case 4:pt=b->obj_construct; break;
-          default:printf("Erreur, vous devez entrer un chiffre entre 1 et 4\n");
+          case 4:pt=b->transformable; break;
+          case 5:pt=b->materiau; break;
+          default:printf("Erreur, vous devez entrer un chiffre entre 1 et 5\n");
     }
     if(pt!=NULL){
         prendre_objet(pt,j);
