@@ -2,7 +2,9 @@
 
 void envoyer_message(int to_server_socket, char * buffer){
 	// Envoi du message
-	send(to_server_socket, buffer, strlen(buffer), 0);
+	char msg[200];
+	sprintf(msg, "MSG %s", buffer);
+	send(to_server_socket, msg, strlen(msg), 0);
 	// lecture de la réponse
 	memset(buffer, 0, sizeof(buffer));
 	recv(to_server_socket,buffer,512,0);
@@ -12,7 +14,7 @@ void envoyer_message(int to_server_socket, char * buffer){
 
 /**************************BATIMENTS**************************/
 
-void maison(int to_server_socket, char nom[MAX_TAILLE]){
+void menu_maison(int to_server_socket, char nom[MAX_TAILLE]){
 	int choix;
 	char * buffer = malloc(sizeof(buffer));
 	system("clear");
@@ -30,25 +32,14 @@ void maison(int to_server_socket, char nom[MAX_TAILLE]){
 		scanf("%d",&choix);
 
 		/* Traitement du choix de l'utilisateur */
-		switch(choix)
+		if(choix > 0 && choix < 6)
 		{
-			case 1: sprintf(buffer, "MAISON ameliorer %s", nom);
-					envoyer_message(to_server_socket, buffer);
-					break;
-			case 2: sprintf(buffer, "MAISON afficher %s", nom);
-					envoyer_message(to_server_socket, buffer);
-					break;
-			case 3: sprintf(buffer, "MAISON utiliser %s", nom);
-					envoyer_message(to_server_socket, buffer);
-					break;
-			case 4: sprintf(buffer, "MAISON deposer %s", nom);
-					envoyer_message(to_server_socket, buffer);
-					break;
-			case 5: sprintf(buffer, "MAISON prendre %s", nom);
-					envoyer_message(to_server_socket, buffer);
-					break;
-			case 6: break;
-			default: printf("Erreur: votre choix doit etre compris entre 1 et 6\n");
+			sprintf(buffer, "MAISON %s %d", nom, choix);
+			envoyer_message(to_server_socket, buffer);
+		}
+		else if(choix != 6)
+		{
+			printf("Erreur: votre choix doit etre compris entre 1 et 6\n");
 		}
 	}
 	while(choix!=6);
@@ -56,7 +47,7 @@ void maison(int to_server_socket, char nom[MAX_TAILLE]){
 }
 
 
-void puit (int to_server_socket, char nom[MAX_TAILLE]){
+void menu_puit (int to_server_socket, char nom[MAX_TAILLE]){
 	int choix;
 	char * buffer = malloc(sizeof(buffer));
 	system("clear");
@@ -71,16 +62,14 @@ void puit (int to_server_socket, char nom[MAX_TAILLE]){
 		scanf("%d",&choix);
 
 		/* Traitement du choix de l'utilisateur */
-		switch(choix)
+		if(choix > 0 && choix < 3)
 		{
-			case 1: sprintf(buffer, "PUIT prendre %s", nom);
-					envoyer_message(to_server_socket, buffer);
-					break;
-			case 2: sprintf(buffer, "PUIT ajouter %s", nom);
-					envoyer_message(to_server_socket, buffer);
-					break;
-			case 3: break;
-			default: printf("Erreur: votre choix doit etre compris entre 1 et 3\n");
+			sprintf(buffer, "PUIT %s %d", nom, choix);
+			envoyer_message(to_server_socket, buffer);
+		}
+		else if(choix != 3)
+		{
+			printf("Erreur: votre choix doit etre compris entre 1 et 3\n");
 		}
 	}
 	while(choix!=3);
@@ -88,7 +77,7 @@ void puit (int to_server_socket, char nom[MAX_TAILLE]){
 }
 
 
-void banque(int to_server_socket, char nom[MAX_TAILLE]){
+void menu_banque(int to_server_socket, char nom[MAX_TAILLE]){
     int choix;
 	char * buffer = malloc(sizeof(buffer));
 	system("clear");
@@ -103,27 +92,23 @@ void banque(int to_server_socket, char nom[MAX_TAILLE]){
         printf("Votre choix:");
         scanf("%d",&choix);
 
-        switch(choix)
+        /* Traitement du choix de l'utilisateur */
+		if(choix > 0 && choix < 4)
 		{
-            case 1: sprintf(buffer, "BANQUE afficher %s", nom);
-					envoyer_message(to_server_socket, buffer);
-					break;
-            case 2: sprintf(buffer, "BANQUE ajouter %s", nom);
-					envoyer_message(to_server_socket, buffer);
-					break;
-            case 3: sprintf(buffer, "BANQUE prendre %s", nom);
-					envoyer_message(to_server_socket, buffer);
-					break;
-            case 4: break;
-            default: printf("Erreur, vous devez entrer un chiffre entre 1 et 4\n");
-        }
+			sprintf(buffer, "BANQUE %s %d", nom, choix);
+			envoyer_message(to_server_socket, buffer);
+		}
+		else if(choix != 4)
+		{
+			printf("Erreur: votre choix doit etre compris entre 1 et 4\n");
+		}
     }
 	while(choix!=4);
 	free(buffer);
 }
 
 
-void porte(int to_server_socket, char nom[MAX_TAILLE]){
+void menu_porte(int to_server_socket, char nom[MAX_TAILLE]){
     int choix;
 	char * buffer = malloc(sizeof(buffer));
   	system("clear");
@@ -141,34 +126,15 @@ void porte(int to_server_socket, char nom[MAX_TAILLE]){
 		printf(" 9 - sortir de la carte\n");
 		scanf("%d", &choix);
 
-		switch (choix)
+		/* Traitement du choix de l'utilisateur */
+		if(choix > 0 && choix < 9)
 		{
-			case 1: sprintf(buffer, "PORTE gauche %s", nom);
-					envoyer_message(to_server_socket, buffer);
-					break;
-			case 2: sprintf(buffer, "PORTE droite %s", nom);
-					envoyer_message(to_server_socket, buffer);
-					break;
-			case 3: sprintf(buffer, "PORTE haut %s", nom);
-					envoyer_message(to_server_socket, buffer);
-					break;
-			case 4: sprintf(buffer, "PORTE bas %s", nom);
-					envoyer_message(to_server_socket, buffer);
-					break;
-			case 5: sprintf(buffer, "PORTE fouiller %s", nom);
-					envoyer_message(to_server_socket, buffer);
-					break;
-			case 6: sprintf(buffer, "PORTE attaquer %s", nom);
-					envoyer_message(to_server_socket, buffer);
-					break;
-			case 7: sprintf(buffer, "PORTE prendre %s", nom);
-					envoyer_message(to_server_socket, buffer);
-					break;
-			case 8: sprintf(buffer, "PORTE afficher %s", nom);
-					envoyer_message(to_server_socket, buffer);
-					break;
-			case 9: break;
-			default: printf("Erreur, vous devez entrer un chiffre entre 1 et 9\n");
+			sprintf(buffer, "PORTE %s %d", nom, choix);
+			envoyer_message(to_server_socket, buffer);
+		}
+		else if(choix != 9)
+		{
+			printf("Erreur: votre choix doit etre compris entre 1 et 9\n");
 		}
 	}
 	while (choix!=9);
@@ -220,7 +186,10 @@ int main (  int argc, char** argv )
     printf("Nom : ");
     scanf("%s", nom);
     sprintf(buffer, "BONJOUR %s", nom);
-	envoyer_message(to_server_socket, buffer);
+	send(to_server_socket, buffer, strlen(buffer), 0);
+	memset(buffer, 0, sizeof(buffer));
+	recv(to_server_socket,buffer,512,0);
+	printf("[client] reponse du serveur : '%s'\n", buffer);
 
     /* Un menu pour faire differentes actions */
 	int choix;
@@ -243,11 +212,11 @@ int main (  int argc, char** argv )
 
 /* Traitement du choix de l'utilisateur */
 		switch(choix)
-		{	case 1: maison(to_server_socket, nom);
+		{	case 1: menu_maison(to_server_socket, nom);
               		break;
-			case 2: puit(to_server_socket, nom);
+			case 2: menu_puit(to_server_socket, nom);
               		break;
-			case 3: banque(to_server_socket, nom);
+			case 3: menu_banque(to_server_socket, nom);
               		break;
 			case 4: sprintf(buffer, "citoyen");
 					envoyer_message(to_server_socket, buffer);
@@ -258,7 +227,7 @@ int main (  int argc, char** argv )
 			case 6: sprintf(buffer, "atelier");
 					envoyer_message(to_server_socket, buffer);
               		break;
-      		case 7: porte(to_server_socket, nom);
+      		case 7: menu_porte(to_server_socket, nom);
               		break;
             case 8: send(to_server_socket, "QUITTER", 7, 0);
 					break;
