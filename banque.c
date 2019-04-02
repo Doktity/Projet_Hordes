@@ -37,8 +37,10 @@ void affiche_banque(banque_t * b){
     objet_afficher_liste(b->drogue);
     printf("Arme:\n");
     objet_afficher_liste(b->arme);
-    printf("Objet de construction:\n");
-    objet_afficher_liste(b->obj_construct);
+    printf("Objet transformable:\n");
+    objet_afficher_liste(b->transformable);
+    printf("Matériau:\n");
+    objet_afficher_liste(b->materiau);
 }
 
 void ajouter_objet_banque(banque_t * b, joueur_t * j){
