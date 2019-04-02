@@ -122,7 +122,7 @@ int main()
               joueur_afficher_liste();
               break;
 			case 5: printf("coucou"); //chantier(); break;
-			case 6: printf("coucou"); //atelier(); break;
+			case 6: atelier(liste_banque, liste, joueur); break;
       case 7: action_carte(joueur, carte);
               break;
       case 8: break;
