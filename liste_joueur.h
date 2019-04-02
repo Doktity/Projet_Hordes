@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "joueur.h"
 
 typedef struct elt_joueur_s{
@@ -39,5 +40,7 @@ void joueur_ajout_droit(joueur_t * j);
 void joueur_ajout_gauche(joueur_t * j);
 
 void joueur_afficher_liste(void);
+
+joueur_t * joueur_trouver(char * nom);
 
 #endif
