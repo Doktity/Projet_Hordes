@@ -104,6 +104,7 @@ joueur_t * joueur_trouver(char * nom){
 	if(!joueur_liste_vide())
 	{
 		joueur_en_tete();
+		joueur_valeur_elt(&mem);
 		while(!joueur_hors_liste() || !strcmp(mem->nom, nom))
 		{
 			joueur_suivant();
