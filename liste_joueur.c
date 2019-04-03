@@ -100,7 +100,7 @@ void joueur_afficher_liste(void){
 }
 
 joueur_t * joueur_trouver(char * nom){
-	joueur_t * mem;
+	joueur_t * mem = malloc(sizeof(joueur_t));
 	if(!joueur_liste_vide())
 	{
 		joueur_en_tete();
