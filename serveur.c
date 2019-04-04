@@ -116,6 +116,7 @@ int main ( void )
     char * mem = malloc(sizeof(char));
     char * delim = " ";
 
+    /* On attend le premier joueur */
     while(joueur_liste_vide()){
         memset(buffer, 0, sizeof(buffer));
 		lg = recv(client_socket, buffer, 512,0);
@@ -130,6 +131,7 @@ int main ( void )
         }
     }
 
+    /* Boucle principale */
     while(!joueur_liste_vide()){
 
         memset(buffer, 0, sizeof(buffer));
@@ -147,28 +149,26 @@ int main ( void )
             nb_t = tour.nb_tour;
         }
 
-        if(strncmp("MSG", buffer, strlen("MSG")) == 0)
+        if(strncmp("BONJOUR", buffer, strlen("BONJOUR")) == 0)
+        {
+            printf("[serveur] BONJOUR de %s\n", buffer + strlen("BONJOUR") + 1);
+            joueur = creer_joueur(buffer + strlen("BONJOUR") + 1);
+            carte->mat[6][6].nb_joueur++;
+            joueur_ajout_droit(joueur);
+            send(client_socket, buffer, 512, 0);
+        }
+        else if(strncmp("MSG", buffer, strlen("MSG")) == 0)
         {
             strcpy(mem, buffer + strlen("MSG") + 1);
-            mem = strtok(buffer, delim);
-            mem = strtok(NULL, delim);
+            mem = strtok(mem, delim);
             sprintf(batiment, "%s", mem);
-            printf("%s\n", batiment);
             mem = strtok(NULL, delim);
             sprintf(nom, "%s", mem);
-            printf("%s\n", nom);
             mem = strtok(NULL, delim);
             sprintf(choix, "%s", mem);
-            printf("%s\n", choix);
             
             printf("[serveur] envoi de la réponse ");
-            joueur = NULL;
             joueur = joueur_trouver(nom);
-            if(joueur == NULL){
-                printf("AY CARAMBA");
-            }else{
-                printf("%s\n", joueur->nom);
-            }
 
             if(strncmp("MAISON", batiment, strlen("MAISON")) == 0)
             {
@@ -186,7 +186,7 @@ int main ( void )
             {
                 action_carte(atoi(choix), joueur, carte);
             }
-
+            
             send(client_socket, buffer, 512, 0);
         }
         else if(strncmp("QUITTER", buffer, 7) == 0)
