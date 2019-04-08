@@ -12,6 +12,7 @@ typedef struct objet_s{
   char  categorie[TAILLE];
   char  description[TAILLE];
   int attribut_obj;
+  int id;
 }objet_t;
 
 typedef struct element_s{
@@ -62,7 +63,6 @@ void objet_creer_liste(liste_objet_t **);
 * Pour chaque objet on indique son nom, sa catégorie, sa description et son influence sur les points d'actions
 */
 void objet_afficher_liste(liste_objet_t*);
-
 
 int est_present_objet(liste_objet_t *, char *);
 
