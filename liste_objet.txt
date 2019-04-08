@@ -1,14 +1,14 @@
-Eau nourriture 6 Ressource précieuse
-Pain nourriture 6 l'aliment de base
-Boite_conserve nourriture 6  bon pour la santé
-Chips nourriture 3 Vous avez envie de grignoter ?
-Boite_cookies nourriture 3 Trop bon
-Morphine drogue 0 Repousse la mort
-Modafinil drogue 0 Actif contre la fatigue
-Tournevis arme -1 Waouh
-Batte de baseball arme -3 Facile à manier, puissante
-Fer obj_construct 0 Ressource utile et résistante mais rare
-Or obj_construct 0 L’or brille comme un rayon de soleil
-Bois obj_construct 0 Objet facile à trouver et à travailler
-Argile obj_construct 0 Permet de faire des objet de forme spécifique 
-Verre obj_construct 0 Permet de faire des barricades 
+nourriture Eau 6 1 Ressource précieuse
+nourriture Pain nourriture 6 2  l'aliment de base
+nourriture Boite_conserve nourriture 6 3  bon pour la santé
+nourriture Chips 3 4 Vous avez envie de grignoter ?
+nourriture Boite_cookies 3 5 Trop bon
+drogue Morphine 0 6 Repousse la mort
+drogue Modafinil 0 7 Actif contre la fatigue
+arme Tournevis -1 8 Waouh
+arme Batte de baseball -3 9 Facile à manier, puissante
+transformable Fer 0 10 Ressource utile et résistante mais rare
+transformable Or 0 11 L’or brille comme un rayon de soleil
+transformable Bois 0 12 Objet facile à trouver et à travailler
+transformable Argile  0 13 Permet de faire des objet de forme spécifique 
+transformable Verre 0 14 Permet de faire des barricades 
