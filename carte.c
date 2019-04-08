@@ -219,17 +219,39 @@ static void attaquer(joueur_t * joueur,t_mat * map){
 
 
 static void ramasser(joueur_t * joueur,t_mat * map){
-      int nb_elem = 0;
-      int choix = 0;
+      liste_objet_t * liste = map->mat[joueur->posx][joueur->posy].objet_sol;
+      int nb_elem = 0, choix, i = 0;
       for (int i = 0; i < 4; i++) {
             if (joueur->inventaire[i]) {
                   nb_elem ++;
             }
       }
       if (nb_elem < 4) {
+            objet_t courant;
             printf("quel objet voulez vous ramasser ?\n");
-            objet_afficher_liste(map->mat[joueur->posx][joueur->posy].objet_sol);
-            scanf("%i",&choix);
+            //affichage des objet
+            objet_en_tete(liste);
+            while(!objet_hors_liste(liste)){
+                objet_valeur_elt(&courant, liste);
+                printf("%i : %s\n", i, courant.nom[objet]);
+                objet_suivant(liste);
+                i++;
+            }
+            //choix de l'objet
+            do{
+                scanf("%i",&choix);               
+            } while (choix < 0 || choix > i);
+            //récupération de l'objet
+            objet_en_tete(liste);
+            for(i = 0; i < choix; i++){
+                objet_suivant(liste);
+            }
+            for(i = 0; joueur->inventaire[i]; i++);
+            objet_valeur_elt(&courant,liste);
+            joueur->inventaire[i] = courant;
+            objet_oter_elt(liste);
+            
+            
       }
       else{
             printf("pas de place\n");
