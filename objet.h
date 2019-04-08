@@ -20,6 +20,7 @@ typedef struct objet_s{
   char  categorie[TAILLE];
   char  description[TAILLE_desc];
   attribut_obj attribut;
+  int id;
 }objet_t;
 
 typedef struct element_s{
