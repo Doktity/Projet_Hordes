@@ -7,8 +7,8 @@ drogue Morphine 0 6 Repousse la mort
 drogue Modafinil 0 7 Actif contre la fatigue
 arme Tournevis -1 8 Waouh
 arme Batte de baseball -3 9 Facile à manier, puissante
-transformable Fer 0 10 Ressource utile et résistante mais rare
-transformable Or 0 11 L’or brille comme un rayon de soleil
-transformable Bois 0 12 Objet facile à trouver et à travailler
-transformable Argile  0 13 Permet de faire des objet de forme spécifique 
-transformable Verre 0 14 Permet de faire des barricades 
+transformable Fer 10 Ressource utile et résistante mais rare
+transformable Or 11 L’or brille comme un rayon de soleil
+transformable Bois 12 Objet facile à trouver et à travailler
+transformable Argile 13 Permet de faire des objet de forme spécifique 
+transformable Verre 14 Permet de faire des barricades 
