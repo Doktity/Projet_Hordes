@@ -81,7 +81,6 @@ int tour_de_jeu(t_mat * map, int nb_jour, int nb_zombie_hier){
 static void gauche(joueur_t * joueur,t_mat * map) {
       if (!joueur->pa) {
             printf("Vous n'avez pas assez de Points d'action\n");
-            usleep(500);
       }
       else{
             if (joueur->posx) {//si la position de la case du joueur n'est pas toute à gauche
@@ -101,7 +100,6 @@ static void gauche(joueur_t * joueur,t_mat * map) {
             }
             else{
                   printf("Il ne vous es malheureusement impossible d'aller plus à gauche, vous n'y trouverez que des zombies, coisissez une autre direction!!\n");
-                  usleep(500);
             }
       }
 }
@@ -109,7 +107,6 @@ static void gauche(joueur_t * joueur,t_mat * map) {
 static void droite(joueur_t * joueur,t_mat * map){
       if (!joueur->pa) {
             printf("Vous n'avez pas assez de Points d'action\n");
-            usleep(500);
       }
       else{
             if (joueur->posx!=map->nbc) {//si la position de la case du joueur n'est pas toute à droite
@@ -128,7 +125,6 @@ static void droite(joueur_t * joueur,t_mat * map){
             }
             else{
                   printf("Vous ne trouverez rien si vous allez plus à droite choisissez une autre direction!!\n");
-                  usleep(500);
             }
       }
 }
@@ -136,7 +132,7 @@ static void droite(joueur_t * joueur,t_mat * map){
 static void haut(joueur_t * joueur,t_mat * map){
       if (!joueur->pa) {
             printf("Vous n'avez pas assez de Points d'action\n");
-            usleep(500);
+
       }
       else{
             if (joueur->posy) {//si la position de la case du joueur n'est pas tout en haut
@@ -155,7 +151,7 @@ static void haut(joueur_t * joueur,t_mat * map){
             }
             else{
                   printf("Il vous est impossible de monter aux cieux vous etes déjà bien assez haut!!\n");
-                  usleep(500);
+
             }
       }
 }
@@ -163,7 +159,7 @@ static void haut(joueur_t * joueur,t_mat * map){
 static void bas(joueur_t * joueur,t_mat * map){
       if (!joueur->pa) {
             printf("Vous n'avez pas assez de Points d'action\n");
-            usleep(500);
+
       }
       else{
             if (joueur->posy!=map->nbl) {//si la position de la case du joueur n'est pas tout en bas
@@ -182,21 +178,26 @@ static void bas(joueur_t * joueur,t_mat * map){
             }
             else{
                   printf("Impossible, vous etes tout en bas de la carte, vous ne pouvez pas descendre aux enfers!!\n");
-                  usleep(500);
+
             }
       }
 }
 
 static void fouiller(joueur_t * joueur,t_mat * map, liste_objet_t * liste){
+
       if (map->mat[joueur->posx][joueur->posy].fouille == non_fouillee && map->mat[joueur->posx][joueur->posy].etat != ville) {
             map->mat[joueur->posx][joueur->posy].fouille == fouillee;
             objet_t * objet;
             int nb_objet  = nb_aleatoire(4), id_objet;
             nb_objet ++;
             for(int i = 0; i < nb_objet; i++){
+                  printf("coucou\n");
                   id_objet = nb_aleatoire(NB_OBJET);
+                  printf("ici\n");
                   objet = trouver_objet_n(liste, id_objet);
-                  objet_ajout_droit(*objet,map->mat[joueur->posx][joueur->posy].objet_sol);
+                  printf("hello\n");
+                  objet_ajout_gauche(* objet, map->mat[joueur->posx][joueur->posy].objet_sol);
+                  printf("là\n");
             }
       }
 }
@@ -262,7 +263,7 @@ void action_carte(joueur_t * joueur, t_mat * map,liste_objet_t * liste){
             printf(" 5 - fouiller la zone\n");
             printf(" 6 - attaquer un zombie\n");
             printf(" 7 - ramasser objets\n");
-            printf(" 8 - utiliser un obje de votre sac\n");
+            printf(" 8 - utiliser un objet de votre sac\n");
             printf(" 9 - afficher la carte\n");
             printf(" 10 - sortir de la carte\n");
 
@@ -270,16 +271,16 @@ void action_carte(joueur_t * joueur, t_mat * map,liste_objet_t * liste){
 
 
             switch (choix) {
-                  case 1:gauche(joueur,map);    break;
-                  case 2:droite(joueur,map);    break;
-                  case 3:haut(joueur,map);      break;
-                  case 4:bas(joueur,map);       break;
+                  case 1:gauche(joueur,map);          break;
+                  case 2:droite(joueur,map);          break;
+                  case 3:haut(joueur,map);            break;
+                  case 4:bas(joueur,map);             break;
                   case 5:fouiller(joueur,map,liste);  break;
-                  case 6:attaquer(joueur,map);  break;
-                  case 7:ramasser(joueur,map);  break;
-                  case 8:utiliser(joueur);  break;
-                  case 9:afficher_carte(map);   break;
-                  case 10:sortir(joueur,&choix);       break;
+                  case 6:attaquer(joueur,map);        break;
+                  case 7:ramasser(joueur,map);        break;
+                  case 8:utiliser(joueur);            break;
+                  case 9:afficher_carte(map);         break;
+                  case 10:sortir(joueur,&choix);      break;
                   default: printf("erreur de choix\n");
             }
       }while (choix!=10);
