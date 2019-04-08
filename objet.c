@@ -173,6 +173,7 @@ void objet_supprimer(liste_objet_t * liste, char * nom){
 objet_t * trouver_objet_n(liste_objet_t * liste, int n){
   objet_t *pt=malloc(sizeof(objet_t));
   int i;
+  objet_en_tete(liste);
   for(i=0;i<n && !objet_hors_liste(liste);i++){
     objet_suivant(liste);
   }
