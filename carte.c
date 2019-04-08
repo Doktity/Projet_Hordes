@@ -11,6 +11,7 @@ t_mat * creer_carte(){
                   map->mat[i][j].nb_joueur=0;
                   map->mat[i][j].nb_zombie=0;
                   map->mat[i][j].fouille = non_fouillee;
+                  objet_init_liste(&(map->mat[i][j].objet_sol));
             }
       }
       map->mat[(map->nbl)/2][(map->nbc)/2].etat = ville;
@@ -39,23 +40,30 @@ void afficher_carte(t_mat * map){
       }
 }
 
-int calculer_pos_zombie(t_mat * map, int nb_jour, int nb_zombie_hier){
-      //remettre le nombre de zombie de la carte à 0 sans toucher à la ville
+int tour_de_jeu(t_mat * map, int nb_jour, int nb_zombie_hier){
+      //réinitialisation de la carte
       for (int i = 0; i < map->nbl; i++) {
             for (int j = 0; j < map->nbc; j++) {
                   if (map->mat[i][j].etat != ville) {
-                        map->mat[i][j].nb_zombie=0;
+                        map->mat[i][j].nb_zombie = 0;
                         map->mat[i][j].etat=non_explore;
                         map->mat[i][j].fouille = non_fouillee;
-                        if (map->mat[i][j].nb_joueur) {
-                              //parcourir la liste de joueur et les tuer
-
-                        }
-                        
+                        map->mat[i][j].nb_joueur = 0;
                   }
             }
       }
-
+      joueur_en_tete();
+      while (!joueur_hors_liste()) {
+            joueur_t * mem;
+            joueur_valeur_elt(&mem);
+            if (mem->posx != 6 || mem->posy != 6) {
+                  joueur_oter_elt();
+                  supprimer_joueur(mem);
+            }
+            else{
+                  joueur_suivant();
+            }
+      }
       int nb_zombie_today=(int)log(nb_jour)*12+nb_zombie_hier;
 
       for (int i = 0; i < nb_zombie_today; i++) {
@@ -179,31 +187,69 @@ static void bas(joueur_t * joueur,t_mat * map){
       }
 }
 
-static void fouiller(joueur_t * joueur,t_mat * map){
-      if (map->mat[joueur->posx][joueur->posy].fouille == non_fouillee) {
-            int nb_objet  = nb_aleatoire(NB_OBJET);
+static void fouiller(joueur_t * joueur,t_mat * map, liste_objet_t * liste){
+      if (map->mat[joueur->posx][joueur->posy].fouille == non_fouillee && map->mat[joueur->posx][joueur->posy].etat != ville) {
+            map->mat[joueur->posx][joueur->posy].fouille == fouillee;
+            objet_t * objet;
+            int nb_objet  = nb_aleatoire(4), id_objet;
+            nb_objet ++;
             for(int i = 0; i < nb_objet; i++){
-                  
-            }  
+                  id_objet = nb_aleatoire(NB_OBJET);
+                  objet = trouver_objet_n(liste, id_objet);
+                  objet_ajout_droit(*objet,map->mat[joueur->posx][joueur->posy].objet_sol);
+            }
       }
-      
-      
-      
-
 }
+
 
 static void attaquer(joueur_t * joueur,t_mat * map){
-      if (map->mat[joueur->posx][joueur->posy].nb_zombie > (map->mat[joueur->posx][joueur->posy].nb_joueur * 2)) { //une personne vaut 2 point d'attaque et un zombie en vaut un
-            map->mat[joueur->posx][joueur->posy].nb_zombie = 0;
+      if (!joueur->pa) {
+            printf("Vous n'aves pas assez de points d'action\n");
       }
-      
+      if (map->mat[joueur->posx][joueur->posy].nb_zombie && !est_blessure(joueur)) {
+            map->mat[joueur->posx][joueur->posy].nb_zombie --;
+            joueur->pa --;
+            if(!nb_aleatoire(4)){//le joueur a une chance sur 4 d'etre blessé après avoir attaquer un zombie (si le nombre aléatoire == 0)
+                  joueur->statut[3] = 1;//on met le statut de blessure à vrai
+            }
+      }
+
 }
+
 
 static void ramasser(joueur_t * joueur,t_mat * map){
+      int nb_elem = 0;
+      int choix = 0;
+      for (int i = 0; i < 4; i++) {
+            if (joueur->inventaire[i]) {
+                  nb_elem ++;
+            }
+      }
+      if (nb_elem < 4) {
+            printf("quel objet voulez vous ramasser ?\n");
+            objet_afficher_liste(map->mat[joueur->posx][joueur->posy].objet_sol);
+            scanf("%i",&choix);
+      }
+      else{
+            printf("pas de place\n");
+      }
+}
+
+static void utiliser(joueur_t * joueur){
 
 }
 
-void action_carte(joueur_t * joueur, t_mat * map){
+static void sortir(joueur_t * joueur,int * choix){
+      if (joueur->posx != 6 || joueur->posy != 6) {
+            printf("vous ne pouvezpas sortir, vous n'etes pas aux coordonnées de la ville\n");
+            *choix = 9;
+      }
+      else{
+            printf("pressé de vous revoir dans l'outrel monde\n");
+      }
+}
+
+void action_carte(joueur_t * joueur, t_mat * map,liste_objet_t * liste){
       system("clear");
       int choix;
 
@@ -216,8 +262,9 @@ void action_carte(joueur_t * joueur, t_mat * map){
             printf(" 5 - fouiller la zone\n");
             printf(" 6 - attaquer un zombie\n");
             printf(" 7 - ramasser objets\n");
-            printf(" 8 - afficher la carte\n");
-            printf(" 9 - sortir de la carte\n");
+            printf(" 8 - utiliser un obje de votre sac\n");
+            printf(" 9 - afficher la carte\n");
+            printf(" 10 - sortir de la carte\n");
 
             scanf("%i", &choix);
 
@@ -227,12 +274,13 @@ void action_carte(joueur_t * joueur, t_mat * map){
                   case 2:droite(joueur,map);    break;
                   case 3:haut(joueur,map);      break;
                   case 4:bas(joueur,map);       break;
-                  case 5:fouiller(joueur,map);  break;
+                  case 5:fouiller(joueur,map,liste);  break;
                   case 6:attaquer(joueur,map);  break;
                   case 7:ramasser(joueur,map);  break;
-                  case 8:afficher_carte(map);   break;
-                  case 9:printf("bye bye\n");   break;
+                  case 8:utiliser(joueur);  break;
+                  case 9:afficher_carte(map);   break;
+                  case 10:sortir(joueur,&choix);       break;
                   default: printf("erreur de choix\n");
             }
-      }while (choix!=9);
+      }while (choix!=10);
 }
