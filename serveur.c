@@ -57,8 +57,8 @@ int main ( void )
 {
     srand(time(NULL));
 
-	int ma_socket;
-	int client_socket;
+	int ma_socket, i = 0/*, nouv_client*/;
+	int client_socket/*[TAILLE_MAX]*/;
 	struct sockaddr_in mon_address, client_address;
 	unsigned int mon_address_longueur, lg;
 	bzero(&mon_address,sizeof(mon_address));
@@ -68,29 +68,7 @@ int main ( void )
 
 	char *hostname = "localhost";
     char ip[100];
-     
-    hostname_to_ip(hostname , ip);
-	fprintf(stderr, "%s resolved to %s" , hostname , ip);
-	view_ip();
 
-	/* creation de socket */
-	if ((ma_socket = socket(AF_INET,SOCK_STREAM,0))== -1) {
-		printf("Impossible de créer la socket\n");
-		exit(0);
-	}
-
-	/* bind serveur - socket */
-	bind(ma_socket,(struct sockaddr *)&mon_address,sizeof(mon_address));
-	/* ecoute sur la socket */
-	listen(ma_socket,5);
-	/* accept la connexion */
-	mon_address_longueur = sizeof(client_address);
-	
-    /* on attend que le client se connecte */
-	client_socket = accept(ma_socket,
-                         (struct sockaddr *)&client_address,
-                         &mon_address_longueur);
-    
     t_mat * carte = creer_carte();
     time_t depart;
     tour_t tour;
@@ -115,24 +93,49 @@ int main ( void )
     char * batiment = malloc(sizeof(char));
     char * mem = malloc(sizeof(char));
     char * delim = " ";
+     
+    hostname_to_ip(hostname , ip);
+	fprintf(stderr, "%s resolved to %s" , hostname , ip);
+	view_ip();
 
-    /* On attend le premier joueur */
-    while(joueur_liste_vide()){
-        memset(buffer, 0, sizeof(buffer));
-		lg = recv(client_socket, buffer, 512,0);
+	/* creation de socket */
+	if ((ma_socket = socket(AF_INET,SOCK_STREAM,0))== -1) {
+		printf("Impossible de créer la socket\n");
+		exit(0);
+	}
 
-        if(strncmp("BONJOUR", buffer, strlen("BONJOUR")) == 0)
-        {
-			printf("[serveur] BONJOUR de %s\n", buffer + strlen("BONJOUR") + 1);
-            joueur = creer_joueur(buffer + strlen("BONJOUR") + 1);
-            carte->mat[6][6].nb_joueur++;
-            joueur_ajout_droit(joueur);
-			send(client_socket, buffer, 512, 0);
-        }
+	/* bind serveur - socket */
+	bind(ma_socket,(struct sockaddr *)&mon_address,sizeof(mon_address));
+	/* ecoute sur la socket */
+	listen(ma_socket,5);
+	/* accept la connexion */
+	mon_address_longueur = sizeof(client_address);
+	
+    /* on attend que le client se connecte */
+	client_socket/*[i]*/ = accept(ma_socket,
+                         (struct sockaddr *)&client_address,
+                         &mon_address_longueur);
+
+    /* On attend le nom du premier joueur */
+    memset(buffer, 0, sizeof(buffer));
+    lg = recv(client_socket, buffer, 512,0);
+
+    if(strncmp("BONJOUR", buffer, strlen("BONJOUR")) == 0)
+    {
+        printf("[serveur] BONJOUR de %s\n", buffer + strlen("BONJOUR") + 1);
+        joueur = creer_joueur(buffer + strlen("BONJOUR") + 1);
+        carte->mat[6][6].nb_joueur++;
+        joueur_ajout_droit(joueur);
+        send(client_socket, buffer, 512, 0);
     }
 
     /* Boucle principale */
     while(!joueur_liste_vide()){
+
+        /*nouv_client = accept(ma_socket,
+                        (struct sockaddr *)&client_address),
+                        &mon_address_longueur,
+                        O_NON_BLOCK);*/
 
         memset(buffer, 0, sizeof(buffer));
 		lg = recv(client_socket, buffer, 512, MSG_DONTWAIT);
