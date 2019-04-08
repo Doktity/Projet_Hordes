@@ -41,7 +41,7 @@ void *thread_1(void *arg)
         if(nb_t != tour.nb_tour){
           puissance = attaque(tour.nb_tour, 5, puissance);
           printf("\n%d tours - puissance des zombies : %d\n", tour.nb_tour, puissance);
-          nb_zombie_hier = calculer_pos_zombie(carte, tour.nb_tour, nb_zombie_hier);
+          nb_zombie_hier = tour_de_jeu(carte, tour.nb_tour, nb_zombie_hier);
           printf("%d\n", nb_zombie_hier);
           nb_t = tour.nb_tour;
         }
@@ -86,7 +86,7 @@ int main()
   joueur = creer_joueur(nom);
   carte->mat[6][6].nb_joueur++;
   joueur_ajout_droit(joueur);
- 
+
 
   printf("Bonjour %s !\n", joueur->nom);
 
@@ -123,7 +123,7 @@ int main()
               break;
 			case 5: printf("coucou"); //chantier(); break;
 			case 6: atelier(liste_banque, liste, joueur); break;
-      case 7: action_carte(joueur, carte);
+      case 7: action_carte(joueur, carte, liste);
               break;
       case 8: break;
 			default: printf("Erreur: votre choix doit etre compris entre 1 et 8\n");
