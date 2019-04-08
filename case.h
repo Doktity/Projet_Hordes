@@ -6,7 +6,6 @@
 
 #include "joueur.h"
 #include "objet.h"
-#include "liste_joueur.h"
 
 typedef enum{
       non_explore,
@@ -15,15 +14,10 @@ typedef enum{
       ville
 }etat_case;
 
-typedef enum{
-      non_fouillee,
-      fouillee
-}est_fouillee;
-
 typedef struct {
       etat_case etat;
-      est_fouillee fouille;
-      liste_objet_t * objet_sol;
+      objet_t ** liste_objet;
+      joueur_t ** liste_joueur;
       int nb_zombie;
       int nb_joueur;
 }case_t;

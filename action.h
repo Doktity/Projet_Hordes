@@ -19,4 +19,3 @@ void utiliser_objet(joueur_t * joueur);
 int nb_aleatoire(int ecart);
 
 #endif
-

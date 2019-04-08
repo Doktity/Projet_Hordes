@@ -1,3 +1,5 @@
+#include <stdlib.h>
+#include <string.h>
 #include "objet.h"
 
 void objet_init_liste(liste_objet_t ** new){
@@ -98,63 +100,51 @@ void objet_creer_liste(liste_objet_t ** liste){
   objet_en_tete(*liste);
   while(!feof(fic)){
     if((fgets(line, TAILLE, fic))!=NULL){
-    //	sscanf(line,"%s %s %i %[^\n]",mem.nom_obj,mem.categorie,&mem.attribut_obj,mem.description);
-      sscanf(line,"%s",mem.categorie);
-      if((strcmp(mem.categorie,"nourriture")==0)||(strcmp(mem.categorie,"drogue")==0)){
-        sscanf(line,"%s %s %i %[^\n]",mem.categorie,mem.nom_obj,&mem.attribut.influ_pa,mem.description);
-      }
-      else if((strcmp(mem.categorie,"arme")==0) || (strcmp(mem.categorie,"soin")==0)){
-        sscanf(line,"%s %s %i %[^\n]",mem.categorie,mem.nom_obj,&mem.attribut.nb_utilisation,mem.description);
-      }
-      else if(strcmp(mem.categorie,"materiau")==0){
-        sscanf(line,"%s %s %s %[^\n]",mem.categorie,mem.nom_obj,mem.attribut.new_nom,mem.description);
-      }
-      else{
-        sscanf(line,"%s %s %[^\n]",mem.categorie,mem.nom_obj,mem.description);
-      }
+    	sscanf(line,"%s %s %i %[^\n]",mem.nom_obj,mem.categorie,&mem.attribut_obj,mem.description);
     	objet_ajout_droit(mem,*liste);
     }
   }
   fclose(fic);
 }
 
-void objet_afficher_liste(liste_objet_t *liste){
+void objet_afficher_liste(liste_objet_t *liste, char * buffer){
   objet_t mem;
+  char * aff_l = malloc(sizeof(char));
   if(!objet_liste_vide(liste)){
     objet_en_tete(liste);
+    sprintf(buffer, "Affichage de la liste d'objets :\n");
     while(!objet_hors_liste(liste)){
       objet_valeur_elt(&mem,liste);
-      printf("Nom:%s Catégorie:%s PA:%i \n",mem.nom_obj,mem.categorie,mem.attribut.influ_pa);
-      printf("Description: %s\n",mem.description);
-      printf("\n");
+      sprintf(aff_l, "Nom:%s\nDescription: %s\n", mem.nom_obj, mem.description);
+      strcat(buffer, aff_l);
       objet_suivant(liste);
     }
+  } else {
+    sprintf(buffer, "Pas d'objet dans la liste\n");
   }
+  free(aff_l);
 }
 
 
-int objet_est_present(liste_objet_t * liste, char * nom){
+int est_present_objet(liste_objet_t * liste, char * nom){
   if(objet_liste_vide(liste)){
     return 0;
   }
-  objet_t * obj_courant=malloc(sizeof(objet_t));
+  objet_t * obj_courant = malloc(sizeof(objet_t));
   objet_en_tete(liste);
   while(!objet_hors_liste(liste)){
     objet_valeur_elt(obj_courant,liste);
     if(strcmp(obj_courant->nom_obj,nom)){
-      printf("%s",obj_courant->nom_obj);
       return 1;
     }
-    else{
-      objet_suivant(liste);
-    }
+    objet_suivant(liste);
   }
   return 0;
 }
 
 objet_t * trouver_objet(liste_objet_t * liste, char * nom){
-  objet_t * pt=malloc(sizeof(objet_t));
-  if(objet_est_present(liste,nom)){
+  objet_t * pt = malloc(sizeof(objet_t));
+  if(est_present_objet(liste,nom)){
     objet_valeur_elt(pt,liste);
     return pt;
   }
@@ -163,25 +153,9 @@ objet_t * trouver_objet(liste_objet_t * liste, char * nom){
   }
 }
 
-void objet_supprimer(liste_objet_t * liste, char * nom){
+void supprimer_objet(liste_objet_t * liste, char * nom){
   objet_t * sup=trouver_objet(liste,nom);
   if(sup!=NULL){
     objet_oter_elt(liste);
-  }
-}
-
-objet_t * trouver_objet_n(liste_objet_t * liste, int n){
-  objet_t *pt=malloc(sizeof(objet_t));
-  int i;
-  objet_en_tete(liste);
-  for(i=0;i<n && !objet_hors_liste(liste);i++){
-    objet_suivant(liste);
-  }
-  if(!objet_hors_liste(liste)){
-    objet_valeur_elt(pt,liste);
-    return pt;
-  }
-  else{
-    return NULL;
   }
 }

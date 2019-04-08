@@ -9,7 +9,7 @@ joueur_t * creer_joueur(char * nom){
 
   int i;
 
-  joueur->nom = nom;
+  strcpy(joueur->nom, nom);
   joueur->pa = 6;
 
   for(i = 0; i<TAILLE_INVENTAIRE; i++){
@@ -39,49 +39,53 @@ void supprimer_joueur(joueur_t * joueur){
 
 
 int est_clair(joueur_t * joueur){
-  return joueur->statut[0];
+  return joueur->statut[etat_clair];
 }
 
 
 int est_soif(joueur_t * joueur){
-  return joueur->statut[1];
+  return joueur->statut[etat_soif];
 }
 
 
 int est_fatigue(joueur_t * joueur){
-  return joueur->statut[2];
+  return joueur->statut[etat_fatigue];
 }
 
 
-int est_blessure(joueur_t * joueur){
-  return joueur->statut[3];
+int est_blesse(joueur_t * joueur){
+  return joueur->statut[etat_blesse];
 }
 
 
 int est_drogue(joueur_t * joueur){
-  return joueur->statut[4];
+  return joueur->statut[etat_drogue];
 }
 
 
 int est_rassasie(joueur_t * joueur){
-  return joueur->statut[5];
+  return joueur->statut[etat_rassasie];
 }
 
 
 int est_immunise(joueur_t * joueur){
-  return joueur->statut[6];
+  return joueur->statut[etat_immunise];
 }
 
 
-void afficher_inventaire(joueur_t * joueur){
+void afficher_inventaire(joueur_t * joueur, char * buffer){
   int i;
+  char * inventaire = malloc(sizeof(char));
+  sprintf(buffer, "Affichage de l'inventaire :\n");
   for(i = 0; i<TAILLE_INVENTAIRE; i++){
     if(joueur->inventaire[i] != NULL){
-      printf("Emplacement %d : %s\n", i+1, joueur->inventaire[i]->nom_obj);
+      sprintf(inventaire, "Emplacement %d : %s\n", i+1, joueur->inventaire[i]->nom_obj);
     }else{
-      printf("Emplacement %d : vide\n", i+1);
+      sprintf(inventaire, "Emplacement %d : vide\n", i+1);
     }
+    strcat(buffer, inventaire);
   }
+  free(inventaire);
 }
 
 
@@ -100,5 +104,4 @@ int inventaire_vide(joueur_t * joueur){
   int i;
   for(i = 0; i < TAILLE_INVENTAIRE && joueur->inventaire[i] != NULL; i++);
   return (i != TAILLE_INVENTAIRE);
-
 }

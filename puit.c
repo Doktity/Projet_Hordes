@@ -1,28 +1,16 @@
 #include "puit.h"
 
-void puit (int * ration, joueur_t * joueur, liste_objet_t * liste){
-  int choix;
-  system("clear");
-  do
-  /* Affichage du menu et saisie du choix */
-  {
-    printf("\nPuit\n----\nQue voulez-vous faire ?\n");
-    printf(" 1 - Prendre une ration d'eau\n");
-    printf(" 2 - Rajouter de l'eau\n");
-    printf(" 3 - Retour\n");
-    printf("Votre choix : ");
-    scanf("%d",&choix);
+void puit (int choix, int * ration, joueur_t * joueur, liste_objet_t * liste){
 
-    /* Traitement du choix de l'utilisateur */
-    switch(choix)
-    {
-      case 1: prendre_eau(ration, joueur, liste); break;
-      case 2: ajouter_eau(ration, joueur, liste); break;
-      case 3: break;
-      default: printf("Erreur: votre choix doit etre compris entre 1 et 3\n");
-    }
-  }
-  while(choix!=3);
+	/* Traitement du choix de l'utilisateur */
+	switch(choix)
+	{
+		case 1: prendre_eau(ration, joueur, liste);
+				break;
+		case 2: ajouter_eau(ration, joueur, liste);
+				break;
+	}
+
 }
 
 
