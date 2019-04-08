@@ -73,19 +73,15 @@ int est_immunise(joueur_t * joueur){
 }
 
 
-void afficher_inventaire(joueur_t * joueur, char * buffer){
+void afficher_inventaire(joueur_t * joueur){
   int i;
-  char * inventaire = malloc(sizeof(char));
-  sprintf(buffer, "Affichage de l'inventaire :\n");
   for(i = 0; i<TAILLE_INVENTAIRE; i++){
     if(joueur->inventaire[i] != NULL){
-      sprintf(inventaire, "Emplacement %d : %s\n", i+1, joueur->inventaire[i]->nom_obj);
+      printf("Emplacement %d : %s\n", i+1, joueur->inventaire[i]->nom_obj);
     }else{
-      sprintf(inventaire, "Emplacement %d : vide\n", i+1);
+      printf("Emplacement %d : vide\n", i+1);
     }
-    strcat(buffer, inventaire);
   }
-  free(inventaire);
 }
 
 
