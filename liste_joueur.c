@@ -85,18 +85,14 @@ void joueur_ajout_gauche(joueur_t * j){
 	}
 }
 
-void joueur_afficher_liste(char * buffer){
+void joueur_afficher_liste(void){
 	joueur_t * mem;
-	char j_l[512];
-	memset(buffer, 0, sizeof(buffer));
 	if(!joueur_liste_vide()){
 		joueur_en_tete();
 		while(!joueur_hors_liste()){
 			joueur_valeur_elt(&mem);
-			sprintf(j_l, "Nom : %s, Position : %d-%d, pa : %d\n",mem->nom, mem->posx, mem->posy, mem->pa);
-			strcat(buffer, j_l);
-			afficher_inventaire(mem, j_l);
-			strcat(buffer, j_l);
+			printf("Nom : %s, Position : %d-%d, pa : %d\n",mem->nom, mem->posx, mem->posy, mem->pa);
+			afficher_inventaire(mem);
 			joueur_suivant();
 		}
 	}
