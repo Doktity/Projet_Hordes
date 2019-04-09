@@ -48,7 +48,7 @@ int est_rassasie(joueur_t * joueur); // renvoie 1 si le joueur est rassasié, 0 
 
 int est_immunise(joueur_t * joueur); // renvoie 1 si le joueur est immunisé, 0 sinon.
 
-void afficher_inventaire(joueur_t * joueur, char * buffer); // affiche l'inventaire du joueur.
+void afficher_inventaire(joueur_t * joueur); // affiche l'inventaire du joueur.
 
 void trier_inventaire(joueur_t * joueur); // trie l'inventaire du joueur.
 
