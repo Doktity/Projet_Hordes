@@ -39,7 +39,7 @@ void joueur_ajout_droit(joueur_t * j);
 
 void joueur_ajout_gauche(joueur_t * j);
 
-void joueur_afficher_liste(char * buffer);
+void joueur_afficher_liste(void);
 
 joueur_t * joueur_trouver(char * nom);
 
