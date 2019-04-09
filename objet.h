@@ -5,13 +5,20 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define TAILLE 100
+#define TAILLE 25
+#define TAILLE_desc 100
+
+typedef union{
+  int influ_pa;
+  int nb_utilisation;
+  char new_nom[TAILLE];
+}attribut_obj;
 
 typedef struct objet_s{
   char  nom_obj[TAILLE];
   char  categorie[TAILLE];
-  char  description[TAILLE];
-  int attribut_obj;
+  char  description[TAILLE_desc];
+  attribut_obj attribut;
 }objet_t;
 
 typedef struct element_s{
@@ -61,13 +68,15 @@ void objet_creer_liste(liste_objet_t **);
 * Affiche_liste affiche la liste complète des objets
 * Pour chaque objet on indique son nom, sa catégorie, sa description et son influence sur les points d'actions
 */
-void objet_afficher_liste(liste_objet_t*, char * buffer);
+void objet_afficher_liste(liste_objet_t*);
 
 
-int est_present_objet(liste_objet_t *, char *);
+int objet_est_present(liste_objet_t *, char *);
 
 objet_t * trouver_objet(liste_objet_t *, char *);
 
-void supprimer_objet(liste_objet_t*,char *);
+void objet_supprimer(liste_objet_t*,char *);
+
+objet_t * trouver_objet_n(liste_objet_t*,int n);
 
 #endif
