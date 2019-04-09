@@ -23,10 +23,10 @@
 #include "liste_joueur.h"
 
 
-#define DIX 6
+#define DIX 60
 #define NB_ZOMBIE_MIN 10
 #define NB_ZOMBIE_MAX 250
-#define TAILLE_NOM 100
+#define TAILLE_MAX 100
 
 
 typedef struct {

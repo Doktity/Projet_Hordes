@@ -107,18 +107,22 @@ void objet_creer_liste(liste_objet_t ** liste){
   fclose(fic);
 }
 
-void objet_afficher_liste(liste_objet_t *liste){
+void objet_afficher_liste(liste_objet_t *liste, char * buffer){
   objet_t mem;
+  char * aff_l = malloc(sizeof(char));
   if(!objet_liste_vide(liste)){
     objet_en_tete(liste);
+    sprintf(buffer, "Affichage de la liste d'objets :\n");
     while(!objet_hors_liste(liste)){
       objet_valeur_elt(&mem,liste);
-      printf("Nom:%s Catégorie:%s PA:%i \n",mem.nom_obj,mem.categorie,mem.attribut_obj);
-      printf("Description: %s\n",mem.description);
-      printf("\n");
+      sprintf(aff_l, "Nom:%s\nDescription: %s\n", mem.nom_obj, mem.description);
+      strcat(buffer, aff_l);
       objet_suivant(liste);
     }
+  } else {
+    sprintf(buffer, "Pas d'objet dans la liste\n");
   }
+  free(aff_l);
 }
 
 

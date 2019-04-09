@@ -119,15 +119,11 @@ int main ( void )
     /* On attend le nom du premier joueur */
     memset(buffer, 0, sizeof(buffer));
     lg = recv(client_socket, buffer, 512,0);
-
-    if(strncmp("BONJOUR", buffer, strlen("BONJOUR")) == 0)
-    {
-        printf("[serveur] BONJOUR de %s\n", buffer + strlen("BONJOUR") + 1);
-        joueur = creer_joueur(buffer + strlen("BONJOUR") + 1);
-        carte->mat[6][6].nb_joueur++;
-        joueur_ajout_droit(joueur);
-        send(client_socket, buffer, 512, 0);
-    }
+    printf("[serveur] BONJOUR de %s\n", buffer + strlen("BONJOUR") + 1);
+    joueur = creer_joueur(buffer + strlen("BONJOUR") + 1);
+    carte->mat[6][6].nb_joueur++;
+    joueur_ajout_droit(joueur);
+    send(client_socket, buffer, 512, 0);
 
     /* Boucle principale */
     while(!joueur_liste_vide()){
@@ -136,7 +132,6 @@ int main ( void )
                         (struct sockaddr *)&client_address),
                         &mon_address_longueur,
                         O_NON_BLOCK);*/
-
         memset(buffer, 0, sizeof(buffer));
 		lg = recv(client_socket, buffer, 512, MSG_DONTWAIT);
 
@@ -152,15 +147,7 @@ int main ( void )
             nb_t = tour.nb_tour;
         }
 
-        if(strncmp("BONJOUR", buffer, strlen("BONJOUR")) == 0)
-        {
-            printf("[serveur] BONJOUR de %s\n", buffer + strlen("BONJOUR") + 1);
-            joueur = creer_joueur(buffer + strlen("BONJOUR") + 1);
-            carte->mat[6][6].nb_joueur++;
-            joueur_ajout_droit(joueur);
-            send(client_socket, buffer, 512, 0);
-        }
-        else if(strncmp("MSG", buffer, strlen("MSG")) == 0)
+        if(strncmp("MSG", buffer, strlen("MSG")) == 0)
         {
             strcpy(mem, buffer + strlen("MSG") + 1);
             mem = strtok(mem, delim);
@@ -170,26 +157,31 @@ int main ( void )
             mem = strtok(NULL, delim);
             sprintf(choix, "%s", mem);
             
-            printf("[serveur] envoi de la réponse ");
+            printf("[serveur] envoi de la réponse \n");
             joueur = joueur_trouver(nom);
 
             if(strncmp("MAISON", batiment, strlen("MAISON")) == 0)
             {
-                maison(atoi(choix), joueur);
+                maison(atoi(choix), joueur, buffer);
             }
-            else if(strncmp("PUIT", buffer, strlen("PUIT")) == 0)
+            else if(strncmp("PUIT", batiment, strlen("PUIT")) == 0)
             {
                 puit(atoi(choix), &ration, joueur, liste);
             }
-            else if(strncmp("BANQUE", buffer, strlen("BANQUE")) == 0)
+            else if(strncmp("BANQUE", batiment, strlen("BANQUE")) == 0)
             {
                 banque(atoi(choix), liste_banque, joueur);
             }
-            else if(strncmp("PORTE", buffer, strlen("PORTE")) == 0)
+            else if(strncmp("PORTE", batiment, strlen("PORTE")) == 0)
             {
                 action_carte(atoi(choix), joueur, carte);
             }
             
+            send(client_socket, buffer, 512, 0);
+        }
+        else if(strncmp("CITOYEN", buffer, 7) == 0)
+        {
+            joueur_afficher_liste(buffer);
             send(client_socket, buffer, 512, 0);
         }
         else if(strncmp("QUITTER", buffer, 7) == 0)

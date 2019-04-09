@@ -9,7 +9,7 @@ joueur_t * creer_joueur(char * nom){
 
   int i;
 
-  joueur->nom = nom;
+  strcpy(joueur->nom, nom);
   joueur->pa = 6;
 
   for(i = 0; i<TAILLE_INVENTAIRE; i++){
@@ -73,15 +73,19 @@ int est_immunise(joueur_t * joueur){
 }
 
 
-void afficher_inventaire(joueur_t * joueur){
+void afficher_inventaire(joueur_t * joueur, char * buffer){
   int i;
+  char * inventaire = malloc(sizeof(char));
+  sprintf(buffer, "Affichage de l'inventaire :\n");
   for(i = 0; i<TAILLE_INVENTAIRE; i++){
     if(joueur->inventaire[i] != NULL){
-      printf("Emplacement %d : %s\n", i+1, joueur->inventaire[i]->nom_obj);
+      sprintf(inventaire, "Emplacement %d : %s\n", i+1, joueur->inventaire[i]->nom_obj);
     }else{
-      printf("Emplacement %d : vide\n", i+1);
+      sprintf(inventaire, "Emplacement %d : vide\n", i+1);
     }
+    strcat(buffer, inventaire);
   }
+  free(inventaire);
 }
 
 

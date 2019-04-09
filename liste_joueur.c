@@ -85,32 +85,37 @@ void joueur_ajout_gauche(joueur_t * j){
 	}
 }
 
-void joueur_afficher_liste(void){
-  joueur_t * mem;
-  if(!joueur_liste_vide()){
-    joueur_en_tete();
-    while(!joueur_hors_liste()){
-      joueur_valeur_elt(&mem);
-      printf("Nom : %s, Position : %d-%d\n",mem->nom, mem->posx, mem->posy);
-			afficher_inventaire(mem);
-      printf("\n");
-      joueur_suivant();
-    }
-  }
+void joueur_afficher_liste(char * buffer){
+	joueur_t * mem;
+	char j_l[512];
+	memset(buffer, 0, sizeof(buffer));
+	if(!joueur_liste_vide()){
+		joueur_en_tete();
+		while(!joueur_hors_liste()){
+			joueur_valeur_elt(&mem);
+			sprintf(j_l, "Nom : %s, Position : %d-%d, pa : %d\n",mem->nom, mem->posx, mem->posy, mem->pa);
+			strcat(buffer, j_l);
+			afficher_inventaire(mem, j_l);
+			strcat(buffer, j_l);
+			joueur_suivant();
+		}
+	}
 }
 
 joueur_t * joueur_trouver(char * nom){
-	joueur_t * mem = malloc(sizeof(joueur_t));
+	joueur_t * mem;
 	if(!joueur_liste_vide())
 	{
 		joueur_en_tete();
-		joueur_valeur_elt(&mem);
-		while(!joueur_hors_liste() && !strcmp(mem->nom, nom))
+		do
 		{
-			joueur_suivant();
 			joueur_valeur_elt(&mem);
+			if(strcmp(mem->nom, nom) != 0){
+				joueur_suivant();
+			}
 		}
-		if(strcmp(mem->nom, nom))
+		while(!joueur_hors_liste() && strcmp(mem->nom, nom) != 0);
+		if(strcmp(mem->nom, nom) == 0)
 		{
 			return mem;
 		}

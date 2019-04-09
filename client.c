@@ -8,7 +8,7 @@ void envoyer_message(int to_server_socket, char * buffer){
 	// lecture de la réponse
 	memset(buffer, 0, sizeof(buffer));
 	recv(to_server_socket,buffer,512,0);
-	printf("[client] reponse du serveur : '%s'\n", buffer);
+	printf("[client] reponse du serveur : %s", buffer);
 }
 
 
@@ -218,8 +218,11 @@ int main (  int argc, char** argv )
               		break;
 			case 3: menu_banque(to_server_socket, nom);
               		break;
-			case 4: sprintf(buffer, "citoyen");
-					envoyer_message(to_server_socket, buffer);
+			case 4: sprintf(buffer, "CITOYEN");
+					send(to_server_socket, buffer, strlen(buffer), 0);
+					memset(buffer, 0, sizeof(buffer));
+					recv(to_server_socket,buffer,512,0);
+					printf("[client] reponse du serveur : %s", buffer);
               		break;
 			case 5: sprintf(buffer, "chantier");
 					envoyer_message(to_server_socket, buffer);
