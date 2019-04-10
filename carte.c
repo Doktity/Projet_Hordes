@@ -285,9 +285,10 @@ void action_carte(joueur_t * joueur, t_mat * map,liste_objet_t * liste){
             printf(" 5 - fouiller la zone\n");
             printf(" 6 - attaquer un zombie\n");
             printf(" 7 - ramasser objets\n");
-            printf(" 8 - utiliser un objet de votre sac\n");
-            printf(" 9 - afficher la carte\n");
-            printf(" 10 - sortir de la carte\n");
+            printf(" 8 - poser un objet au sol\n");
+            printf(" 9 - utiliser un objet de votre sac\n");
+            printf(" 10 - afficher la carte\n");
+            printf(" 11 - sortir de la carte\n");
 
             scanf("%i", &choix);
 
