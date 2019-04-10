@@ -1,0 +1,14 @@
+Eau nourriture 6 Ressource précieuse
+Pain nourriture 6 l'aliment de base
+Boite_conserve nourriture 6  bon pour la santé
+Chips nourriture 3 Vous avez envie de grignoter ?
+Boite_cookies nourriture 3 Trop bon
+Morphine drogue 0 Repousse la mort
+Modafinil drogue 0 Actif contre la fatigue
+Tournevis arme -1 Waouh
+Batte de baseball arme -3 Facile à manier, puissante
+Fer obj_construct 0 Ressource utile et résistante mais rare
+Or obj_construct 0 L’or brille comme un rayon de soleil
+Bois obj_construct 0 Objet facile à trouver et à travailler
+Argile obj_construct 0 Permet de faire des objet de forme spécifique 
+Verre obj_construct 0 Permet de faire des barricades 
