@@ -5,8 +5,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include "action.h"
 #include "matrice.h"
+#include "action.h"
 
 
 #define T  13//taille des côtés de la carte
@@ -28,4 +28,7 @@ static void bas(joueur_t * joueur, t_mat * map);
 static void fouiller(joueur_t * joueur,t_mat * map, liste_objet_t * liste);
 static void attaquer(joueur_t * joueur, t_mat * map);
 static void ramasser(joueur_t * joueur, t_mat * map);
+static void poser(joueur_t * joueur,t_mat * map);
+static void utiliser(joueur_t * joueur);
+static void sortir(joueur_t * joueur,int * choix);
 #endif
