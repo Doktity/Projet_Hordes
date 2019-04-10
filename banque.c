@@ -19,8 +19,8 @@ void banque(banque_t * l, joueur_t * j){
             default: printf("Erreur, vous devez entrer un chiffre entre 1 et 4\n");
         }
     }while(choix!=4);
-]
-    
+}
+
 void init_banque(banque_t * b){
    objet_init_liste(&b->nourriture);
    objet_init_liste(&b->drogue);

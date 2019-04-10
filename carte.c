@@ -63,7 +63,7 @@ int tour_de_jeu(t_mat * map, int nb_jour, int nb_zombie_hier){
                   joueur_suivant();
             }
       }
-      
+
       int nb_zombie_today=(int)log(nb_jour)*12+nb_zombie_hier;
 
       for (int i = 0; i < nb_zombie_today; i++) {
@@ -94,6 +94,7 @@ static void gauche(joueur_t * joueur,t_mat * map) {
                         else{
                               map->mat[joueur->posx][joueur->posy].etat=explore_neutre;
                         }
+                  }
 
                   joueur->pa--;
             }
@@ -185,7 +186,7 @@ static void bas(joueur_t * joueur,t_mat * map){
 static void fouiller(joueur_t * joueur,t_mat * map, liste_objet_t * liste){
 
       if (map->mat[joueur->posx][joueur->posy].fouille == non_fouillee && map->mat[joueur->posx][joueur->posy].etat != ville) {
-            map->mat[joueur->posx][joueur->posy].fouille == fouillee;
+            map->mat[joueur->posx][joueur->posy].fouille = fouillee;
             objet_t * objet;
             int nb_objet  = nb_aleatoire(4), id_objet;
             nb_objet ++;
@@ -205,7 +206,7 @@ static void attaquer(joueur_t * joueur,t_mat * map){
       if (!joueur->pa) {
             printf("Vous n'aves pas assez de points d'action\n");
       }
-      if (map->mat[joueur->posx][joueur->posy].nb_zombie && !est_blessure(joueur)) {
+      if (map->mat[joueur->posx][joueur->posy].nb_zombie && !est_blesse(joueur)) {
             map->mat[joueur->posx][joueur->posy].nb_zombie --;
             joueur->pa --;
             if(!nb_aleatoire(4)){//le joueur a une chance sur 4 d'etre blessé après avoir attaquer un zombie (si le nombre aléatoire == 0)
@@ -231,13 +232,13 @@ static void ramasser(joueur_t * joueur,t_mat * map){
             objet_en_tete(liste);
             while(!objet_hors_liste(liste)){
                 objet_valeur_elt(&courant, liste);
-                printf("%i : %s\n", i, courant.nom[objet]);
+                printf("%i : %s\n", i, courant.nom_obj);
                 objet_suivant(liste);
                 i++;
             }
             //choix de l'objet
             do{
-                scanf("%i",&choix);               
+                scanf("%i",&choix);
             } while (choix < 0 || choix > i);
             //récupération de l'objet
             objet_en_tete(liste);
@@ -246,7 +247,7 @@ static void ramasser(joueur_t * joueur,t_mat * map){
             }
             for(i = 0; joueur->inventaire[i]; i++);
             objet_valeur_elt(&courant,liste);
-            joueur->inventaire[i] = courant;
+            joueur->inventaire[i] = &courant;
             objet_oter_elt(liste);
 
 

@@ -120,4 +120,5 @@ joueur_t * joueur_trouver(char * nom){
 			return NULL;
 		}
 	}
+	return NULL;
 }
