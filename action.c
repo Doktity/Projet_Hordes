@@ -50,14 +50,22 @@ void utiliser_objet (joueur_t * joueur){
 
       int num;
       afficher_inventaire(joueur);
-      
+
       do{
             printf("Donner le numéro de case de l'objet que vous voulez déposer (1,2,3,4): ");
             scanf("%i", &num);
       }while(num>4 || num<0);
+      if (strcmp(joueur->inventaire[num].categorie, "nourriture")) {
+            if (joueur->pa < 6) {
+                  joueur->pa = 6;
+                  joueur->inventaire[num] = NULL;
+            }
+            else{
+                  printf("Vous ne pouvez pas manger vous avez encore tous vos points d'actions\n");
+            }
 
-      /*UTILISER OBJET*/
-      printf("Oui bonjour c'est la fonction utiliser objet faut me finir heho\n");      
+      }
+
 
 }
 
