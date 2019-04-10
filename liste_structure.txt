@@ -1,8 +1,0 @@
-Piège 30 40 Poutre Couteau 5 1 0
-
-Fossé 20 30 Poutre Pelle 2  1 0
-
-Purificateur 50 65 Eau Alliage 5 3 
-
-
-
