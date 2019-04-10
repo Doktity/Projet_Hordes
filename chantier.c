@@ -24,7 +24,7 @@ void structure_en_tete(liste_structure_t * liste){
 
 void structure_en_queue(liste_structure_t * liste){
 	if(!sstructure_liste_vide(liste)){
-		liste->ec = liste->drapeau->pred; 
+		liste->ec = liste->drapeau->pred;
 	}
 
 }
@@ -106,3 +106,21 @@ void structure_creer_liste(liste_structure_t ** liste){
 	fclose(fic);
 }
 
+void chantier(liste_structure_t * liste, banque_t * banque, joueur_t joueur){
+	int choix;
+    do{
+        printf("\nChantier\n-------\nQue voulez-vous faire ?\n");
+        printf("1 - Afficher les structures disponibles\n");
+        printf("2 - Construire une structure\n");
+        printf("3 - Quitter le chantier\n");
+        printf("Votre choix:");
+        scanf("%d", &choix);
+
+        switch(choix){
+          case 1: structure_afficher_liste(liste); break;
+          case 2: joueur->pa=joueur_travailler(joueur, liste, banque); break;
+          case 3: break;
+          default: printf("Erreur, vous devez saisir un chiffre entre 1 et 3\n");
+        }
+      }while(choix!=3);
+}
