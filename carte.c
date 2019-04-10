@@ -257,13 +257,18 @@ static void ramasser(joueur_t * joueur,t_mat * map){
       }
 }
 
-static void utiliser(joueur_t * joueur){
-
+static void poser(joueur_t * joueur,t_mat * map){
+      deposer_objet(map->mat[joueur->posx][joueur->posy].objet_sol, joueur);
 }
+
+static void utiliser(joueur_t * joueur){
+      utiliser_objet(joueur);
+}
+
 static void sortir(joueur_t * joueur,int * choix){
       if (joueur->posx != 6 || joueur->posy != 6) {
-            printf("vous ne pouvezpas sortir, vous n'etes pas aux coordonnées de la ville\n");
-            *choix = 9;
+            printf("vous ne pouvez pas sortir, vous n'etes pas aux coordonnées de la ville\n");
+            *choix = 10;
       }
 }
 
@@ -295,10 +300,11 @@ void action_carte(joueur_t * joueur, t_mat * map,liste_objet_t * liste){
                   case 5:fouiller(joueur,map,liste);  break;
                   case 6:attaquer(joueur,map);        break;
                   case 7:ramasser(joueur,map);        break;
-                  case 8:utiliser(joueur);            break;
-                  case 9:afficher_carte(map);         break;
-                  case 10:sortir(joueur,&choix);      break;
+                  case 8:poser(joueur,map);            break;
+                  case 9:utiliser(joueur);            break;
+                  case 10:afficher_carte(map);         break;
+                  case 11:sortir(joueur,&choix);      break;
                   default: printf("erreur de choix\n");
             }
-      }while (choix!=10);
+      }while (choix!=11);
 }
