@@ -106,6 +106,24 @@ void structure_creer_liste(liste_structure_t ** liste){
 	fclose(fic);
 }
 
+void structure_afficher_liste(liste_structure_t *){
+	structure_t mem;
+  if(!structure_liste_vide(liste)){
+    structure_en_tete(liste);
+    while(!structure_hors_liste(liste)){
+      structure_valeur_elt(&mem,liste);
+      printf("Nom:%s pa_requis:%i objet1:%s nb_obj:%i objet2:%s nb_obj:%i\n", mem.nom, mem.defense, mem.pa_requis, mem->structure_1.nom_obj, mem.nb_obj1, mem->structure_2.nom_obj, mem.nb_obj2);
+      printf("\n");
+      structure_suivant(liste);
+    }
+  }
+}
+
+int structure_dispo(stucture_t struct, banque_t * banque){
+	objet_t num1,num2;
+	return 0
+}
+
 void chantier(liste_structure_t * liste, banque_t * banque, joueur_t joueur){
 	int choix;
     do{

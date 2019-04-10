@@ -52,4 +52,8 @@ void structure_ajout_gauche(structure_t,liste_structure_t*);
 
 void chantier(liste_structure_t *, banque_t *, joueur_t *);
 
+void structure_afficher_liste(liste_structure_liste *);
+
+int strucuture_dispo(structure_t,banque_t *);
+
 int joueur_travailler(joueur_t *, liste_structure_t *, banque_t *);
