@@ -9,7 +9,7 @@ joueur_t * creer_joueur(char * nom){
 
   int i;
 
-  strcpy(joueur->nom, nom);
+  joueur->nom = nom;
   joueur->pa = 6;
 
   for(i = 0; i<TAILLE_INVENTAIRE; i++){
