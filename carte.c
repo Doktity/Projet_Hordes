@@ -191,13 +191,9 @@ static void fouiller(joueur_t * joueur,t_mat * map, liste_objet_t * liste){
             int nb_objet  = nb_aleatoire(4), id_objet;
             nb_objet ++;
             for(int i = 0; i < nb_objet; i++){
-                  printf("coucou\n");
                   id_objet = nb_aleatoire(NB_OBJET);
-                  printf("ici\n");
                   objet = trouver_objet_n(liste, id_objet);
-                  printf("hello\n");
                   objet_ajout_gauche(* objet, map->mat[joueur->posx][joueur->posy].objet_sol);
-                  printf("là\n");
             }
       }
 }
