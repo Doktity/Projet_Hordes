@@ -204,6 +204,9 @@ static void attaquer(joueur_t * joueur,t_mat * map){
       }
       if (map->mat[joueur->posx][joueur->posy].nb_zombie && !est_blesse(joueur)) {
             map->mat[joueur->posx][joueur->posy].nb_zombie --;
+            if(!map->mat[joueur->posx][joueur->posy].nb_zombie){
+                 map->mat[joueur->posx][joueur->posy].etat=explore_neutre;
+            }
             joueur->pa --;
             if(!nb_aleatoire(4)){//le joueur a une chance sur 4 d'etre blessé après avoir attaquer un zombie (si le nombre aléatoire == 0)
                   joueur->statut[3] = 1;//on met le statut de blessure à vrai
