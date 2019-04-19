@@ -84,19 +84,21 @@ static void gauche(joueur_t * joueur,t_mat * map) {
       }
       else{
             if (joueur->posx) {//si la position de la case du joueur n'est pas toute à gauche
-                  map->mat[joueur->posx][joueur->posy].nb_joueur --;
-                  joueur->posx--;
-                  map->mat[joueur->posx][joueur->posy].nb_joueur ++;
-                  if (map->mat[joueur->posx][joueur->posy].etat==non_explore) {
-                        if (map->mat[joueur->posx][joueur->posy].nb_zombie) {
-                              map->mat[joueur->posx][joueur->posy].etat=explore_zombie;
+                  if (map->mat[joueur->posx][joueur->posy].nb_zombie){
+                        map->mat[joueur->posx][joueur->posy].nb_joueur --;
+                        joueur->posx--;
+                        map->mat[joueur->posx][joueur->posy].nb_joueur ++;
+                        if (map->mat[joueur->posx][joueur->posy].etat==non_explore) {
+                              if (map->mat[joueur->posx][joueur->posy].nb_zombie) {
+                                    map->mat[joueur->posx][joueur->posy].etat=explore_zombie;
+                              }
+                              else{
+                                    map->mat[joueur->posx][joueur->posy].etat=explore_neutre;
+                              }
                         }
-                        else{
-                              map->mat[joueur->posx][joueur->posy].etat=explore_neutre;
-                        }
-                  }
 
-                  joueur->pa--;
+                        joueur->pa--;
+                  }
             }
             else{
                   printf("Il ne vous es malheureusement impossible d'aller plus à gauche, vous n'y trouverez que des zombies, coisissez une autre direction!!\n");
@@ -110,18 +112,20 @@ static void droite(joueur_t * joueur,t_mat * map){
       }
       else{
             if (joueur->posx!=map->nbc) {//si la position de la case du joueur n'est pas toute à droite
-                  map->mat[joueur->posx][joueur->posy].nb_joueur --;
-                  joueur->posx ++;
-                  map->mat[joueur->posx][joueur->posy].nb_joueur ++;
-                  if (map->mat[joueur->posx][joueur->posy].etat==non_explore) {
-                        if (map->mat[joueur->posx][joueur->posy].nb_zombie) {
-                              map->mat[joueur->posx][joueur->posy].etat=explore_zombie;
+                  if (map->mat[joueur->posx][joueur->posy].nb_zombie){
+                        map->mat[joueur->posx][joueur->posy].nb_joueur --;
+                        joueur->posx ++;
+                        map->mat[joueur->posx][joueur->posy].nb_joueur ++;
+                        if (map->mat[joueur->posx][joueur->posy].etat==non_explore) {
+                              if (map->mat[joueur->posx][joueur->posy].nb_zombie) {
+                                    map->mat[joueur->posx][joueur->posy].etat=explore_zombie;
+                              }
+                              else{
+                                    map->mat[joueur->posx][joueur->posy].etat=explore_neutre;
+                              }
                         }
-                        else{
-                              map->mat[joueur->posx][joueur->posy].etat=explore_neutre;
-                        }
+                        joueur->pa--;
                   }
-                  joueur->pa--;
             }
             else{
                   printf("Vous ne trouverez rien si vous allez plus à droite choisissez une autre direction!!\n");
@@ -136,18 +140,20 @@ static void haut(joueur_t * joueur,t_mat * map){
       }
       else{
             if (joueur->posy) {//si la position de la case du joueur n'est pas tout en haut
-                  map->mat[joueur->posx][joueur->posy].nb_joueur --;
-                  joueur->posy--;
-                  map->mat[joueur->posx][joueur->posy].nb_joueur ++;
-                  if (map->mat[joueur->posx][joueur->posy].etat==non_explore) {
-                        if (map->mat[joueur->posx][joueur->posy].nb_zombie) {
-                              map->mat[joueur->posx][joueur->posy].etat=explore_zombie;
+                  if (map->mat[joueur->posx][joueur->posy].nb_zombie){
+                        map->mat[joueur->posx][joueur->posy].nb_joueur --;
+                        joueur->posy--;
+                        map->mat[joueur->posx][joueur->posy].nb_joueur ++;
+                        if (map->mat[joueur->posx][joueur->posy].etat==non_explore) {
+                              if (map->mat[joueur->posx][joueur->posy].nb_zombie) {
+                                    map->mat[joueur->posx][joueur->posy].etat=explore_zombie;
+                              }
+                              else{
+                                    map->mat[joueur->posx][joueur->posy].etat=explore_neutre;
+                              }
                         }
-                        else{
-                              map->mat[joueur->posx][joueur->posy].etat=explore_neutre;
-                        }
+                        joueur->pa--;
                   }
-                  joueur->pa--;
             }
             else{
                   printf("Il vous est impossible de monter aux cieux vous etes déjà bien assez haut!!\n");
@@ -163,18 +169,20 @@ static void bas(joueur_t * joueur,t_mat * map){
       }
       else{
             if (joueur->posy!=map->nbl) {//si la position de la case du joueur n'est pas tout en bas
-                  map->mat[joueur->posx][joueur->posy].nb_joueur --;
-                  joueur->posy++;
-                  map->mat[joueur->posx][joueur->posy].nb_joueur ++;
-                  if (map->mat[joueur->posx][joueur->posy].etat==non_explore) {
-                        if (map->mat[joueur->posx][joueur->posy].nb_zombie) {
-                              map->mat[joueur->posx][joueur->posy].etat=explore_zombie;
+                  if (map->mat[joueur->posx][joueur->posy].nb_zombie){
+                        map->mat[joueur->posx][joueur->posy].nb_joueur --;
+                        joueur->posy++;
+                        map->mat[joueur->posx][joueur->posy].nb_joueur ++;
+                        if (map->mat[joueur->posx][joueur->posy].etat==non_explore) {
+                              if (map->mat[joueur->posx][joueur->posy].nb_zombie) {
+                                    map->mat[joueur->posx][joueur->posy].etat=explore_zombie;
+                              }
+                              else{
+                                    map->mat[joueur->posx][joueur->posy].etat=explore_neutre;
+                              }
                         }
-                        else{
-                              map->mat[joueur->posx][joueur->posy].etat=explore_neutre;
-                        }
+                        joueur->pa--;
                   }
-                  joueur->pa--;
             }
             else{
                   printf("Impossible, vous etes tout en bas de la carte, vous ne pouvez pas descendre aux enfers!!\n");
@@ -276,7 +284,7 @@ void action_carte(joueur_t * joueur, t_mat * map,liste_objet_t * liste){
       int choix;
 
       do{
-            printf(" Quels actions voulez vous faire ?\n");
+            printf(" Quelles actions voulez vous faire ?\n");
             printf(" 1 - vous déplacer à gauche\n");
             printf(" 2 - vous déplacer à droite\n");
             printf(" 3 - vous déplacer en haut\n");
