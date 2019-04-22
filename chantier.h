@@ -2,7 +2,7 @@
 
 typedef struct defense_s{
   char nom[TAILLE];
-  int defense; //nombre de défense que la defense générera
+  int val; //nombre de défense que la defense générera
   int pa_requis; //Nombre de points d'actions pour pouvoir construire la defense, on décrémente au fur et à mesure qu'un joueur se dépense au chantier
   objet_t * objet_1; // Le premier objet requis pour pouvoir contruire la defense
   objet_t * objet_2;// Le second objet requis pour pouvoir construire la defense
