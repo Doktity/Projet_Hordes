@@ -99,7 +99,7 @@ void defense_creer_liste(liste_defense_t ** liste){
 	defense_en_tete(*liste);
 	while(!feof(fic)){
 		if((fgets(line, TAILLE, fic)) != NULL){
-			sscanf(line, "%s %i %i  %s %s %i %i %i",mem.nom, &mem.val, &mem.pa_requis, mem.defense_1, mem.defense_2, &mem.nb_obj1, &mem.nb_obj2, &mem.construit);
+			sscanf(line, "%s %i %i  %s %s %i %i %i",mem.nom, &mem.val, &mem.pa_requis, mem.objet_1, mem.objet_2, &mem.nb_obj1, &mem.nb_obj2, &mem.construit);
 			defense_ajout_droit(mem, *liste);
 		}
 	}
@@ -112,7 +112,7 @@ void defense_afficher_liste(liste_defense_t *){
     defense_en_tete(liste);
     while(!defense_hors_liste(liste)){
       defense_valeur_elt(&mem,liste);
-      printf("Nom:%s pa_requis:%i objet1:%s nb_obj:%i objet2:%s nb_obj:%i\n", mem.nom, mem.defense, mem.pa_requis, mem->defense_1.nom_obj, mem.nb_obj1, mem->defense_2.nom_obj, mem.nb_obj2);
+      printf("Nom:%s pa_requis:%i objet1:%s nb_obj:%i objet2:%s nb_obj:%i\n", mem.nom, mem.val, mem.pa_requis, mem->objet_1.nom_obj, mem.nb_obj1, mem->objet_2.nom_obj, mem.nb_obj2);
       printf("\n");
       defense_suivant(liste);
     }
